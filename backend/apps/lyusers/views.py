@@ -18,7 +18,7 @@ from utils.filters import UsersManageTimeFilter
 from django.contrib.auth.hashers import make_password
 from utils.export_excel import export_excel
 from django.db import transaction
-from apps.oauth.models import OAuthWXUser
+# from apps.oauth.models import OAuthWXUser
 # Create your views here.
 
 # ================================================= #
@@ -211,30 +211,30 @@ class ChangeAvatarView(APIView):
             return ErrorResponse(msg=result['msg'])
 
 #注销账号(标记已注销)
-class DestroyUserView(APIView):
-    '''
-    注销账号(标记已注销)
-    post:
-    【功能描述】注销账号(标记已注销)</br>
-    '''
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsAuthenticated]
-
-    def post(self, request, *args, **kwargs):
-        user = request.user
-        if user.identity not in [0,1]:
-            return ErrorResponse(msg="该用户不支持注销")
-        if '(已注销)' in user.username:
-            return ErrorResponse(msg="该用户已注销或不支持注销")
-        with transaction.atomic():
-            randstr = getRandomSet(6)
-            user.username = user.username + "(已注销)" + randstr
-            user.mobile = user.mobile + "(已注销)" + randstr
-            user.is_delete = True
-            user.is_active = False
-            user.save()
-            OAuthWXUser.objects.filter(user=user).delete()
-            return SuccessResponse(data={},msg="success")
+# class DestroyUserView(APIView):
+#     '''
+#     注销账号(标记已注销)
+#     post:
+#     【功能描述】注销账号(标记已注销)</br>
+#     '''
+#     authentication_classes = [JWTAuthentication]
+#     permission_classes = [IsAuthenticated]
+#
+#     def post(self, request, *args, **kwargs):
+#         user = request.user
+#         if user.identity not in [0,1]:
+#             return ErrorResponse(msg="该用户不支持注销")
+#         if '(已注销)' in user.username:
+#             return ErrorResponse(msg="该用户已注销或不支持注销")
+#         with transaction.atomic():
+#             randstr = getRandomSet(6)
+#             user.username = user.username + "(已注销)" + randstr
+#             user.mobile = user.mobile + "(已注销)" + randstr
+#             user.is_delete = True
+#             user.is_active = False
+#             user.save()
+#             OAuthWXUser.objects.filter(user=user).delete()
+#             return SuccessResponse(data={},msg="success")
 
 #前端APP下载页面
 def downloadapp(request):

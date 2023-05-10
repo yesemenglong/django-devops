@@ -13,20 +13,21 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'application.settings')
 django.setup()
 
 from django.core.asgi import get_asgi_application
-
+from channels.auth import AuthMiddlewareStack
 from utils.middleware import JwtAuthMiddleware
 from channels.routing import ProtocolTypeRouter, URLRouter
 from apps.lywebsocket.routing import websocket_urlpatterns
-
+from apps.tailf import routing
 
 # application = get_asgi_application()
 
 application = ProtocolTypeRouter({
   "http": get_asgi_application(),# 也可以不需要此项，普通的HTTP请求不需要我们手动在这里添加，框架会自动加载
-  "websocket": JwtAuthMiddleware(
+  "websocket": AuthMiddlewareStack(
         # 多个url合并一起使用，多个子路由列表相加:a+b
         URLRouter(
-            websocket_urlpatterns
+            websocket_urlpatterns +
+            routing.websocket_urlpatterns,
         )
     ),
 })
