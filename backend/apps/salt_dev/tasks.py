@@ -127,78 +127,15 @@ def minion_list():
             return False
 
 
-def minion_list_test():
-    minion_list = MinionList.objects.values_list('minion_id', falt=True)
-    id_list = []
-    print('开始更新Minion列表' + time.strftime('%Y-%m-%d %X'))
-    with requests.Session() as s:
-        saltapi = SaltAPI(session=s)
-        minion_data = saltapi.saltrun_manage_status_api()
-        if minion_data['status'] is False:
-            print(minion_data['results'])
-            return False
-        try:
-            # 获取在线状态的 minion 的 ID 列表
-            id_list.extend(minion_data['results']['return'][0]['up'])
-            # 使用 saltapi 获取 minion 的信息
-            grains_data = saltapi.grains_items_api(tgt=id_list, tgt_type='list')
-
-            # 遍历获取到的 minion 信息
-            for key, value in grains_data['results']['return'][0].items():
-                try:
-                    # 移除 127.0.0.1
-                    value['ipv4'].remove('127.0.0.1')
-                except Exception:
-                    pass
-                try:
-                    updated_values = {
-                        'minion_id': key,
-                        'ip': value.get('ipv4'),
-                        'sn': value.get('serialnumber'),
-                        'cpu_num': value.get('num_cpus'),
-                        'cpu_model': value.get('cpu_model'),
-                        'sys': value.get('kernel'),
-                        'kernel': value.get('kernelrelease'),
-                        'product_name': value.get('productname'),
-                        'ipv4_address': value.get('ip4_interfaces'),
-                        'mac_address': value.get('hwaddr_interfaces'),
-                        'localhost': value.get('localhost'),
-                        'mem_total': value.get('mem_total'),
-                        'minion_value': value.get('saltversion'),
-                        'system_issue': value.get('os') + value.get('osrelease'),
-                        'update_time': datetime.datetime.now(),
-                    }
-                except Exception as e:
-                    updated_values.update({'minion_status': '异常'})
-                    MinionList.objects.update_or_create(minion_id=key, defaults=updated_values)
-                else:
-                    updated_values.update({'minion_status': '在线'})
-                    MinionList.objects.update_or_create(minion_id=key, defaults=updated_values)
-        except Exception as e:
-            # 打印错误信息并返回 False
-            print('minion列表更新在线数据出错1，请检查' + time.strftime('%Y-%m-%d %X'), e)
-            return False
-
-        try:
-            for i in minion_list:
-                if i not in id_list:
-                    MinionList.objects.filter(minion_id=i).delete()
-            print('minion列表更新完成' + time.strftime('%Y-%m-%d %X'))
-            return True
-        except Exception as e:
-            print('minion列表更新出错，请检查' + time.strftime('%Y-%m-%d %X'), e)
-            return False
-
-
 # @shared_task(name='执行sls文件')
-def salt_sls(data):
-    with requests.Session() as s:
-        slatapi = SaltAPI(session=s)
-        response_data = slatapi.public(data=data)
-        if response_data is False:
-            return False
-        else:
-            try:
-                return response_data
-            except Exception as e:
-                return False
+# def salt_sls(data):
+#     with requests.Session() as s:
+#         slatapi = SaltAPI(session=s)
+#         response_data = slatapi.public(data=data)
+#         if response_data is False:
+#             return False
+#         else:
+#             try:
+#                 return response_data
+#             except Exception as e:
+#                 return False

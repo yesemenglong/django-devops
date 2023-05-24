@@ -22,35 +22,35 @@ from django_redis import get_redis_connection
 from django.conf import settings
 from config import IS_SINGLE_TOKEN
 
-class CaptchaView(APIView):
-    """
-    获取图片验证码
-    """
-    authentication_classes = []
+# class CaptchaView(APIView):
+#     """
+#     获取图片验证码
+#     """
+#     authentication_classes = []
 
-    @swagger_auto_schema(
-        responses={
-            '200': openapi.Response('获取成功')
-        },
-        security=[],
-        operation_id='captcha-get',
-        operation_description='验证码获取',
-    )
-    def get(self, request):
-        hashkey = CaptchaStore.generate_key()
-        id = CaptchaStore.objects.filter(hashkey=hashkey).first().id
-        imgage = captcha_image(request, hashkey)
-        # 将图片转换为base64
-        image_base = base64.b64encode(imgage.content)
-        json_data = {"key": id, "image_base": "data:image/png;base64," + image_base.decode('utf-8')}
-        return SuccessResponse(data=json_data)
+#     @swagger_auto_schema(
+#         responses={
+#             '200': openapi.Response('获取成功')
+#         },
+#         security=[],
+#         operation_id='captcha-get',
+#         operation_description='验证码获取',
+#     )
+#     def get(self, request):
+#         hashkey = CaptchaStore.generate_key()
+#         id = CaptchaStore.objects.filter(hashkey=hashkey).first().id
+#         imgage = captcha_image(request, hashkey)
+#         # 将图片转换为base64
+#         image_base = base64.b64encode(imgage.content)
+#         json_data = {"key": id, "image_base": "data:image/png;base64," + image_base.decode('utf-8')}
+#         return SuccessResponse(data=json_data)
 
 class LoginSerializer(TokenObtainPairSerializer):
     """
     登录的序列化器:
     重写djangorestframework-simplejwt的序列化器
     """
-    captcha = serializers.CharField(max_length=6)
+    # captcha = serializers.CharField(max_length=6)
 
     class Meta:
         model = Users
@@ -62,18 +62,18 @@ class LoginSerializer(TokenObtainPairSerializer):
     }
 
     #开启验证码验证
-    def validate_captcha(self, captcha):
-        self.image_code = CaptchaStore.objects.filter(id=self.initial_data['captchaKey']).first()
-        five_minute_ago = datetime.now() - timedelta(hours=0, minutes=5, seconds=0)
-        if self.image_code and five_minute_ago > self.image_code.expiration:
-            self.image_code and self.image_code.delete()
-            raise CustomValidationError('验证码过期')
-        else:
-            if self.image_code and (self.image_code.response == captcha or self.image_code.challenge == captcha):
-                self.image_code and self.image_code.delete()
-            else:
-                self.image_code and self.image_code.delete()
-                raise CustomValidationError("图片验证码错误")
+    # def validate_captcha(self, captcha):
+    #     self.image_code = CaptchaStore.objects.filter(id=self.initial_data['captchaKey']).first()
+    #     five_minute_ago = datetime.now() - timedelta(hours=0, minutes=5, seconds=0)
+    #     if self.image_code and five_minute_ago > self.image_code.expiration:
+    #         self.image_code and self.image_code.delete()
+    #         raise CustomValidationError('验证码过期')
+    #     else:
+    #         if self.image_code and (self.image_code.response == captcha or self.image_code.challenge == captcha):
+    #             self.image_code and self.image_code.delete()
+    #         else:
+    #             self.image_code and self.image_code.delete()
+    #             raise CustomValidationError("图片验证码错误")
 
     def validate(self, attrs):
         username = attrs['username']

@@ -19,16 +19,31 @@ import logging
 logger = logging.getLogger("salt")
 logger1 = logging.getLogger("batch_cmd")
 
+# m
 def MinionIdList(minion_id):
-    minion_id_list = ZoneList.objects.filter(minion_id=minion_id)
+    minion_id_list = ZoneList.objects.filter(m_zone=0).filter(minion_id=minion_id)
     id_list = []
     for i in minion_id_list:
         id_list.append(i.id)
 
     return id_list
 
-
+# --- 区服管理 ---
 class ZoneListViewSet(viewsets.ModelViewSet):
+    """
+    区服列表
+    
+    list: 
+        区服列表信息
+    create: 
+        创建单个区服信息
+    destroy: 
+        删除
+    update:
+        更新
+    retrieve:
+        查询单个
+    """
     queryset = ZoneList.objects.all()
     serializer_class = serializers.ZoneListSerializer
     filter_backends = (DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter)
@@ -40,13 +55,11 @@ class ZoneListViewSet(viewsets.ModelViewSet):
     ordering_fields = ('minion_id', 'zone_id')
 
     def create(self, request, *args, **kwargs):
-        # zone_id = request.data.get("zone_id")
         minion_id = request.data.get("minion_id")
         ids = request.data.get("id")
-        ip = MinionList.objects.get(minion_id=minion_id).ip
-        domain = MinionList.objects.get(minion_id=minion_id).do_main
-        # data = {'name': request.data.get('name'), 'ip': ip, 'host': minion_id,
-        #         'db': request.data.get('db'), 'id': request.data.get('id')}
+        minionList = MinionList.objects.all()
+        ip = minionList.get(minion_id=minion_id).ip
+        domain = minionList.get(minion_id=minion_id).do_main
         request.data.update({"ip": ip, "db": DATABASE_HOST, "domain": domain})
         
         id_list = MinionIdList(minion_id)
@@ -76,11 +89,8 @@ class ZoneListViewSet(viewsets.ModelViewSet):
             return Response({'results': serializer.errors, 'status': False})
 
     def destroy(self, request, *args, **kwargs):
-        # zone_id = kwargs.get('pk')
         instance = self.get_object()
         try: 
-            # yamls.delete_json(zone_id)
-            # yamls.update_yaml('delete', zone_id, None)
             self.perform_destroy(instance)
             return Response({'results': "删除成功", 'status': True})
         except Exception as e:
@@ -89,7 +99,6 @@ class ZoneListViewSet(viewsets.ModelViewSet):
     
     def get_queryset(self):
         m_zone = self.request.GET.get('merge_status')
-        print(type(m_zone), m_zone)
         if m_zone != '' and int(m_zone) == 1:
             queryset = ZoneList.objects.exclude(m_zone=0)
             print(queryset)
@@ -103,22 +112,26 @@ class ZoneListViewSet(viewsets.ModelViewSet):
         return queryset
     
 
-class ZoneListMinionViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
-    queryset = ZoneList.objects.all()
-    serializer_class = serializers.ZoneListSerializer
+# class ZoneListMinionViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+#     queryset = ZoneList.objects.all()
+#     serializer_class = serializers.ZoneListSerializer
 
-    pagination_class = CustomPagination
+#     pagination_class = CustomPagination
 
-    # 可选的排序规则
-    ordering_fields = ('minion_id', 'zone_id')
+#     # 可选的排序规则
+#     ordering_fields = ('minion_id', 'zone_id')
 
-    def get_queryset(self):
-        minion_id = self.request.GET.get('minion_id')
-        queryset = ZoneList.objects.filter(minion_id=minion_id)
-        return queryset
+#     def get_queryset(self):
+#         minion_id = self.request.GET.get('minion_id')
+#         queryset = ZoneList.objects.filter(minion_id=minion_id)
+#         return queryset
 
 
 class ZoneListBatchCreateViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
+    """
+    create:
+        批量创建区服信息
+    """
     queryset = ZoneList.objects.all()
     serializer_class = serializers.ZoneListSerializer
 
@@ -134,11 +147,6 @@ class ZoneListBatchCreateViewSet(mixins.CreateModelMixin, viewsets.GenericViewSe
         serializer = self.get_serializer(data=data["add_sql_datas"], many=True)
 
         if serializer.is_valid(raise_exception=True):
-            # if ZoneList.objects.all():
-            #     yamls.batch_create_yaml("create", data["add_yml_datas"])
-            # else:
-            #     yamls.batch_create_yaml("initial_create", data["add_yml_datas"])
-            # yamls.batch_extend_json(data["add_json_datas"])
             self.perform_create(serializer)
             return Response({'results': "批量添加成功", 'status': True})
         else:
@@ -147,7 +155,6 @@ class ZoneListBatchCreateViewSet(mixins.CreateModelMixin, viewsets.GenericViewSe
 
 class ZoneListExportViewSet(View):
     def get(self, request, *args, **kwargs):
-        ZoneList.objects.values()
         datas = ZoneList.objects.all().values()
         data = yamls.sql_to_yaml(datas)
         response = HttpResponse(data, content_type='application/yaml')
@@ -157,18 +164,25 @@ class ZoneListExportViewSet(View):
 
 
 class ZoneMinionIDViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+    """
+    list:
+        minion已使用id
+    """
     queryset = ZoneList.objects.all()
     serializer_class = serializers.MinionZoneIDSerializer
     pagination_class = None
     
     def get_queryset(self):
         minion_id = self.request.GET.get('minion_id')
-        # queryset = MinionIdList(minion_id)
         queryset = ZoneList.objects.filter(minion_id=minion_id).filter(m_zone=0).values('id')
         return queryset
 
 
 class ZoneListStatusViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+    """
+    list：
+        获取未执行创区的区服信息
+    """
     queryset = ZoneList.objects.all()
     serializer_class = serializers.ZoneListSerializer
 
@@ -181,7 +195,7 @@ class ZoneListStatusViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
         queryset = ZoneList.objects.filter(status=0)
         return queryset
     
-        
+# 执行sls 
 def salt_sls(data):
     with requests.Session() as s:
         slatapi = SaltAPI(session=s)
@@ -197,6 +211,10 @@ def salt_sls(data):
             
 
 class BeployZoneViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
+    """
+    create：
+        创建单个区服
+    """
     serializer_class = serializers.ZoneListSerializer
     
     def create(self, request, *args, **kwargs):
@@ -262,6 +280,10 @@ class BeployZoneViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
         
         
 class BatchBeployViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
+    """
+    create:
+        批量创建区服
+    """
     serializer_class = serializers.ZoneListSerializer
     
     def create(self, request, *args, **kwargs):
@@ -318,6 +340,16 @@ class BatchBeployViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
 
 
 class ZoneMergeViewSet(viewsets.ModelViewSet):
+    """
+    合服信息列表
+    
+    create：
+        单条创建
+    update：
+        更新
+    destroy：
+        删除
+    """
     queryset = ZoneMergeList.objects.all()
     serializer_class = serializers.ZoneMergeSerializer
     
@@ -326,7 +358,6 @@ class ZoneMergeViewSet(viewsets.ModelViewSet):
     
     def create(self, request, *args, **kwargs):
         res = check(request)
-        print(res)
         if res != None:
             return Response(res)
         
@@ -364,12 +395,6 @@ class ZoneMergeViewSet(viewsets.ModelViewSet):
             logger.error(e)
             return Response({'results': '删除失败 ' + str(e), 'status': False})
 
-    # def retrieve(self, request, *args, **kwargs):
-    #     if request.query_params.get('status') == 1:
-    #         merge_list = ZoneMergeList.objects.filter(status=1).values_list(flat=True)
-    #     else:
-    #         merge_list = ZoneMergeList.objects.filter(status=0).values_list(flat=True)
-    #     return Response({'results': list(merge_list), 'status': True})
 
 def check(request):
     mzone = request.data.get('mzone')
@@ -407,6 +432,10 @@ def checkInfo(mzone, cozone):
 
             
 class ZoneMergeExeViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
+    """
+    执行合服操作
+    
+    """
     serializer_class = serializers.ZoneMergeSerializer
     
     def create(self, request, *args, **kwargs):
@@ -468,6 +497,9 @@ class ZoneMergeExeViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
 
 
 class BatchZoneMergeViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
+    """
+    批量创建合服信息
+    """
     queryset = ZoneMergeList.objects.all()
     serializer_class = serializers.ZoneMergeSerializer
     

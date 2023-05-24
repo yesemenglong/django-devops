@@ -32,7 +32,7 @@ from config import *
 SECRET_KEY = 'django-insecure-n=x1q3sl^3va9tb&ty$p1b+kob@eb%wh0bn&8yj&!bp05201314'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = locals().get("DEBUG", True)
 
 ALLOWED_HOSTS = ["*"]
 
@@ -59,10 +59,10 @@ INSTALLED_APPS = [
     # myown app
     'mysystem',
     # custom app
-    'apps.lymessages',
+    # 'apps.lymessages',
     # 'apps.address',
     # 'apps.oauth',
-    'apps.logins',
+    # 'apps.logins',
     'apps.lyusers',
     'apps.platformsettings',
     # 'apps.mall',
@@ -145,7 +145,7 @@ CACHES = {
         # 连接Redis数据库(服务器地址)
         # 一主带多从(可以配置多个Redis，写走第一台，读走其他的机器)
         'LOCATION': [
-            'redis://localhost:6379/0',
+            f'{REDIS_URL}/0',
         ],
         'KEY_PREFIX': 'lybbn',  # 项目名当做文件前缀
         'OPTIONS': {
@@ -160,39 +160,39 @@ CACHES = {
         # 连接Redis数据库(服务器地址)
         # 一主带多从(可以配置多个Redis，写走第一台，读走其他的机器)
         'LOCATION': [
-            'redis://localhost:6379/1',
+            f'{REDIS_URL}/1',
         ],
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',  # 连接选项(默认，不改)
         }
     },
-    'verify_codes': {  # 缓存短信验证码
-        'BACKEND': 'django_redis.cache.RedisCache',  # 缓存后端 Redis
-        # 连接Redis数据库(服务器地址)
-        # 一主带多从(可以配置多个Redis，写走第一台，读走其他的机器)
-        'LOCATION': [
-            'redis://localhost:6379/2',
-        ],
-        'OPTIONS': {
-            'CLIENT_CLASS': 'django_redis.client.DefaultClient',  # 连接选项(默认，不改)
-        }
-    },
-    "carts": {  # 登陆过的用户购物车的存储
-        "BACKEND": "django_redis.cache.RedisCache",
-        'LOCATION': [
-            'redis://localhost:6379/3',
-        ],
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            'CONNECTION_POOL_KWARGS': {'decode_responses': True},  # 添加这一行,防止取出的值带有b'' bytes
-        },
-    },
+    # 'verify_codes': {  # 缓存短信验证码
+    #     'BACKEND': 'django_redis.cache.RedisCache',  # 缓存后端 Redis
+    #     # 连接Redis数据库(服务器地址)
+    #     # 一主带多从(可以配置多个Redis，写走第一台，读走其他的机器)
+    #     'LOCATION': [
+    #         f'{REDIS_URL}/2',
+    #     ],
+    #     'OPTIONS': {
+    #         'CLIENT_CLASS': 'django_redis.client.DefaultClient',  # 连接选项(默认，不改)
+    #     }
+    # },
+    # "carts": {  # 登陆过的用户购物车的存储
+    #     "BACKEND": "django_redis.cache.RedisCache",
+    #     'LOCATION': [
+    #         f'{REDIS_URL}/3',
+    #     ],
+    #     "OPTIONS": {
+    #         "CLIENT_CLASS": "django_redis.client.DefaultClient",
+    #         'CONNECTION_POOL_KWARGS': {'decode_responses': True},  # 添加这一行,防止取出的值带有b'' bytes
+    #     },
+    # },
     "authapi": {  # 接口安全校验（验证接口重复第二次访问会拒绝）
         'BACKEND': 'django_redis.cache.RedisCache',  # 缓存后端 Redis
         # 连接Redis数据库(服务器地址)
         # 一主带多从(可以配置多个Redis，写走第一台，读走其他的机器)
         'LOCATION': [
-            'redis://localhost:6379/4',
+            f'{REDIS_URL}/4',
         ],
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',  # 连接选项(默认，不改)
@@ -203,7 +203,7 @@ CACHES = {
         # 连接Redis数据库(服务器地址)
         # 一主带多从(可以配置多个Redis，写走第一台，读走其他的机器)
         'LOCATION': [
-            'redis://localhost:6379/5',
+            f'{REDIS_URL}/5',
         ],
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',  # 连接选项(默认，不改)
@@ -226,7 +226,7 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": ["redis://:123456@localhost:6379/10"],
+            "hosts": [f"{REDIS_URL}/10"],
         },
     },
 }
@@ -300,8 +300,9 @@ SITE_SALT_API_TOKEN = ''
 # 如果为True，则将不使用白名单，并且将接受所有来源。默认为False
 # 允许跨域
 CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_ALL_ORIGINS = True #新版 ACCESS_CONTROL_ALLOW_ORIGIN = '*' ,不能与CORS_ALLOW_CREDENTIALS一起使用
 # 允许cookie
-CORS_ALLOW_CREDENTIALS = True  # 指明在跨域访问中，后端是否支持对cookie的操作
+# CORS_ALLOW_CREDENTIALS = True  # 指明在跨域访问中，后端是否支持对cookie的操作
 SECURE_CROSS_ORIGIN_OPENER_POLICY = 'None'
 # ================================================= #
 # ********************* 日志配置 ******************* #
@@ -349,7 +350,7 @@ LOGGING = {
             # 'class': 'logging.handlers.TimedRotatingFileHandler',
             # 'when': 'H',
             'filename': SERVER_LOGS_FILE,
-            'maxBytes': 1024 * 1024 * 1,  # 10 MB
+            'maxBytes': 1024 * 1024 * 10,  # 10 MB
             'backupCount': 5,  # 最多备份5个
             'formatter': 'standard',
             'encoding': 'utf-8',
@@ -440,9 +441,9 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
-        # 'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.IsAuthenticated',
         # 不限制访问用下面这个,默认不设置就是这个了
-        'rest_framework.permissions.AllowAny',
+        # 'rest_framework.permissions.AllowAny',
     ),
     # 限速设置
     # 'DEFAULT_THROTTLE_CLASSES': (
@@ -488,11 +489,11 @@ SWAGGER_SETTINGS = {
             'name': 'Authorization',
             'in': 'header'
         },
-        'Query': {  # 通过query中auth变量验证
-            'type': 'apiKey',
-            'name': 'auth',
-            'in': 'query'
-        }
+        # 'Query': {  # 通过query中auth变量验证
+        #     'type': 'apiKey',
+        #     'name': 'auth',
+        #     'in': 'query'
+        # }
     },
     # 如果需要登录才能够查看接口文档, 登录的链接使用restframework自带的.
     'LOGIN_URL': 'rest_framework:login',
@@ -533,6 +534,7 @@ CAPTCHA_NOISE_FUNCTIONS = (
 )
 # CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.random_char_challenge' #字母验证码
 CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'  # 加减乘除验证码
+
 # ================================================= #
 # ******************** celery配置 ******************** #
 # ================================================= #
@@ -571,8 +573,6 @@ API_MODEL_MAP = {
     "/api/super/operate/": "前端API关闭开启",
     "/api/platformsettings/uploadplatformimg/": "图片上传",
 }
-# 表前缀
-TABLE_PREFIX = "lyadmin_"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

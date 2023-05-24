@@ -19,7 +19,6 @@ def tailf(channel_name):
             while True:
                 line = f.readline()
                 if line:
-                    # print(line)
                     async_to_sync(channel_layer.send)(
                         channel_name, {"type": "send.message", "message": line}
                     )

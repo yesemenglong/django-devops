@@ -53,7 +53,19 @@ def CustomExceptionHandler(ex, context):
                 else:
                     msg = errorMsg[key][0]
         except:
-            msg = errorMsg[0]
+            if isinstance(errorMsg,list):
+                msg = errorMsg[0]
+            elif isinstance(errorMsg,dict):
+                values_list = list(errorMsg.values())
+                keys_list = list(errorMsg.keys())
+                if 'non_field_errors' in values_list[0]:
+                    msg = keys_list[0]+":"+values_list[0]['non_field_errors'][0]
+                elif isinstance(values_list[0],list):
+                    msg = keys_list[0]+":"+values_list[0][0]
+                else:
+                    msg = errorMsg[0]
+            else:
+                msg = errorMsg
     elif 'django.db.utils.IntegrityError' in str(type(ex)):
         msg=str(ex)
         res = msg.split(', ')

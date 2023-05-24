@@ -5,7 +5,7 @@ from zones.views import *
 
 router = DefaultRouter()
 router.register(r'zonelist', ZoneListViewSet, basename='zones_list')
-router.register(r'zonelist_minion_id', ZoneListMinionViewSet, basename='zones_list_minion_id')
+# router.register(r'zonelist_minion_id', ZoneListMinionViewSet, basename='zones_list_minion_id')
 router.register(r'zonelist_batchCreate', ZoneListBatchCreateViewSet, basename='batchCreate')
 router.register(r'minion_id_list', ZoneMinionIDViewSet, basename='minion_id_list')
 router.register(r'zone_list_status', ZoneListStatusViewSet, basename='zone_list_status')

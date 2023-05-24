@@ -7,12 +7,12 @@
 from django.urls import path, re_path
 from rest_framework import routers
 
-from apps.platformsettings.views import LunbotuManageViewSet,OtherManageViewSet,PlatformImagesUploadView,UserLeavingMessageViewSet,SystemConfigViewSet
+from apps.platformsettings.views import PlatformImagesUploadView,SystemConfigViewSet
 
 system_url = routers.SimpleRouter()
-system_url.register(r'other', OtherManageViewSet)
-system_url.register(r'lunboimg', LunbotuManageViewSet)
-system_url.register(r'userfeeckback', UserLeavingMessageViewSet)
+# system_url.register(r'other', OtherManageViewSet)
+# system_url.register(r'lunboimg', LunbotuManageViewSet)
+# system_url.register(r'userfeeckback', UserLeavingMessageViewSet)
 system_url.register(r'sysconfig', SystemConfigViewSet)
 
 urlpatterns = [

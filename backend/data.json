@@ -1,0 +1,5234 @@
+[
+    {
+        "model": "auth.permission",
+        "pk": 1,
+        "fields": {
+            "name": "Can add log entry",
+            "content_type": 1,
+            "codename": "add_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 2,
+        "fields": {
+            "name": "Can change log entry",
+            "content_type": 1,
+            "codename": "change_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 3,
+        "fields": {
+            "name": "Can delete log entry",
+            "content_type": 1,
+            "codename": "delete_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 4,
+        "fields": {
+            "name": "Can view log entry",
+            "content_type": 1,
+            "codename": "view_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 5,
+        "fields": {
+            "name": "Can add permission",
+            "content_type": 2,
+            "codename": "add_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 6,
+        "fields": {
+            "name": "Can change permission",
+            "content_type": 2,
+            "codename": "change_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 7,
+        "fields": {
+            "name": "Can delete permission",
+            "content_type": 2,
+            "codename": "delete_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 8,
+        "fields": {
+            "name": "Can view permission",
+            "content_type": 2,
+            "codename": "view_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 9,
+        "fields": {
+            "name": "Can add group",
+            "content_type": 3,
+            "codename": "add_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 10,
+        "fields": {
+            "name": "Can change group",
+            "content_type": 3,
+            "codename": "change_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 11,
+        "fields": {
+            "name": "Can delete group",
+            "content_type": 3,
+            "codename": "delete_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 12,
+        "fields": {
+            "name": "Can view group",
+            "content_type": 3,
+            "codename": "view_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 13,
+        "fields": {
+            "name": "Can add content type",
+            "content_type": 4,
+            "codename": "add_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 14,
+        "fields": {
+            "name": "Can change content type",
+            "content_type": 4,
+            "codename": "change_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 15,
+        "fields": {
+            "name": "Can delete content type",
+            "content_type": 4,
+            "codename": "delete_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 16,
+        "fields": {
+            "name": "Can view content type",
+            "content_type": 4,
+            "codename": "view_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 17,
+        "fields": {
+            "name": "Can add session",
+            "content_type": 5,
+            "codename": "add_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 18,
+        "fields": {
+            "name": "Can change session",
+            "content_type": 5,
+            "codename": "change_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 19,
+        "fields": {
+            "name": "Can delete session",
+            "content_type": 5,
+            "codename": "delete_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 20,
+        "fields": {
+            "name": "Can view session",
+            "content_type": 5,
+            "codename": "view_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 21,
+        "fields": {
+            "name": "Can add captcha store",
+            "content_type": 6,
+            "codename": "add_captchastore"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 22,
+        "fields": {
+            "name": "Can change captcha store",
+            "content_type": 6,
+            "codename": "change_captchastore"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 23,
+        "fields": {
+            "name": "Can delete captcha store",
+            "content_type": 6,
+            "codename": "delete_captchastore"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 24,
+        "fields": {
+            "name": "Can view captcha store",
+            "content_type": 6,
+            "codename": "view_captchastore"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 25,
+        "fields": {
+            "name": "Can add task result",
+            "content_type": 7,
+            "codename": "add_taskresult"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 26,
+        "fields": {
+            "name": "Can change task result",
+            "content_type": 7,
+            "codename": "change_taskresult"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 27,
+        "fields": {
+            "name": "Can delete task result",
+            "content_type": 7,
+            "codename": "delete_taskresult"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 28,
+        "fields": {
+            "name": "Can view task result",
+            "content_type": 7,
+            "codename": "view_taskresult"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 29,
+        "fields": {
+            "name": "Can add chord counter",
+            "content_type": 8,
+            "codename": "add_chordcounter"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 30,
+        "fields": {
+            "name": "Can change chord counter",
+            "content_type": 8,
+            "codename": "change_chordcounter"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 31,
+        "fields": {
+            "name": "Can delete chord counter",
+            "content_type": 8,
+            "codename": "delete_chordcounter"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 32,
+        "fields": {
+            "name": "Can view chord counter",
+            "content_type": 8,
+            "codename": "view_chordcounter"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 33,
+        "fields": {
+            "name": "Can add group result",
+            "content_type": 9,
+            "codename": "add_groupresult"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 34,
+        "fields": {
+            "name": "Can change group result",
+            "content_type": 9,
+            "codename": "change_groupresult"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 35,
+        "fields": {
+            "name": "Can delete group result",
+            "content_type": 9,
+            "codename": "delete_groupresult"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 36,
+        "fields": {
+            "name": "Can view group result",
+            "content_type": 9,
+            "codename": "view_groupresult"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 37,
+        "fields": {
+            "name": "Can add crontab",
+            "content_type": 10,
+            "codename": "add_crontabschedule"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 38,
+        "fields": {
+            "name": "Can change crontab",
+            "content_type": 10,
+            "codename": "change_crontabschedule"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 39,
+        "fields": {
+            "name": "Can delete crontab",
+            "content_type": 10,
+            "codename": "delete_crontabschedule"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 40,
+        "fields": {
+            "name": "Can view crontab",
+            "content_type": 10,
+            "codename": "view_crontabschedule"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 41,
+        "fields": {
+            "name": "Can add interval",
+            "content_type": 11,
+            "codename": "add_intervalschedule"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 42,
+        "fields": {
+            "name": "Can change interval",
+            "content_type": 11,
+            "codename": "change_intervalschedule"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 43,
+        "fields": {
+            "name": "Can delete interval",
+            "content_type": 11,
+            "codename": "delete_intervalschedule"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 44,
+        "fields": {
+            "name": "Can view interval",
+            "content_type": 11,
+            "codename": "view_intervalschedule"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 45,
+        "fields": {
+            "name": "Can add periodic task",
+            "content_type": 12,
+            "codename": "add_periodictask"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 46,
+        "fields": {
+            "name": "Can change periodic task",
+            "content_type": 12,
+            "codename": "change_periodictask"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 47,
+        "fields": {
+            "name": "Can delete periodic task",
+            "content_type": 12,
+            "codename": "delete_periodictask"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 48,
+        "fields": {
+            "name": "Can view periodic task",
+            "content_type": 12,
+            "codename": "view_periodictask"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 49,
+        "fields": {
+            "name": "Can add periodic tasks",
+            "content_type": 13,
+            "codename": "add_periodictasks"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 50,
+        "fields": {
+            "name": "Can change periodic tasks",
+            "content_type": 13,
+            "codename": "change_periodictasks"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 51,
+        "fields": {
+            "name": "Can delete periodic tasks",
+            "content_type": 13,
+            "codename": "delete_periodictasks"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 52,
+        "fields": {
+            "name": "Can view periodic tasks",
+            "content_type": 13,
+            "codename": "view_periodictasks"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 53,
+        "fields": {
+            "name": "Can add solar event",
+            "content_type": 14,
+            "codename": "add_solarschedule"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 54,
+        "fields": {
+            "name": "Can change solar event",
+            "content_type": 14,
+            "codename": "change_solarschedule"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 55,
+        "fields": {
+            "name": "Can delete solar event",
+            "content_type": 14,
+            "codename": "delete_solarschedule"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 56,
+        "fields": {
+            "name": "Can view solar event",
+            "content_type": 14,
+            "codename": "view_solarschedule"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 57,
+        "fields": {
+            "name": "Can add clocked",
+            "content_type": 15,
+            "codename": "add_clockedschedule"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 58,
+        "fields": {
+            "name": "Can change clocked",
+            "content_type": 15,
+            "codename": "change_clockedschedule"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 59,
+        "fields": {
+            "name": "Can delete clocked",
+            "content_type": 15,
+            "codename": "delete_clockedschedule"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 60,
+        "fields": {
+            "name": "Can view clocked",
+            "content_type": 15,
+            "codename": "view_clockedschedule"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 61,
+        "fields": {
+            "name": "Can add 用户表",
+            "content_type": 16,
+            "codename": "add_users"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 62,
+        "fields": {
+            "name": "Can change 用户表",
+            "content_type": 16,
+            "codename": "change_users"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 63,
+        "fields": {
+            "name": "Can delete 用户表",
+            "content_type": 16,
+            "codename": "delete_users"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 64,
+        "fields": {
+            "name": "Can view 用户表",
+            "content_type": 16,
+            "codename": "view_users"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 65,
+        "fields": {
+            "name": "Can add 部门表",
+            "content_type": 17,
+            "codename": "add_dept"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 66,
+        "fields": {
+            "name": "Can change 部门表",
+            "content_type": 17,
+            "codename": "change_dept"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 67,
+        "fields": {
+            "name": "Can delete 部门表",
+            "content_type": 17,
+            "codename": "delete_dept"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 68,
+        "fields": {
+            "name": "Can view 部门表",
+            "content_type": 17,
+            "codename": "view_dept"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 69,
+        "fields": {
+            "name": "Can add 字典表",
+            "content_type": 18,
+            "codename": "add_dictionary"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 70,
+        "fields": {
+            "name": "Can change 字典表",
+            "content_type": 18,
+            "codename": "change_dictionary"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 71,
+        "fields": {
+            "name": "Can delete 字典表",
+            "content_type": 18,
+            "codename": "delete_dictionary"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 72,
+        "fields": {
+            "name": "Can view 字典表",
+            "content_type": 18,
+            "codename": "view_dictionary"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 73,
+        "fields": {
+            "name": "Can add 菜单表",
+            "content_type": 19,
+            "codename": "add_menu"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 74,
+        "fields": {
+            "name": "Can change 菜单表",
+            "content_type": 19,
+            "codename": "change_menu"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 75,
+        "fields": {
+            "name": "Can delete 菜单表",
+            "content_type": 19,
+            "codename": "delete_menu"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 76,
+        "fields": {
+            "name": "Can view 菜单表",
+            "content_type": 19,
+            "codename": "view_menu"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 77,
+        "fields": {
+            "name": "Can add 菜单权限表",
+            "content_type": 20,
+            "codename": "add_menubutton"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 78,
+        "fields": {
+            "name": "Can change 菜单权限表",
+            "content_type": 20,
+            "codename": "change_menubutton"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 79,
+        "fields": {
+            "name": "Can delete 菜单权限表",
+            "content_type": 20,
+            "codename": "delete_menubutton"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 80,
+        "fields": {
+            "name": "Can view 菜单权限表",
+            "content_type": 20,
+            "codename": "view_menubutton"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 81,
+        "fields": {
+            "name": "Can add 字典详细表",
+            "content_type": 21,
+            "codename": "add_sysdictionarylist"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 82,
+        "fields": {
+            "name": "Can change 字典详细表",
+            "content_type": 21,
+            "codename": "change_sysdictionarylist"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 83,
+        "fields": {
+            "name": "Can delete 字典详细表",
+            "content_type": 21,
+            "codename": "delete_sysdictionarylist"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 84,
+        "fields": {
+            "name": "Can view 字典详细表",
+            "content_type": 21,
+            "codename": "view_sysdictionarylist"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 85,
+        "fields": {
+            "name": "Can add 角色表",
+            "content_type": 22,
+            "codename": "add_role"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 86,
+        "fields": {
+            "name": "Can change 角色表",
+            "content_type": 22,
+            "codename": "change_role"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 87,
+        "fields": {
+            "name": "Can delete 角色表",
+            "content_type": 22,
+            "codename": "delete_role"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 88,
+        "fields": {
+            "name": "Can view 角色表",
+            "content_type": 22,
+            "codename": "view_role"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 89,
+        "fields": {
+            "name": "Can add 岗位表",
+            "content_type": 23,
+            "codename": "add_post"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 90,
+        "fields": {
+            "name": "Can change 岗位表",
+            "content_type": 23,
+            "codename": "change_post"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 91,
+        "fields": {
+            "name": "Can delete 岗位表",
+            "content_type": 23,
+            "codename": "delete_post"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 92,
+        "fields": {
+            "name": "Can view 岗位表",
+            "content_type": 23,
+            "codename": "view_post"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 93,
+        "fields": {
+            "name": "Can add 操作日志",
+            "content_type": 24,
+            "codename": "add_operationlog"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 94,
+        "fields": {
+            "name": "Can change 操作日志",
+            "content_type": 24,
+            "codename": "change_operationlog"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 95,
+        "fields": {
+            "name": "Can delete 操作日志",
+            "content_type": 24,
+            "codename": "delete_operationlog"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 96,
+        "fields": {
+            "name": "Can view 操作日志",
+            "content_type": 24,
+            "codename": "view_operationlog"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 97,
+        "fields": {
+            "name": "Can add 登录日志",
+            "content_type": 25,
+            "codename": "add_loginlog"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 98,
+        "fields": {
+            "name": "Can change 登录日志",
+            "content_type": 25,
+            "codename": "change_loginlog"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 99,
+        "fields": {
+            "name": "Can delete 登录日志",
+            "content_type": 25,
+            "codename": "delete_loginlog"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 100,
+        "fields": {
+            "name": "Can view 登录日志",
+            "content_type": 25,
+            "codename": "view_loginlog"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 101,
+        "fields": {
+            "name": "Can add 权限标识表",
+            "content_type": 26,
+            "codename": "add_button"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 102,
+        "fields": {
+            "name": "Can change 权限标识表",
+            "content_type": 26,
+            "codename": "change_button"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 103,
+        "fields": {
+            "name": "Can delete 权限标识表",
+            "content_type": 26,
+            "codename": "delete_button"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 104,
+        "fields": {
+            "name": "Can view 权限标识表",
+            "content_type": 26,
+            "codename": "view_button"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 105,
+        "fields": {
+            "name": "Can add 系统配置表",
+            "content_type": 27,
+            "codename": "add_systemconfig"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 106,
+        "fields": {
+            "name": "Can change 系统配置表",
+            "content_type": 27,
+            "codename": "change_systemconfig"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 107,
+        "fields": {
+            "name": "Can delete 系统配置表",
+            "content_type": 27,
+            "codename": "delete_systemconfig"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 108,
+        "fields": {
+            "name": "Can view 系统配置表",
+            "content_type": 27,
+            "codename": "view_systemconfig"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 109,
+        "fields": {
+            "name": "Can add zone merge list",
+            "content_type": 28,
+            "codename": "add_zonemergelist"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 110,
+        "fields": {
+            "name": "Can change zone merge list",
+            "content_type": 28,
+            "codename": "change_zonemergelist"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 111,
+        "fields": {
+            "name": "Can delete zone merge list",
+            "content_type": 28,
+            "codename": "delete_zonemergelist"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 112,
+        "fields": {
+            "name": "Can view zone merge list",
+            "content_type": 28,
+            "codename": "view_zonemergelist"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 113,
+        "fields": {
+            "name": "Can add Zone列表",
+            "content_type": 29,
+            "codename": "add_zonelist"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 114,
+        "fields": {
+            "name": "Can change Zone列表",
+            "content_type": 29,
+            "codename": "change_zonelist"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 115,
+        "fields": {
+            "name": "Can delete Zone列表",
+            "content_type": 29,
+            "codename": "delete_zonelist"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 116,
+        "fields": {
+            "name": "Can view Zone列表",
+            "content_type": 29,
+            "codename": "view_zonelist"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 117,
+        "fields": {
+            "name": "Can add Minion列表",
+            "content_type": 30,
+            "codename": "add_minionlist"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 118,
+        "fields": {
+            "name": "Can change Minion列表",
+            "content_type": 30,
+            "codename": "change_minionlist"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 119,
+        "fields": {
+            "name": "Can delete Minion列表",
+            "content_type": 30,
+            "codename": "delete_minionlist"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 120,
+        "fields": {
+            "name": "Can view Minion列表",
+            "content_type": 30,
+            "codename": "view_minionlist"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 121,
+        "fields": {
+            "name": "Can add Salt-key信息表",
+            "content_type": 31,
+            "codename": "add_saltkeylist"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 122,
+        "fields": {
+            "name": "Can change Salt-key信息表",
+            "content_type": 31,
+            "codename": "change_saltkeylist"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 123,
+        "fields": {
+            "name": "Can delete Salt-key信息表",
+            "content_type": 31,
+            "codename": "delete_saltkeylist"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 124,
+        "fields": {
+            "name": "Can view Salt-key信息表",
+            "content_type": 31,
+            "codename": "view_saltkeylist"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 125,
+        "fields": {
+            "name": "Can add salt命令集表",
+            "content_type": 32,
+            "codename": "add_saltcmdinfo"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 126,
+        "fields": {
+            "name": "Can change salt命令集表",
+            "content_type": 32,
+            "codename": "change_saltcmdinfo"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 127,
+        "fields": {
+            "name": "Can delete salt命令集表",
+            "content_type": 32,
+            "codename": "delete_saltcmdinfo"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 128,
+        "fields": {
+            "name": "Can view salt命令集表",
+            "content_type": 32,
+            "codename": "view_saltcmdinfo"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 129,
+        "fields": {
+            "name": "Can add 服务监控",
+            "content_type": 33,
+            "codename": "add_monitormanage"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 130,
+        "fields": {
+            "name": "Can change 服务监控",
+            "content_type": 33,
+            "codename": "change_monitormanage"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 131,
+        "fields": {
+            "name": "Can delete 服务监控",
+            "content_type": 33,
+            "codename": "delete_monitormanage"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 132,
+        "fields": {
+            "name": "Can view 服务监控",
+            "content_type": 33,
+            "codename": "view_monitormanage"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 133,
+        "fields": {
+            "name": "Can add 终端服务器列表",
+            "content_type": 34,
+            "codename": "add_terminalserver"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 134,
+        "fields": {
+            "name": "Can change 终端服务器列表",
+            "content_type": 34,
+            "codename": "change_terminalserver"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 135,
+        "fields": {
+            "name": "Can delete 终端服务器列表",
+            "content_type": 34,
+            "codename": "delete_terminalserver"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 136,
+        "fields": {
+            "name": "Can view 终端服务器列表",
+            "content_type": 34,
+            "codename": "view_terminalserver"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 137,
+        "fields": {
+            "name": "Can add 系统参数表",
+            "content_type": 35,
+            "codename": "add_systemconf"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 138,
+        "fields": {
+            "name": "Can change 系统参数表",
+            "content_type": 35,
+            "codename": "change_systemconf"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 139,
+        "fields": {
+            "name": "Can delete 系统参数表",
+            "content_type": 35,
+            "codename": "delete_systemconf"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 140,
+        "fields": {
+            "name": "Can view 系统参数表",
+            "content_type": 35,
+            "codename": "view_systemconf"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 1,
+        "fields": {
+            "app_label": "admin",
+            "model": "logentry"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 2,
+        "fields": {
+            "app_label": "auth",
+            "model": "permission"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 3,
+        "fields": {
+            "app_label": "auth",
+            "model": "group"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 4,
+        "fields": {
+            "app_label": "contenttypes",
+            "model": "contenttype"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 5,
+        "fields": {
+            "app_label": "sessions",
+            "model": "session"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 6,
+        "fields": {
+            "app_label": "captcha",
+            "model": "captchastore"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 7,
+        "fields": {
+            "app_label": "django_celery_results",
+            "model": "taskresult"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 8,
+        "fields": {
+            "app_label": "django_celery_results",
+            "model": "chordcounter"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 9,
+        "fields": {
+            "app_label": "django_celery_results",
+            "model": "groupresult"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 10,
+        "fields": {
+            "app_label": "django_celery_beat",
+            "model": "crontabschedule"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 11,
+        "fields": {
+            "app_label": "django_celery_beat",
+            "model": "intervalschedule"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 12,
+        "fields": {
+            "app_label": "django_celery_beat",
+            "model": "periodictask"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 13,
+        "fields": {
+            "app_label": "django_celery_beat",
+            "model": "periodictasks"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 14,
+        "fields": {
+            "app_label": "django_celery_beat",
+            "model": "solarschedule"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 15,
+        "fields": {
+            "app_label": "django_celery_beat",
+            "model": "clockedschedule"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 16,
+        "fields": {
+            "app_label": "mysystem",
+            "model": "users"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 17,
+        "fields": {
+            "app_label": "mysystem",
+            "model": "dept"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 18,
+        "fields": {
+            "app_label": "mysystem",
+            "model": "dictionary"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 19,
+        "fields": {
+            "app_label": "mysystem",
+            "model": "menu"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 20,
+        "fields": {
+            "app_label": "mysystem",
+            "model": "menubutton"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 21,
+        "fields": {
+            "app_label": "mysystem",
+            "model": "sysdictionarylist"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 22,
+        "fields": {
+            "app_label": "mysystem",
+            "model": "role"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 23,
+        "fields": {
+            "app_label": "mysystem",
+            "model": "post"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 24,
+        "fields": {
+            "app_label": "mysystem",
+            "model": "operationlog"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 25,
+        "fields": {
+            "app_label": "mysystem",
+            "model": "loginlog"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 26,
+        "fields": {
+            "app_label": "mysystem",
+            "model": "button"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 27,
+        "fields": {
+            "app_label": "platformsettings",
+            "model": "systemconfig"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 28,
+        "fields": {
+            "app_label": "zones",
+            "model": "zonemergelist"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 29,
+        "fields": {
+            "app_label": "zones",
+            "model": "zonelist"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 30,
+        "fields": {
+            "app_label": "salt_dev",
+            "model": "minionlist"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 31,
+        "fields": {
+            "app_label": "salt_dev",
+            "model": "saltkeylist"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 32,
+        "fields": {
+            "app_label": "salt_dev",
+            "model": "saltcmdinfo"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 33,
+        "fields": {
+            "app_label": "lymonitor",
+            "model": "monitormanage"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 34,
+        "fields": {
+            "app_label": "lywebsocket",
+            "model": "terminalserver"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 35,
+        "fields": {
+            "app_label": "dashboard",
+            "model": "systemconf"
+        }
+    },
+    {
+        "model": "captcha.captchastore",
+        "pk": 2,
+        "fields": {
+            "challenge": "1+9=",
+            "response": "10",
+            "hashkey": "b30a8d21f0d1d95c53b69b994c154e8189cc7c80",
+            "expiration": "2022-07-04T21:33:33.914"
+        }
+    },
+    {
+        "model": "captcha.captchastore",
+        "pk": 6,
+        "fields": {
+            "challenge": "3-2=",
+            "response": "1",
+            "hashkey": "f3dfa2a7cbf3bda32a53298be602874fffaf6c68",
+            "expiration": "2022-07-09T12:12:33.322"
+        }
+    },
+    {
+        "model": "captcha.captchastore",
+        "pk": 8,
+        "fields": {
+            "challenge": "8*9=",
+            "response": "72",
+            "hashkey": "2c7d94480f0c98db4137380db0e194acc258e9a6",
+            "expiration": "2022-07-16T15:01:48.225"
+        }
+    },
+    {
+        "model": "captcha.captchastore",
+        "pk": 9,
+        "fields": {
+            "challenge": "5*5=",
+            "response": "25",
+            "hashkey": "ffd0b6d67099501f4bcdf5240553a22f84669d30",
+            "expiration": "2022-07-17T09:44:46.330"
+        }
+    },
+    {
+        "model": "captcha.captchastore",
+        "pk": 11,
+        "fields": {
+            "challenge": "1*6=",
+            "response": "6",
+            "hashkey": "8150b2d7af32cc9cf1ef2e7f32f47c18079e32ae",
+            "expiration": "2022-07-17T23:58:02.858"
+        }
+    },
+    {
+        "model": "captcha.captchastore",
+        "pk": 13,
+        "fields": {
+            "challenge": "5+7=",
+            "response": "12",
+            "hashkey": "84015e072e7fe570ba8d34deb9f8fc120d115cc4",
+            "expiration": "2022-07-18T09:10:43.608"
+        }
+    },
+    {
+        "model": "captcha.captchastore",
+        "pk": 14,
+        "fields": {
+            "challenge": "7+9=",
+            "response": "16",
+            "hashkey": "37a0cc3cc181ff52f1e993278e883be76b51d9d7",
+            "expiration": "2022-07-18T09:11:06.525"
+        }
+    },
+    {
+        "model": "captcha.captchastore",
+        "pk": 23,
+        "fields": {
+            "challenge": "5*2=",
+            "response": "10",
+            "hashkey": "af73bce2f14be6416917dd639b2fe4690d7352df",
+            "expiration": "2022-07-18T09:26:25.032"
+        }
+    },
+    {
+        "model": "captcha.captchastore",
+        "pk": 24,
+        "fields": {
+            "challenge": "3+8=",
+            "response": "11",
+            "hashkey": "a9d26b51f99fe104a65733bc3be041ed40008d6a",
+            "expiration": "2022-08-02T09:08:52.197"
+        }
+    },
+    {
+        "model": "captcha.captchastore",
+        "pk": 27,
+        "fields": {
+            "challenge": "10-9=",
+            "response": "1",
+            "hashkey": "50102a7a749b50b079b5ac170ebe7020d0934dcb",
+            "expiration": "2022-10-24T21:06:05.242"
+        }
+    },
+    {
+        "model": "captcha.captchastore",
+        "pk": 28,
+        "fields": {
+            "challenge": "10*6=",
+            "response": "60",
+            "hashkey": "ed25bd111e161e961df851693df3a4d62a5ab178",
+            "expiration": "2022-10-24T21:20:03.404"
+        }
+    },
+    {
+        "model": "captcha.captchastore",
+        "pk": 33,
+        "fields": {
+            "challenge": "7-6=",
+            "response": "1",
+            "hashkey": "78d30e6707926c9751f542d20b09479f855ce76c",
+            "expiration": "2022-11-02T14:29:28.754"
+        }
+    },
+    {
+        "model": "captcha.captchastore",
+        "pk": 36,
+        "fields": {
+            "challenge": "9-7=",
+            "response": "2",
+            "hashkey": "a2eef771015339e663df72784be8e641410d1d44",
+            "expiration": "2022-11-02T14:31:15.190"
+        }
+    },
+    {
+        "model": "captcha.captchastore",
+        "pk": 40,
+        "fields": {
+            "challenge": "10-5=",
+            "response": "5",
+            "hashkey": "3f7d16ef76fdda29328e4305c1c90b45f111288b",
+            "expiration": "2022-11-02T14:34:02.344"
+        }
+    },
+    {
+        "model": "captcha.captchastore",
+        "pk": 41,
+        "fields": {
+            "challenge": "10-2=",
+            "response": "8",
+            "hashkey": "ce5074e3c1ee497ca310c59f1ab8bf43cd4ea93e",
+            "expiration": "2022-12-26T14:13:12.877"
+        }
+    },
+    {
+        "model": "captcha.captchastore",
+        "pk": 42,
+        "fields": {
+            "challenge": "5+1=",
+            "response": "6",
+            "hashkey": "6359f47ae2d4d982ff779f1a63de88438cc5e140",
+            "expiration": "2022-12-26T14:13:55.823"
+        }
+    },
+    {
+        "model": "captcha.captchastore",
+        "pk": 43,
+        "fields": {
+            "challenge": "7-5=",
+            "response": "2",
+            "hashkey": "6cf15e55625812ecbd79424b2aeda469a9faf419",
+            "expiration": "2022-12-26T14:14:06.581"
+        }
+    },
+    {
+        "model": "captcha.captchastore",
+        "pk": 44,
+        "fields": {
+            "challenge": "6+2=",
+            "response": "8",
+            "hashkey": "7dda24d6b87263176b2a69fc1114a55432204c10",
+            "expiration": "2022-12-26T14:14:13.046"
+        }
+    },
+    {
+        "model": "django_celery_results.taskresult",
+        "pk": 175,
+        "fields": {
+            "task_id": "e5763b89-7ffd-4e83-bf0e-03dd58d52ff4",
+            "periodic_task_name": "测试任务",
+            "task_name": "apps.lycrontab.tasks.lytask_test",
+            "task_args": "\"()\"",
+            "task_kwargs": "\"{}\"",
+            "status": "SUCCESS",
+            "worker": "celery@lybbn",
+            "content_type": "application/json",
+            "content_encoding": "utf-8",
+            "result": "\"django-vue-lyadmin lycrontab running\"",
+            "date_created": "2022-10-25T23:00:00.038",
+            "date_done": "2022-10-25T23:00:00.038",
+            "traceback": null,
+            "meta": "{\"children\": []}"
+        }
+    },
+    {
+        "model": "django_celery_results.taskresult",
+        "pk": 176,
+        "fields": {
+            "task_id": "f599fc36-6f0e-45ef-840a-28c637347a45",
+            "periodic_task_name": "测试任务",
+            "task_name": "apps.lycrontab.tasks.lytask_test",
+            "task_args": "\"()\"",
+            "task_kwargs": "\"{}\"",
+            "status": "SUCCESS",
+            "worker": "celery@lybbn",
+            "content_type": "application/json",
+            "content_encoding": "utf-8",
+            "result": "\"django-vue-lyadmin lycrontab running\"",
+            "date_created": "2022-10-25T23:02:00.032",
+            "date_done": "2022-10-25T23:02:00.032",
+            "traceback": null,
+            "meta": "{\"children\": []}"
+        }
+    },
+    {
+        "model": "django_celery_results.taskresult",
+        "pk": 177,
+        "fields": {
+            "task_id": "fd2cb51a-d717-4103-a1dd-235efad01259",
+            "periodic_task_name": "测试任务",
+            "task_name": "apps.lycrontab.tasks.lytask_test",
+            "task_args": "\"()\"",
+            "task_kwargs": "\"{}\"",
+            "status": "SUCCESS",
+            "worker": "celery@lybbn",
+            "content_type": "application/json",
+            "content_encoding": "utf-8",
+            "result": "\"django-vue-lyadmin lycrontab running\"",
+            "date_created": "2022-10-25T23:04:00.024",
+            "date_done": "2022-10-25T23:04:00.024",
+            "traceback": null,
+            "meta": "{\"children\": []}"
+        }
+    },
+    {
+        "model": "django_celery_results.taskresult",
+        "pk": 178,
+        "fields": {
+            "task_id": "2cb746cd-5bd5-4253-bfa7-51220177ad7d",
+            "periodic_task_name": "测试任务",
+            "task_name": "apps.lycrontab.tasks.lytask_test",
+            "task_args": "\"()\"",
+            "task_kwargs": "\"{}\"",
+            "status": "SUCCESS",
+            "worker": "celery@lybbn",
+            "content_type": "application/json",
+            "content_encoding": "utf-8",
+            "result": "\"django-vue-lyadmin lycrontab running\"",
+            "date_created": "2022-10-25T23:06:00.022",
+            "date_done": "2022-10-25T23:06:00.022",
+            "traceback": null,
+            "meta": "{\"children\": []}"
+        }
+    },
+    {
+        "model": "django_celery_results.taskresult",
+        "pk": 179,
+        "fields": {
+            "task_id": "35dbfa39-b419-4480-a176-99adf5e313df",
+            "periodic_task_name": "测试任务",
+            "task_name": "apps.lycrontab.tasks.lytask_test",
+            "task_args": "\"()\"",
+            "task_kwargs": "\"{}\"",
+            "status": "SUCCESS",
+            "worker": "celery@lybbn",
+            "content_type": "application/json",
+            "content_encoding": "utf-8",
+            "result": "\"django-vue-lyadmin lycrontab running\"",
+            "date_created": "2022-10-25T23:08:00.024",
+            "date_done": "2022-10-25T23:08:00.024",
+            "traceback": null,
+            "meta": "{\"children\": []}"
+        }
+    },
+    {
+        "model": "django_celery_results.taskresult",
+        "pk": 180,
+        "fields": {
+            "task_id": "e90764b6-0617-4ba1-bd82-cceeeeab4c13",
+            "periodic_task_name": "测试间隔任务",
+            "task_name": "apps.lycrontab.tasks.lytask_test",
+            "task_args": "\"()\"",
+            "task_kwargs": "\"{}\"",
+            "status": "SUCCESS",
+            "worker": "celery@lybbn",
+            "content_type": "application/json",
+            "content_encoding": "utf-8",
+            "result": "\"django-vue-lyadmin lycrontab running\"",
+            "date_created": "2022-11-04T11:03:31.477",
+            "date_done": "2022-11-04T11:03:31.477",
+            "traceback": null,
+            "meta": "{\"children\": []}"
+        }
+    },
+    {
+        "model": "django_celery_results.taskresult",
+        "pk": 181,
+        "fields": {
+            "task_id": "121329e3-0668-46e8-9edf-bbfb79377395",
+            "periodic_task_name": "测试间隔任务",
+            "task_name": "apps.lycrontab.tasks.lytask_test",
+            "task_args": "\"()\"",
+            "task_kwargs": "\"{}\"",
+            "status": "SUCCESS",
+            "worker": "celery@lybbn",
+            "content_type": "application/json",
+            "content_encoding": "utf-8",
+            "result": "\"django-vue-lyadmin lycrontab running\"",
+            "date_created": "2022-11-04T11:03:51.457",
+            "date_done": "2022-11-04T11:03:51.457",
+            "traceback": null,
+            "meta": "{\"children\": []}"
+        }
+    },
+    {
+        "model": "django_celery_results.taskresult",
+        "pk": 182,
+        "fields": {
+            "task_id": "29981133-a9e4-4e4f-a683-f5842bcf4a49",
+            "periodic_task_name": "测试间隔任务",
+            "task_name": "apps.lycrontab.tasks.lytask_test",
+            "task_args": "\"()\"",
+            "task_kwargs": "\"{}\"",
+            "status": "SUCCESS",
+            "worker": "celery@lybbn",
+            "content_type": "application/json",
+            "content_encoding": "utf-8",
+            "result": "\"django-vue-lyadmin lycrontab running\"",
+            "date_created": "2022-11-04T11:04:11.461",
+            "date_done": "2022-11-04T11:04:11.461",
+            "traceback": null,
+            "meta": "{\"children\": []}"
+        }
+    },
+    {
+        "model": "django_celery_results.taskresult",
+        "pk": 183,
+        "fields": {
+            "task_id": "4273ab03-fa31-424e-8b35-bdfc92308259",
+            "periodic_task_name": "测试间隔任务",
+            "task_name": "apps.lycrontab.tasks.lytask_test",
+            "task_args": "\"()\"",
+            "task_kwargs": "\"{}\"",
+            "status": "SUCCESS",
+            "worker": "celery@lybbn",
+            "content_type": "application/json",
+            "content_encoding": "utf-8",
+            "result": "\"django-vue-lyadmin lycrontab running\"",
+            "date_created": "2022-11-04T11:04:31.472",
+            "date_done": "2022-11-04T11:04:31.472",
+            "traceback": null,
+            "meta": "{\"children\": []}"
+        }
+    },
+    {
+        "model": "django_celery_beat.intervalschedule",
+        "pk": 1,
+        "fields": {
+            "every": 20,
+            "period": "seconds"
+        }
+    },
+    {
+        "model": "django_celery_beat.crontabschedule",
+        "pk": 6,
+        "fields": {
+            "minute": "*/2",
+            "hour": "*",
+            "day_of_week": "*",
+            "day_of_month": "*",
+            "month_of_year": "*",
+            "timezone": "Asia/Shanghai"
+        }
+    },
+    {
+        "model": "django_celery_beat.crontabschedule",
+        "pk": 7,
+        "fields": {
+            "minute": "0",
+            "hour": "4",
+            "day_of_week": "*",
+            "day_of_month": "*",
+            "month_of_year": "*",
+            "timezone": "Asia/Shanghai"
+        }
+    },
+    {
+        "model": "django_celery_beat.periodictasks",
+        "pk": 1,
+        "fields": {
+            "last_update": "2022-11-04T11:03:11.437"
+        }
+    },
+    {
+        "model": "django_celery_beat.periodictask",
+        "pk": 1,
+        "fields": {
+            "name": "测试任务",
+            "task": "apps.lycrontab.tasks.lytask_test",
+            "interval": null,
+            "crontab": 6,
+            "solar": null,
+            "clocked": null,
+            "args": "[]",
+            "kwargs": "{}",
+            "queue": null,
+            "exchange": null,
+            "routing_key": null,
+            "headers": "{\"periodic_task_name\": \"\\u6d4b\\u8bd5\\u4efb\\u52a1\", \"task_name\": \"apps.lycrontab.tasks.lytask_test\"}",
+            "priority": 1,
+            "expires": null,
+            "expire_seconds": null,
+            "one_off": false,
+            "start_time": null,
+            "enabled": false,
+            "last_run_at": null,
+            "total_run_count": 182,
+            "date_changed": "2022-11-04T11:02:33.348",
+            "description": "测试任务"
+        }
+    },
+    {
+        "model": "django_celery_beat.periodictask",
+        "pk": 2,
+        "fields": {
+            "name": "celery.backend_cleanup",
+            "task": "celery.backend_cleanup",
+            "interval": null,
+            "crontab": 7,
+            "solar": null,
+            "clocked": null,
+            "args": "[]",
+            "kwargs": "{}",
+            "queue": null,
+            "exchange": null,
+            "routing_key": null,
+            "headers": "{}",
+            "priority": null,
+            "expires": null,
+            "expire_seconds": 43200,
+            "one_off": false,
+            "start_time": null,
+            "enabled": true,
+            "last_run_at": null,
+            "total_run_count": 0,
+            "date_changed": "2022-11-04T11:03:11.442",
+            "description": ""
+        }
+    },
+    {
+        "model": "django_celery_beat.periodictask",
+        "pk": 3,
+        "fields": {
+            "name": "测试间隔任务",
+            "task": "apps.lycrontab.tasks.lytask_test",
+            "interval": 1,
+            "crontab": null,
+            "solar": null,
+            "clocked": null,
+            "args": "[]",
+            "kwargs": "{}",
+            "queue": null,
+            "exchange": null,
+            "routing_key": null,
+            "headers": "{}",
+            "priority": null,
+            "expires": null,
+            "expire_seconds": null,
+            "one_off": false,
+            "start_time": null,
+            "enabled": true,
+            "last_run_at": "2022-11-04T03:04:31.458",
+            "total_run_count": 4,
+            "date_changed": "2022-11-04T11:04:33.285",
+            "description": "测试间隔任务"
+        }
+    },
+    {
+        "model": "mysystem.users",
+        "pk": "244b28685cd14a39a383189981510d4a",
+        "fields": {
+            "password": "pbkdf2_sha256$260000$oivECWOjB0GJyMjPsrqb3t$9FvnYtXtsNWDva2P3A/eIg6cRMLOp7kiIOuwfLKyDAY=",
+            "last_login": null,
+            "is_superuser": false,
+            "first_name": "",
+            "last_name": "",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2022-06-27T13:56:06.339",
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-11-02T16:44:12.072",
+            "create_datetime": "2022-06-27T13:56:06.339",
+            "username": "test",
+            "email": null,
+            "mobile": "18888888888",
+            "avatar": null,
+            "name": "测试用户",
+            "nickname": "测试用户",
+            "gender": null,
+            "dept": "",
+            "identity": 2,
+            "balance": "0.00",
+            "is_delete": false,
+            "groups": [],
+            "user_permissions": [],
+            "post": [],
+            "role": []
+        }
+    },
+    {
+        "model": "mysystem.users",
+        "pk": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+        "fields": {
+            "password": "pbkdf2_sha256$320000$GD7NrJFqPDvWI3jFVddSB0$vyOOlYCq7i5DqcMrl8CXh3AK1ZW3/Yoohl0RDvlncrA=",
+            "last_login": null,
+            "is_superuser": true,
+            "first_name": "",
+            "last_name": "",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2022-06-27T13:56:06.331",
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.331",
+            "create_datetime": "2022-06-27T13:56:06.331",
+            "username": "superadmin",
+            "email": null,
+            "mobile": null,
+            "avatar": null,
+            "name": "超级管理员",
+            "nickname": "",
+            "gender": null,
+            "dept": "d2c03bd9-dad0-4262-88ca-c3681d224fc3",
+            "identity": 0,
+            "balance": "0.00",
+            "is_delete": false,
+            "groups": [],
+            "user_permissions": [],
+            "post": [],
+            "role": []
+        }
+    },
+    {
+        "model": "mysystem.users",
+        "pk": "d1431450-5068-4461-b57e-7862c005a547",
+        "fields": {
+            "password": "pbkdf2_sha256$320000$fNyAAOrrZNjACpme8Qgv4T$CkpJIXe3XJcm/dyAR7b9G55AZVLcJOPQOBY/9GA5LI0=",
+            "last_login": null,
+            "is_superuser": false,
+            "first_name": "",
+            "last_name": "",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2022-06-27T13:56:06.334",
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.334",
+            "create_datetime": "2022-06-27T13:56:06.334",
+            "username": "admin",
+            "email": null,
+            "mobile": null,
+            "avatar": null,
+            "name": "管理员",
+            "nickname": "",
+            "gender": null,
+            "dept": "d2c03bd9-dad0-4262-88ca-c3681d224fc3",
+            "identity": 1,
+            "balance": "0.00",
+            "is_delete": false,
+            "groups": [],
+            "user_permissions": [],
+            "post": [],
+            "role": [
+                "36001d1a-1b3e-4413-bdfe-b3bc04375f46"
+            ]
+        }
+    },
+    {
+        "model": "mysystem.role",
+        "pk": "35b58d98-b506-4f93-be79-ed1e109da071",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.322",
+            "create_datetime": "2022-06-27T13:56:06.322",
+            "name": "普通用户",
+            "key": "public",
+            "sort": 2,
+            "status": 1,
+            "admin": 0,
+            "data_range": 4,
+            "remark": null,
+            "dept": [
+                "d2c03bd9-dad0-4262-88ca-c3681d224fc3",
+                "fd8230ca-67bd-4347-8a9b-57eb19be5d9e"
+            ],
+            "menu": [
+                "4236eb70-1558-43a0-9cf2-037230c547f9",
+                "56c3f341-4f46-4b04-9cfc-c8a14701707e",
+                "15c9ebc5-d12f-470a-a560-938a7dc57570",
+                "244b28685cd14a39a383189981510d4a",
+                "54f769b0-3dff-416c-8102-e55ec44827cc"
+            ],
+            "permission": []
+        }
+    },
+    {
+        "model": "mysystem.role",
+        "pk": "36001d1a-1b3e-4413-bdfe-b3bc04375f46",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": null,
+            "update_datetime": "2022-11-16T10:54:57.379",
+            "create_datetime": "2022-06-27T13:56:06.311",
+            "name": "管理员",
+            "key": "admin",
+            "sort": 1,
+            "status": 1,
+            "admin": 1,
+            "data_range": 3,
+            "remark": null,
+            "dept": [],
+            "menu": [
+                "9065cb5445ac42ef93eb9e75e6287792",
+                "4236eb70-1558-43a0-9cf2-037230c547f9",
+                "4ba07859-8b73-4524-a1a6-bbff36d98337",
+                "56c3f341-4f46-4b04-9cfc-c8a14701707e",
+                "e0f53902-e901-490c-83f3-331e60b97fcf",
+                "15c9ebc5-d12f-470a-a560-938a7dc57570",
+                "2e3438c8-3ddc-43ff-b8d8-cca328e4856e",
+                "a607e820-36e5-45c0-aabf-85a8e4e2c7ac",
+                "244b28685cd14a39a383189981510d4a",
+                "151035da-77a3-4a62-b474-fce6824571fb",
+                "d73f73a399af48cea6a8490ac508d7a0",
+                "bcbeeee5c91a4e2ea2c2a31237e33616",
+                "09a42810d4dd4b2eb939f8eb0b01d9d1",
+                "718daec1b94b456c96d773889648173e",
+                "25735adb-d051-4b7b-bbb7-1154526f3e4c",
+                "77edf447326b4e0dbc6f9719c1de8a12",
+                "54f769b0-3dff-416c-8102-e55ec44827cc",
+                "c236fb6b-ddaa-4deb-b79b-16e42d9f347f"
+            ],
+            "permission": [
+                "09a0908dfb0c433c90037851da126e9b",
+                "1a16836d2cec4d14a1307b3228e3cfdd",
+                "b4cbe8ed35a04155b14c7809fad6b2ef",
+                "0209de89-6b9f-4d8a-84d3-ccfc3cc8b4da",
+                "04896a47-0f3a-4e2f-a111-bfe15f9e31c5",
+                "3e11db64-b8e8-4558-963b-71d063a7db16",
+                "875bdfeb-0c34-441d-8ee3-bb93c21e17dd",
+                "bc114580-e62d-4e08-b707-843759817344",
+                "bc6104a0-f487-4dfd-a368-fb587d6d57d8",
+                "d22c0176-96e0-48b3-b81e-13443f306af5",
+                "dcc58831-08d1-4469-8b01-fca71e0f497f",
+                "e6b93920-2236-46ec-841b-cff6f63ce788",
+                "6af0929440a345238c28ee9b1fe341ba",
+                "0ce04d99cbd249a9af88fe1496591a89",
+                "353595a28cb1463b830cfbf79fea60b5",
+                "80c8eb6939a245e9890dede241b5d1d6",
+                "4450d80871eb44a1aaa4fbb5429885f0",
+                "873138b279274536bc93c2774b1be815",
+                "a69fb746c0aa4bd0b31b1480c9e4dcc0",
+                "c2490dfba1644cae8f8ff85e2d6f1d3d",
+                "e1ddf86666364a39be76c963c277b009",
+                "140166e2-471e-455e-9dcd-05cebbbab95d",
+                "324776a3-48ec-4bca-bdd9-1838e2b6f7cc",
+                "3688b715-4689-468f-bf3e-6f910259f837",
+                "37462e31-3cdf-4576-af10-5958f53b1bef",
+                "42ad6e05-7c84-444f-bcae-09de84f4988b",
+                "43696212-ecba-4e66-8678-33c9bc935c76",
+                "5aac29b0-5a32-45fb-81c5-437b48f4a5df",
+                "646e9790-24f5-4606-abc4-0b5eede12f66",
+                "af60d628-73b1-4c5d-b34e-7c70ab9bd87e",
+                "0b5bf0f1caac45beabf54fb5d930187b",
+                "19d01a929bc9414cac1a8defd48597c9",
+                "8d65733d401c40f8b27cc6bcfed78bc3",
+                "a2df144069a44af8afbd5863740e2228",
+                "0d931efc-2f80-418f-b4a0-5251f0a88f69",
+                "10610c56-cec2-4774-9468-e1c763e59e70",
+                "1b4f27a7-8ab8-4388-ae57-46e29976cf0e",
+                "2a3d4756-4d51-4129-b3c4-b2c7a00dbb8a",
+                "9e6b2376-1ab0-4966-8d5d-4ad4f911d13c",
+                "9fc8436a-1996-478f-a155-5de7939a54dc",
+                "abe5c07f-0cab-4053-ac24-e782792e9d7f",
+                "fc71b446-fde1-439f-ab41-c38f30230caa",
+                "62e89e16b7cf460fbbbb949771156946",
+                "6d6b6689d1224900b09c8101b3344f42",
+                "6e27757847c64e228934b60ae81baedf",
+                "ea18bb51400b482a8aad5dc18357bcab",
+                "f19826f7df9842089cee94a795681b2e",
+                "14e7088f-a39b-47ae-bd67-b9bbcabae96b",
+                "6208f412-6bca-4d7b-a5a0-0103b7ba6091",
+                "6300774a-d19c-43ad-8102-d7bf341eff33",
+                "8b7a0e79-a6ef-4946-87c6-8c042b887e1c",
+                "96022ae5-6425-47b9-8f89-01edc33eb2b7",
+                "f0e080c0-275d-4085-b56c-735b49510eff",
+                "fcbe4cec-cc2d-436d-92ba-023f8c9ad31c",
+                "fe96f32c-6124-4b24-b809-4964186f5163",
+                "281ad1aad421441a965f7bc6b397eb30",
+                "576008b6046f4afcb88d8139ff34e228",
+                "be860f07c5be4114a6ea0ceefb97a22a",
+                "2c53efc8-e6a4-4192-8688-03baed0874a4",
+                "3fd6ae6c-fd76-4465-b2b6-db672f4bd79e",
+                "4fe4b7f5-0bc8-4375-9f39-747e06ec285a",
+                "51085c21-2279-490f-8878-594f059f7616",
+                "8ae924bd-576c-4ae1-92eb-b0a98148baae",
+                "acfde861-1872-47e2-a1f1-abeda5175b7f",
+                "b10f7d08-2592-4b54-8557-b5ca864a029a",
+                "bb7de9ee-5fd1-46f5-9849-088c522f49c7",
+                "5d77d14e-b199-481f-a97d-6e4c0e84fe71",
+                "fa8d945124b74379aba32bcf34ea5383"
+            ]
+        }
+    },
+    {
+        "model": "mysystem.dept",
+        "pk": "cae96ade-7483-4827-bb0d-d2bd63ec1cc4",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.141",
+            "create_datetime": "2022-06-27T13:56:06.141",
+            "name": "财务部门",
+            "sort": 1,
+            "owner": null,
+            "phone": null,
+            "email": null,
+            "status": 1,
+            "parent": "d2c03bd9-dad0-4262-88ca-c3681d224fc3"
+        }
+    },
+    {
+        "model": "mysystem.dept",
+        "pk": "d2c03bd9-dad0-4262-88ca-c3681d224fc3",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.144",
+            "create_datetime": "2022-06-27T13:56:06.144",
+            "name": "lyadmin团队",
+            "sort": 1,
+            "owner": null,
+            "phone": null,
+            "email": null,
+            "status": 1,
+            "parent": null
+        }
+    },
+    {
+        "model": "mysystem.dept",
+        "pk": "fd8230ca-67bd-4347-8a9b-57eb19be5d9e",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.146",
+            "create_datetime": "2022-06-27T13:56:06.146",
+            "name": "研发部门",
+            "sort": 2,
+            "owner": null,
+            "phone": null,
+            "email": null,
+            "status": 1,
+            "parent": "d2c03bd9-dad0-4262-88ca-c3681d224fc3"
+        }
+    },
+    {
+        "model": "mysystem.button",
+        "pk": "09134d7643504804a6c7cc3d16e06684",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": null,
+            "update_datetime": "2022-10-25T23:09:53.863",
+            "create_datetime": "2022-10-25T23:09:53.863",
+            "name": "日志",
+            "value": "Logs"
+        }
+    },
+    {
+        "model": "mysystem.button",
+        "pk": "2d763a6d6dcf409d87056efd06aace0a",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.159",
+            "create_datetime": "2022-06-27T13:56:06.159",
+            "name": "修改密码",
+            "value": "Changepassword"
+        }
+    },
+    {
+        "model": "mysystem.button",
+        "pk": "43d89c33967545a387a3ac27c02460b6",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": null,
+            "update_datetime": "2022-08-01T23:16:24.046",
+            "create_datetime": "2022-08-01T23:16:24.046",
+            "name": "统计",
+            "value": "Statistics"
+        }
+    },
+    {
+        "model": "mysystem.button",
+        "pk": "4547b93a-36b9-410d-987c-3c52a9b51156",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.149",
+            "create_datetime": "2022-06-27T13:56:06.149",
+            "name": "编辑",
+            "value": "Update"
+        }
+    },
+    {
+        "model": "mysystem.button",
+        "pk": "4a410769-6b0a-4ed3-90f0-b5d89a6f802c",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.151",
+            "create_datetime": "2022-06-27T13:56:06.151",
+            "name": "删除",
+            "value": "Delete"
+        }
+    },
+    {
+        "model": "mysystem.button",
+        "pk": "5bf695439e9d4c4d9601bf4fb558b3a2",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": null,
+            "update_datetime": "2022-10-26T00:05:18.024",
+            "create_datetime": "2022-10-26T00:05:18.024",
+            "name": "任务列表",
+            "value": "Tasklist"
+        }
+    },
+    {
+        "model": "mysystem.button",
+        "pk": "644e9c34-e3d6-4518-b795-a603a6e9a137",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.153",
+            "create_datetime": "2022-06-27T13:56:06.153",
+            "name": "单例",
+            "value": "Retrieve"
+        }
+    },
+    {
+        "model": "mysystem.button",
+        "pk": "6e0a41e5308c44a8b0d2785e05b2c07a",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.161",
+            "create_datetime": "2022-06-27T13:56:06.161",
+            "name": "禁用",
+            "value": "Disable"
+        }
+    },
+    {
+        "model": "mysystem.button",
+        "pk": "80cb145b-5035-4517-a28a-7d59426f73f8",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.154",
+            "create_datetime": "2022-06-27T13:56:06.154",
+            "name": "新增",
+            "value": "Create"
+        }
+    },
+    {
+        "model": "mysystem.button",
+        "pk": "83a9b774-4669-4d2f-b61d-8ee4944c2316",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.158",
+            "create_datetime": "2022-06-27T13:56:06.158",
+            "name": "保存",
+            "value": "Save"
+        }
+    },
+    {
+        "model": "mysystem.button",
+        "pk": "c66a0ab23a6044189ae0beb530ac68cf",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": null,
+            "update_datetime": "2022-08-01T23:16:11.387",
+            "create_datetime": "2022-08-01T23:16:11.387",
+            "name": "发货",
+            "value": "Deliver"
+        }
+    },
+    {
+        "model": "mysystem.button",
+        "pk": "ccc3f35f-c80c-4929-b8cc-67531698f397",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.156",
+            "create_datetime": "2022-06-27T13:56:06.156",
+            "name": "查询",
+            "value": "Search"
+        }
+    },
+    {
+        "model": "mysystem.button",
+        "pk": "f3f365e9bfab44f587cbd91e3691ef0f",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": null,
+            "update_datetime": "2022-07-18T10:33:33.017",
+            "create_datetime": "2022-07-18T10:33:33.017",
+            "name": "终端",
+            "value": "Terminal"
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "09a42810d4dd4b2eb939f8eb0b01d9d1",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": null,
+            "update_datetime": "2022-07-04T21:53:54.572",
+            "create_datetime": "2022-07-04T20:52:44.855",
+            "parent": "77edf447326b4e0dbc6f9719c1de8a12",
+            "icon": "",
+            "name": "计划任务",
+            "sort": 20,
+            "is_link": 0,
+            "web_path": "crontab",
+            "component": null,
+            "component_name": null,
+            "status": 1,
+            "isautopm": 1,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "0a4c1fb43ce84d5290eede4bc1ff5c7b",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": "d2c03bd9-dad0-4262-88ca-c3681d224fc3",
+            "update_datetime": "2023-02-14T18:21:32.025",
+            "create_datetime": "2023-02-08T17:05:40.097",
+            "parent": "94a6b360dfa9416ca57c1a24069d3e17",
+            "icon": "",
+            "name": "Minion管理",
+            "sort": 1,
+            "is_link": 0,
+            "web_path": "minionTable",
+            "component": null,
+            "component_name": null,
+            "status": 1,
+            "isautopm": 1,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "151035da-77a3-4a62-b474-fce6824571fb",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": "d1431450-5068-4461-b57e-7862c005a547",
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-08T13:59:32.351",
+            "create_datetime": "2022-06-27T13:56:06.189",
+            "parent": "54f769b0-3dff-416c-8102-e55ec44827cc",
+            "icon": "",
+            "name": "按钮管理",
+            "sort": 6,
+            "is_link": 0,
+            "web_path": "buttonManage",
+            "component": "system/button",
+            "component_name": "buttonManage",
+            "status": 1,
+            "isautopm": 0,
+            "cache": 0,
+            "visible": 0
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "15c9ebc5-d12f-470a-a560-938a7dc57570",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.185",
+            "create_datetime": "2022-06-27T13:56:06.185",
+            "parent": "54f769b0-3dff-416c-8102-e55ec44827cc",
+            "icon": "",
+            "name": "角色管理",
+            "sort": 3,
+            "is_link": 0,
+            "web_path": "roleManage",
+            "component": "system/role",
+            "component_name": "role",
+            "status": 1,
+            "isautopm": 0,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "244b28685cd14a39a383189981510d4a",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.167",
+            "create_datetime": "2022-06-27T13:56:06.167",
+            "parent": null,
+            "icon": "user-filled",
+            "name": "用户管理",
+            "sort": 5,
+            "is_link": 0,
+            "web_path": "userManage",
+            "component": null,
+            "component_name": null,
+            "status": 1,
+            "isautopm": 0,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "25735adb-d051-4b7b-bbb7-1154526f3e4c",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": "superadmin",
+            "dept_belong_id": null,
+            "update_datetime": "2022-07-30T21:34:32.844",
+            "create_datetime": "2022-06-27T13:56:06.192",
+            "parent": null,
+            "icon": "user",
+            "name": "个人中心",
+            "sort": 866,
+            "is_link": 0,
+            "web_path": "personalCenter",
+            "component": null,
+            "component_name": null,
+            "status": 1,
+            "isautopm": 0,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "2e3438c8-3ddc-43ff-b8d8-cca328e4856e",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": "superadmin",
+            "dept_belong_id": null,
+            "update_datetime": "2022-07-03T15:19:35.715",
+            "create_datetime": "2022-06-27T13:56:06.165",
+            "parent": null,
+            "icon": "avatar",
+            "name": "管理员管理",
+            "sort": 3,
+            "is_link": 0,
+            "web_path": "adminManage",
+            "component": null,
+            "component_name": null,
+            "status": 1,
+            "isautopm": 0,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "2fe0ea32b3f447899f415c63ca27fdba",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": "d2c03bd9-dad0-4262-88ca-c3681d224fc3",
+            "update_datetime": "2023-04-14T16:07:42.115",
+            "create_datetime": "2023-04-14T16:07:29.737",
+            "parent": "97877ebe22ef4eb9bf99782afd641e36",
+            "icon": "",
+            "name": "合服信息",
+            "sort": 6,
+            "is_link": 0,
+            "web_path": "zoneMerge",
+            "component": null,
+            "component_name": null,
+            "status": 1,
+            "isautopm": 1,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "3e9b3f7c8775457a9a8c9807315a3ba5",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": "d2c03bd9-dad0-4262-88ca-c3681d224fc3",
+            "update_datetime": "2023-02-15T17:32:29.781",
+            "create_datetime": "2023-02-15T17:32:29.781",
+            "parent": "94a6b360dfa9416ca57c1a24069d3e17",
+            "icon": "",
+            "name": "Salt命令采集",
+            "sort": 3,
+            "is_link": 0,
+            "web_path": "saltCmdTable",
+            "component": null,
+            "component_name": null,
+            "status": 1,
+            "isautopm": 1,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "4236eb70-1558-43a0-9cf2-037230c547f9",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.177",
+            "create_datetime": "2022-06-27T13:56:06.177",
+            "parent": "54f769b0-3dff-416c-8102-e55ec44827cc",
+            "icon": "",
+            "name": "部门管理",
+            "sort": 1,
+            "is_link": 0,
+            "web_path": "departmentManage",
+            "component": "system/dept",
+            "component_name": "dept",
+            "status": 1,
+            "isautopm": 0,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "4ba07859-8b73-4524-a1a6-bbff36d98337",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.179",
+            "create_datetime": "2022-06-27T13:56:06.179",
+            "parent": "c236fb6b-ddaa-4deb-b79b-16e42d9f347f",
+            "icon": "",
+            "name": "操作日志",
+            "sort": 1,
+            "is_link": 0,
+            "web_path": "journalManage",
+            "component": "system/log/operationLog",
+            "component_name": "operationLog",
+            "status": 1,
+            "isautopm": 0,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "5037622249b64f0f8d334de9fea36d5a",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": "d2c03bd9-dad0-4262-88ca-c3681d224fc3",
+            "update_datetime": "2023-02-19T18:25:20.964",
+            "create_datetime": "2023-02-19T18:25:20.964",
+            "parent": "94a6b360dfa9416ca57c1a24069d3e17",
+            "icon": "",
+            "name": "Salt命令执行",
+            "sort": 4,
+            "is_link": 0,
+            "web_path": "saltExe",
+            "component": null,
+            "component_name": null,
+            "status": 1,
+            "isautopm": 1,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "54f769b0-3dff-416c-8102-e55ec44827cc",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": "superadmin",
+            "dept_belong_id": null,
+            "update_datetime": "2022-07-29T23:08:25.510",
+            "create_datetime": "2022-06-27T13:56:06.190",
+            "parent": null,
+            "icon": "tools",
+            "name": "系统管理",
+            "sort": 990,
+            "is_link": 0,
+            "web_path": "",
+            "component": null,
+            "component_name": null,
+            "status": 1,
+            "isautopm": 0,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "56c3f341-4f46-4b04-9cfc-c8a14701707e",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.181",
+            "create_datetime": "2022-06-27T13:56:06.181",
+            "parent": "54f769b0-3dff-416c-8102-e55ec44827cc",
+            "icon": "",
+            "name": "菜单管理",
+            "sort": 2,
+            "is_link": 0,
+            "web_path": "menuManage",
+            "component": "system/menu",
+            "component_name": "menu",
+            "status": 1,
+            "isautopm": 0,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "718daec1b94b456c96d773889648173e",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": null,
+            "update_datetime": "2022-07-13T21:07:49.624",
+            "create_datetime": "2022-07-13T21:07:49.624",
+            "parent": "77edf447326b4e0dbc6f9719c1de8a12",
+            "icon": "",
+            "name": "终端服务",
+            "sort": 30,
+            "is_link": 0,
+            "web_path": "terminal",
+            "component": null,
+            "component_name": null,
+            "status": 1,
+            "isautopm": 1,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "77edf447326b4e0dbc6f9719c1de8a12",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": null,
+            "update_datetime": "2022-07-29T23:09:12.270",
+            "create_datetime": "2022-07-04T21:53:39.904",
+            "parent": null,
+            "icon": "TrendCharts",
+            "name": "系统监控",
+            "sort": 888,
+            "is_link": 0,
+            "web_path": "",
+            "component": null,
+            "component_name": null,
+            "status": 1,
+            "isautopm": 0,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "9065cb5445ac42ef93eb9e75e6287792",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": null,
+            "update_datetime": "2022-07-03T15:21:19.325",
+            "create_datetime": "2022-07-03T15:21:19.325",
+            "parent": null,
+            "icon": "DataLine",
+            "name": "DashBoard",
+            "sort": 1,
+            "is_link": 0,
+            "web_path": "analysis",
+            "component": null,
+            "component_name": null,
+            "status": 1,
+            "isautopm": 1,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "94a6b360dfa9416ca57c1a24069d3e17",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": "d2c03bd9-dad0-4262-88ca-c3681d224fc3",
+            "update_datetime": "2023-02-08T17:01:11.390",
+            "create_datetime": "2023-02-08T17:01:11.390",
+            "parent": null,
+            "icon": "",
+            "name": "SlatStack",
+            "sort": 900,
+            "is_link": 0,
+            "web_path": "",
+            "component": null,
+            "component_name": null,
+            "status": 1,
+            "isautopm": 0,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "97877ebe22ef4eb9bf99782afd641e36",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": "d2c03bd9-dad0-4262-88ca-c3681d224fc3",
+            "update_datetime": "2023-02-22T17:52:18.587",
+            "create_datetime": "2023-02-22T17:52:18.587",
+            "parent": null,
+            "icon": "",
+            "name": "区服管理",
+            "sort": 910,
+            "is_link": 0,
+            "web_path": "",
+            "component": null,
+            "component_name": null,
+            "status": 1,
+            "isautopm": 1,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "a27b0ab29a3947eba29fe6bac63f6445",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": "d2c03bd9-dad0-4262-88ca-c3681d224fc3",
+            "update_datetime": "2023-02-13T14:25:06.330",
+            "create_datetime": "2023-02-13T14:25:06.330",
+            "parent": "94a6b360dfa9416ca57c1a24069d3e17",
+            "icon": "",
+            "name": "SaltKey",
+            "sort": 2,
+            "is_link": 0,
+            "web_path": "saltKey",
+            "component": null,
+            "component_name": null,
+            "status": 1,
+            "isautopm": 1,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "a607e820-36e5-45c0-aabf-85a8e4e2c7ac",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.187",
+            "create_datetime": "2022-06-27T13:56:06.187",
+            "parent": "54f769b0-3dff-416c-8102-e55ec44827cc",
+            "icon": "",
+            "name": "权限管理",
+            "sort": 4,
+            "is_link": 0,
+            "web_path": "authorityManage",
+            "component": "system/rolePermission",
+            "component_name": "rolePermission",
+            "status": 1,
+            "isautopm": 0,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "bcbeeee5c91a4e2ea2c2a31237e33616",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": null,
+            "update_datetime": "2022-07-04T21:55:07.612",
+            "create_datetime": "2022-07-04T21:54:47.113",
+            "parent": "77edf447326b4e0dbc6f9719c1de8a12",
+            "icon": "",
+            "name": "服务监控",
+            "sort": 10,
+            "is_link": 0,
+            "web_path": "server",
+            "component": null,
+            "component_name": null,
+            "status": 1,
+            "isautopm": 1,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "c236fb6b-ddaa-4deb-b79b-16e42d9f347f",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.194",
+            "create_datetime": "2022-06-27T13:56:06.194",
+            "parent": null,
+            "icon": "info-filled",
+            "name": "日志管理",
+            "sort": 999,
+            "is_link": 0,
+            "web_path": "journalManage",
+            "component": null,
+            "component_name": null,
+            "status": 1,
+            "isautopm": 0,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "cdc20dc44a784c25a9b2a5281ae3ea88",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": "d2c03bd9-dad0-4262-88ca-c3681d224fc3",
+            "update_datetime": "2023-04-12T10:25:07.569",
+            "create_datetime": "2023-03-22T10:10:40.062",
+            "parent": "97877ebe22ef4eb9bf99782afd641e36",
+            "icon": "",
+            "name": "区服创建",
+            "sort": 2,
+            "is_link": 0,
+            "web_path": "createZone",
+            "component": null,
+            "component_name": null,
+            "status": 1,
+            "isautopm": 1,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "d4b2e512fcc14a24813b38ea03810fb9",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": "d2c03bd9-dad0-4262-88ca-c3681d224fc3",
+            "update_datetime": "2023-03-08T10:09:58.439",
+            "create_datetime": "2023-02-22T17:52:59.416",
+            "parent": "97877ebe22ef4eb9bf99782afd641e36",
+            "icon": "",
+            "name": "区服列表信息",
+            "sort": 1,
+            "is_link": 0,
+            "web_path": "zoneList",
+            "component": null,
+            "component_name": null,
+            "status": 1,
+            "isautopm": 1,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "d73f73a399af48cea6a8490ac508d7a0",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-28T21:24:17.622",
+            "create_datetime": "2022-06-28T21:23:46.339",
+            "parent": null,
+            "icon": "user-filled",
+            "name": "用户管理CRUD",
+            "sort": 7,
+            "is_link": 0,
+            "web_path": "userManageCrud",
+            "component": null,
+            "component_name": null,
+            "status": 1,
+            "isautopm": 1,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "e0f53902-e901-490c-83f3-331e60b97fcf",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.183",
+            "create_datetime": "2022-06-27T13:56:06.183",
+            "parent": "54f769b0-3dff-416c-8102-e55ec44827cc",
+            "icon": "",
+            "name": "按钮配置",
+            "sort": 2,
+            "is_link": 0,
+            "web_path": "buttonConfig/:id/:name",
+            "component": "system/ menuButton",
+            "component_name": null,
+            "status": 1,
+            "isautopm": 0,
+            "cache": 0,
+            "visible": 0
+        }
+    },
+    {
+        "model": "mysystem.menu",
+        "pk": "f658596b969142148cd62905a9902f3f",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": "d2c03bd9-dad0-4262-88ca-c3681d224fc3",
+            "update_datetime": "2023-04-12T10:25:58.539",
+            "create_datetime": "2023-04-10T11:31:33.089",
+            "parent": "97877ebe22ef4eb9bf99782afd641e36",
+            "icon": "",
+            "name": "区服批量创建",
+            "sort": 5,
+            "is_link": 0,
+            "web_path": "batchCreateZones",
+            "component": null,
+            "component_name": null,
+            "status": 1,
+            "isautopm": 1,
+            "cache": 0,
+            "visible": 1
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "0209de89-6b9f-4d8a-84d3-ccfc3cc8b4da",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.201",
+            "create_datetime": "2022-06-27T13:56:06.201",
+            "menu": "151035da-77a3-4a62-b474-fce6824571fb",
+            "name": "编辑",
+            "value": "Update",
+            "api": "/api/system/button/{id}/",
+            "method": 2
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "0479d1d7996846bcb99dc3c1d8bbd248",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-15T17:32:29.852",
+            "create_datetime": "2023-02-15T17:32:29.852",
+            "menu": "3e9b3f7c8775457a9a8c9807315a3ba5",
+            "name": "新增",
+            "value": "Create",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "04896a47-0f3a-4e2f-a111-bfe15f9e31c5",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.203",
+            "create_datetime": "2022-06-27T13:56:06.203",
+            "menu": "56c3f341-4f46-4b04-9cfc-c8a14701707e",
+            "name": "编辑",
+            "value": "Update",
+            "api": "/api/system/menu/{id}/",
+            "method": 2
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "05eef13f3a774ae28c915672e1ca4db4",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-15T17:32:29.852",
+            "create_datetime": "2023-02-15T17:32:29.852",
+            "menu": "3e9b3f7c8775457a9a8c9807315a3ba5",
+            "name": "查询",
+            "value": "Search",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "0622ffa9cbd6441bbd1441977ce15ef1",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-04-10T11:31:33.387",
+            "create_datetime": "2023-04-10T11:31:33.387",
+            "menu": "f658596b969142148cd62905a9902f3f",
+            "name": "删除",
+            "value": "Delete",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "065da1fd170342dca040205359cdeca2",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-22T17:52:18.616",
+            "create_datetime": "2023-02-22T17:52:18.616",
+            "menu": "97877ebe22ef4eb9bf99782afd641e36",
+            "name": "新增",
+            "value": "Create",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "09a0908dfb0c433c90037851da126e9b",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-28T21:23:46.377",
+            "create_datetime": "2022-06-28T21:23:46.377",
+            "menu": "d73f73a399af48cea6a8490ac508d7a0",
+            "name": "编辑",
+            "value": "Update",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "0b5bf0f1caac45beabf54fb5d930187b",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": null,
+            "update_datetime": "2022-10-25T23:31:40.412",
+            "create_datetime": "2022-10-25T23:31:40.412",
+            "menu": "09a42810d4dd4b2eb939f8eb0b01d9d1",
+            "name": "日志",
+            "value": "Logs",
+            "api": "/api/crontab/taskresult/",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "0ce04d99cbd249a9af88fe1496591a89",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-10-26T00:04:28.355",
+            "create_datetime": "2022-07-04T20:52:44.985",
+            "menu": "09a42810d4dd4b2eb939f8eb0b01d9d1",
+            "name": "禁用",
+            "value": "Disable",
+            "api": "/api/crontab/periodictask/enabled/{id}/",
+            "method": 2
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "0d931efc-2f80-418f-b4a0-5251f0a88f69",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.252",
+            "create_datetime": "2022-06-27T13:56:06.252",
+            "menu": "4ba07859-8b73-4524-a1a6-bbff36d98337",
+            "name": "新增",
+            "value": "Create",
+            "api": "/api/system/operation_log/",
+            "method": 1
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "10610c56-cec2-4774-9468-e1c763e59e70",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.253",
+            "create_datetime": "2022-06-27T13:56:06.253",
+            "menu": "4236eb70-1558-43a0-9cf2-037230c547f9",
+            "name": "新增",
+            "value": "Create",
+            "api": "/api/system/dept/",
+            "method": 1
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "140166e2-471e-455e-9dcd-05cebbbab95d",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.225",
+            "create_datetime": "2022-06-27T13:56:06.225",
+            "menu": "15c9ebc5-d12f-470a-a560-938a7dc57570",
+            "name": "查询",
+            "value": "Search",
+            "api": "/api/system/role/",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "14e7088f-a39b-47ae-bd67-b9bbcabae96b",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.270",
+            "create_datetime": "2022-06-27T13:56:06.270",
+            "menu": "244b28685cd14a39a383189981510d4a",
+            "name": "单例",
+            "value": "Retrieve",
+            "api": "/api/users/users/{id}/",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "19d01a929bc9414cac1a8defd48597c9",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-10-26T00:03:55.514",
+            "create_datetime": "2022-07-04T20:52:45.061",
+            "menu": "09a42810d4dd4b2eb939f8eb0b01d9d1",
+            "name": "新增",
+            "value": "Create",
+            "api": "/api/crontab/periodictask/",
+            "method": 1
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "1a0c96cf-09a6-43b4-b08a-0c5b6e2f7bb8",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.306",
+            "create_datetime": "2022-06-27T13:56:06.306",
+            "menu": "a607e820-36e5-45c0-aabf-85a8e4e2c7ac",
+            "name": "保存",
+            "value": "Save",
+            "api": "/api/system/permission/{id}/",
+            "method": 2
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "1a16836d2cec4d14a1307b3228e3cfdd",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-10-26T00:03:39.767",
+            "create_datetime": "2022-07-04T20:52:44.940",
+            "menu": "09a42810d4dd4b2eb939f8eb0b01d9d1",
+            "name": "编辑",
+            "value": "Update",
+            "api": "/api/crontab/periodictask/{id}/",
+            "method": 2
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "1b4f27a7-8ab8-4388-ae57-46e29976cf0e",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.255",
+            "create_datetime": "2022-06-27T13:56:06.255",
+            "menu": "151035da-77a3-4a62-b474-fce6824571fb",
+            "name": "新增",
+            "value": "Create",
+            "api": "/api/system/button/",
+            "method": 1
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "1f4fa280f98944b99e6247688e76296c",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-04-14T16:07:29.985",
+            "create_datetime": "2023-04-14T16:07:29.985",
+            "menu": "2fe0ea32b3f447899f415c63ca27fdba",
+            "name": "编辑",
+            "value": "Update",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "24d23db20ceb469bb634518a052c8e90",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-13T14:25:06.391",
+            "create_datetime": "2023-02-13T14:25:06.391",
+            "menu": "a27b0ab29a3947eba29fe6bac63f6445",
+            "name": "删除",
+            "value": "Delete",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "281ad1aad421441a965f7bc6b397eb30",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": null,
+            "update_datetime": "2022-07-18T10:34:57.549",
+            "create_datetime": "2022-07-18T10:34:57.549",
+            "menu": "718daec1b94b456c96d773889648173e",
+            "name": "删除",
+            "value": "Delete",
+            "api": "/api/terminal/terminal/{id}/",
+            "method": 3
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "29b78499b1d7424e848e38a0d71ced0a",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-13T14:25:06.391",
+            "create_datetime": "2023-02-13T14:25:06.391",
+            "menu": "a27b0ab29a3947eba29fe6bac63f6445",
+            "name": "新增",
+            "value": "Create",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "2a3d4756-4d51-4129-b3c4-b2c7a00dbb8a",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.256",
+            "create_datetime": "2022-06-27T13:56:06.257",
+            "menu": "15c9ebc5-d12f-470a-a560-938a7dc57570",
+            "name": "新增",
+            "value": "Create",
+            "api": "/api/system/role/",
+            "method": 1
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "2c53efc8-e6a4-4192-8688-03baed0874a4",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.291",
+            "create_datetime": "2022-06-27T13:56:06.291",
+            "menu": "2e3438c8-3ddc-43ff-b8d8-cca328e4856e",
+            "name": "删除",
+            "value": "Delete",
+            "api": "/api/system/user/{id}/",
+            "method": 3
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "2ffdec251a614aa6b14bd89bb8f189e1",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-22T17:52:59.420",
+            "create_datetime": "2023-02-22T17:52:59.420",
+            "menu": "d4b2e512fcc14a24813b38ea03810fb9",
+            "name": "单例",
+            "value": "Retrieve",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "308ecc71b04e47299ab2b8bd06e79b66",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": null,
+            "update_datetime": "2023-05-17T10:49:31.035",
+            "create_datetime": "2023-02-08T17:05:40.101",
+            "menu": "0a4c1fb43ce84d5290eede4bc1ff5c7b",
+            "name": "删除",
+            "value": "Delete",
+            "api": "/api/saltstack/salt-key-opt/delete/",
+            "method": 1
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "30b1e4ec1a02451799807ca6ae04c272",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-19T18:25:20.983",
+            "create_datetime": "2023-02-19T18:25:20.983",
+            "menu": "5037622249b64f0f8d334de9fea36d5a",
+            "name": "单例",
+            "value": "Retrieve",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "314020b785d945d6a46bdb132fd4fda2",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-19T18:25:20.983",
+            "create_datetime": "2023-02-19T18:25:20.983",
+            "menu": "5037622249b64f0f8d334de9fea36d5a",
+            "name": "编辑",
+            "value": "Update",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "324776a3-48ec-4bca-bdd9-1838e2b6f7cc",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.228",
+            "create_datetime": "2022-06-27T13:56:06.228",
+            "menu": "2e3438c8-3ddc-43ff-b8d8-cca328e4856e",
+            "name": "查询",
+            "value": "Search",
+            "api": "/api/system/user/",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "35336e0b7cf54addbb76d18d0e28d1ba",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-04-14T16:07:29.985",
+            "create_datetime": "2023-04-14T16:07:29.985",
+            "menu": "2fe0ea32b3f447899f415c63ca27fdba",
+            "name": "查询",
+            "value": "Search",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "353595a28cb1463b830cfbf79fea60b5",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.308",
+            "create_datetime": "2022-06-27T13:56:06.308",
+            "menu": "244b28685cd14a39a383189981510d4a",
+            "name": "禁用",
+            "value": "Disable",
+            "api": "/api/users/users/disableuser/{id}/",
+            "method": 2
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "3688b715-4689-468f-bf3e-6f910259f837",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.230",
+            "create_datetime": "2022-06-27T13:56:06.230",
+            "menu": "25735adb-d051-4b7b-bbb7-1154526f3e4c",
+            "name": "查询",
+            "value": "Search",
+            "api": "/api/system/user/user_info/",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "372d75b2b1034a94b5ed561ca91b9d8c",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": null,
+            "update_datetime": "2023-05-17T11:03:14.009",
+            "create_datetime": "2023-02-08T17:05:40.101",
+            "menu": "0a4c1fb43ce84d5290eede4bc1ff5c7b",
+            "name": "更新minion",
+            "value": "updateMinion",
+            "api": "/api/saltstack/salt-minion-opt/update/",
+            "method": 1
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "37462e31-3cdf-4576-af10-5958f53b1bef",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.232",
+            "create_datetime": "2022-06-27T13:56:06.232",
+            "menu": "4ba07859-8b73-4524-a1a6-bbff36d98337",
+            "name": "查询",
+            "value": "Search",
+            "api": "/api/system/operation_log/",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "3b59a93455e24793a436a0f0a122c930",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-04-10T11:31:33.387",
+            "create_datetime": "2023-04-10T11:31:33.387",
+            "menu": "f658596b969142148cd62905a9902f3f",
+            "name": "查询",
+            "value": "Search",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "3e11db64-b8e8-4558-963b-71d063a7db16",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.205",
+            "create_datetime": "2022-06-27T13:56:06.205",
+            "menu": "4236eb70-1558-43a0-9cf2-037230c547f9",
+            "name": "编辑",
+            "value": "Update",
+            "api": "/api/system/dept/{id}/",
+            "method": 2
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "3fd6ae6c-fd76-4465-b2b6-db672f4bd79e",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.293",
+            "create_datetime": "2022-06-27T13:56:06.293",
+            "menu": "15c9ebc5-d12f-470a-a560-938a7dc57570",
+            "name": "删除",
+            "value": "Delete",
+            "api": "/api/system/role/{id}/",
+            "method": 3
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "424d55c9e6794c75964107d38e5b5f01",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": null,
+            "update_datetime": "2023-05-17T10:40:45.736",
+            "create_datetime": "2023-02-08T17:05:40.101",
+            "menu": "0a4c1fb43ce84d5290eede4bc1ff5c7b",
+            "name": "查询",
+            "value": "Search",
+            "api": "/api/saltstack/salt-minion",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "42ad6e05-7c84-444f-bcae-09de84f4988b",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.234",
+            "create_datetime": "2022-06-27T13:56:06.234",
+            "menu": "56c3f341-4f46-4b04-9cfc-c8a14701707e",
+            "name": "查询",
+            "value": "Search",
+            "api": "/api/system/menu/",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "43696212-ecba-4e66-8678-33c9bc935c76",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.236",
+            "create_datetime": "2022-06-27T13:56:06.236",
+            "menu": "244b28685cd14a39a383189981510d4a",
+            "name": "查询",
+            "value": "Search",
+            "api": "/api/users/users/",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "4450d80871eb44a1aaa4fbb5429885f0",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-10-26T00:03:48.087",
+            "create_datetime": "2022-07-04T20:52:45.023",
+            "menu": "09a42810d4dd4b2eb939f8eb0b01d9d1",
+            "name": "查询",
+            "value": "Search",
+            "api": "/api/crontab/periodictask/",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "44e11e66f8b44e2a818855f9c1d50eb5",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-04-14T16:07:29.985",
+            "create_datetime": "2023-04-14T16:07:29.985",
+            "menu": "2fe0ea32b3f447899f415c63ca27fdba",
+            "name": "新增",
+            "value": "Create",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "4fe4b7f5-0bc8-4375-9f39-747e06ec285a",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.294",
+            "create_datetime": "2022-06-27T13:56:06.294",
+            "menu": "e0f53902-e901-490c-83f3-331e60b97fcf",
+            "name": "删除",
+            "value": "Delete",
+            "api": "/api/system/menu_button/{id}/",
+            "method": 3
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "51085c21-2279-490f-8878-594f059f7616",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.296",
+            "create_datetime": "2022-06-27T13:56:06.296",
+            "menu": "151035da-77a3-4a62-b474-fce6824571fb",
+            "name": "删除",
+            "value": "Delete",
+            "api": "/api/system/button/{id}/",
+            "method": 3
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "54aaf9074b28490a81b1a8cd7f5845a1",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-04-14T16:07:29.985",
+            "create_datetime": "2023-04-14T16:07:29.985",
+            "menu": "2fe0ea32b3f447899f415c63ca27fdba",
+            "name": "单例",
+            "value": "Retrieve",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "576008b6046f4afcb88d8139ff34e228",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-10-26T00:04:05.356",
+            "create_datetime": "2022-07-04T20:52:45.137",
+            "menu": "09a42810d4dd4b2eb939f8eb0b01d9d1",
+            "name": "删除",
+            "value": "Delete",
+            "api": "/api/crontab/periodictask/{id}/",
+            "method": 3
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "58194fc4b80341f4bdc7233829523053",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-22T17:52:18.615",
+            "create_datetime": "2023-02-22T17:52:18.616",
+            "menu": "97877ebe22ef4eb9bf99782afd641e36",
+            "name": "编辑",
+            "value": "Update",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "5aac29b0-5a32-45fb-81c5-437b48f4a5df",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.239",
+            "create_datetime": "2022-06-27T13:56:06.239",
+            "menu": "e0f53902-e901-490c-83f3-331e60b97fcf",
+            "name": "查询",
+            "value": "Search",
+            "api": "/api/system/menu_button/",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "5d48df3de9894d91ac1a6b2d19c538f2",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-19T18:25:20.983",
+            "create_datetime": "2023-02-19T18:25:20.983",
+            "menu": "5037622249b64f0f8d334de9fea36d5a",
+            "name": "删除",
+            "value": "Delete",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "5d77d14e-b199-481f-a97d-6e4c0e84fe71",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.207",
+            "create_datetime": "2022-06-27T13:56:06.207",
+            "menu": "25735adb-d051-4b7b-bbb7-1154526f3e4c",
+            "name": "修改密码",
+            "value": "Changepassword",
+            "api": "/api/system/user/change_password/{id}/",
+            "method": 2
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "5fe5f73b5a1a493d856100bf71b47aa3",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-19T18:25:20.983",
+            "create_datetime": "2023-02-19T18:25:20.983",
+            "menu": "5037622249b64f0f8d334de9fea36d5a",
+            "name": "查询",
+            "value": "Search",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "6208f412-6bca-4d7b-a5a0-0103b7ba6091",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.272",
+            "create_datetime": "2022-06-27T13:56:06.272",
+            "menu": "151035da-77a3-4a62-b474-fce6824571fb",
+            "name": "单例",
+            "value": "Retrieve",
+            "api": "/api/system/button/{id}/",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "62e89e16b7cf460fbbbb949771156946",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-28T21:23:46.499",
+            "create_datetime": "2022-06-28T21:23:46.499",
+            "menu": "d73f73a399af48cea6a8490ac508d7a0",
+            "name": "单例",
+            "value": "Retrieve",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "6300774a-d19c-43ad-8102-d7bf341eff33",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.274",
+            "create_datetime": "2022-06-27T13:56:06.274",
+            "menu": "4236eb70-1558-43a0-9cf2-037230c547f9",
+            "name": "单例",
+            "value": "Retrieve",
+            "api": "/api/system/dept/{id}/",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "646e9790-24f5-4606-abc4-0b5eede12f66",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.241",
+            "create_datetime": "2022-06-27T13:56:06.241",
+            "menu": "4236eb70-1558-43a0-9cf2-037230c547f9",
+            "name": "查询",
+            "value": "Search",
+            "api": "/api/system/dept/",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "699dfbe44de94f81a55580208b91240e",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-04-10T11:31:33.387",
+            "create_datetime": "2023-04-10T11:31:33.387",
+            "menu": "f658596b969142148cd62905a9902f3f",
+            "name": "编辑",
+            "value": "Update",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "6af0929440a345238c28ee9b1fe341ba",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": null,
+            "update_datetime": "2022-07-18T10:33:53.037",
+            "create_datetime": "2022-07-16T21:41:09.432",
+            "menu": "718daec1b94b456c96d773889648173e",
+            "name": "终端",
+            "value": "Terminal",
+            "api": "/ws/webssh/",
+            "method": 5
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "6d6b6689d1224900b09c8101b3344f42",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.285",
+            "create_datetime": "2022-06-27T13:56:06.285",
+            "menu": "a607e820-36e5-45c0-aabf-85a8e4e2c7ac",
+            "name": "单例",
+            "value": "Retrieve",
+            "api": "/api/system/role_id_to_menu/{id}/",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "6e27757847c64e228934b60ae81baedf",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-10-26T00:04:00.698",
+            "create_datetime": "2022-07-04T20:52:45.097",
+            "menu": "09a42810d4dd4b2eb939f8eb0b01d9d1",
+            "name": "单例",
+            "value": "Retrieve",
+            "api": "/api/crontab/periodictask/{id}/",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "6fa2dd66599745408afffae694793a3b",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": null,
+            "update_datetime": "2023-05-17T10:56:05.362",
+            "create_datetime": "2023-02-08T17:05:40.101",
+            "menu": "0a4c1fb43ce84d5290eede4bc1ff5c7b",
+            "name": "更新minion列表",
+            "value": "updateMinionList",
+            "api": "/api/saltstack/salt-minion/",
+            "method": 1
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "78fa92ce55d74432bd85182430776c2c",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-03-22T10:10:40.193",
+            "create_datetime": "2023-03-22T10:10:40.193",
+            "menu": "cdc20dc44a784c25a9b2a5281ae3ea88",
+            "name": "删除",
+            "value": "Delete",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "7a86f718071947549c95fd5632bd9757",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-13T14:25:06.391",
+            "create_datetime": "2023-02-13T14:25:06.391",
+            "menu": "a27b0ab29a3947eba29fe6bac63f6445",
+            "name": "查询",
+            "value": "Search",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "7e4b574dab234cecab982cf7c04597c7",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-22T17:52:59.420",
+            "create_datetime": "2023-02-22T17:52:59.420",
+            "menu": "d4b2e512fcc14a24813b38ea03810fb9",
+            "name": "新增",
+            "value": "Create",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "80c8eb6939a245e9890dede241b5d1d6",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-28T21:23:46.410",
+            "create_datetime": "2022-06-28T21:23:46.410",
+            "menu": "d73f73a399af48cea6a8490ac508d7a0",
+            "name": "禁用",
+            "value": "Disable",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "873138b279274536bc93c2774b1be815",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-28T21:23:46.440",
+            "create_datetime": "2022-06-28T21:23:46.440",
+            "menu": "d73f73a399af48cea6a8490ac508d7a0",
+            "name": "查询",
+            "value": "Search",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "875bdfeb-0c34-441d-8ee3-bb93c21e17dd",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.209",
+            "create_datetime": "2022-06-27T13:56:06.209",
+            "menu": "244b28685cd14a39a383189981510d4a",
+            "name": "编辑",
+            "value": "Update",
+            "api": "/api/users/users/{id}/",
+            "method": 2
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "88cf3a3ab1a440208e7fbd24cc20d3f5",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-13T14:25:06.391",
+            "create_datetime": "2023-02-13T14:25:06.391",
+            "menu": "a27b0ab29a3947eba29fe6bac63f6445",
+            "name": "单例",
+            "value": "Retrieve",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "8ae924bd-576c-4ae1-92eb-b0a98148baae",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.297",
+            "create_datetime": "2022-06-27T13:56:06.298",
+            "menu": "56c3f341-4f46-4b04-9cfc-c8a14701707e",
+            "name": "删除",
+            "value": "Delete",
+            "api": "/api/system/menu/{id}/",
+            "method": 3
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "8b7a0e79-a6ef-4946-87c6-8c042b887e1c",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.275",
+            "create_datetime": "2022-06-27T13:56:06.275",
+            "menu": "4ba07859-8b73-4524-a1a6-bbff36d98337",
+            "name": "单例",
+            "value": "Retrieve",
+            "api": "/api/system/operation_log/{id}/",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "8d65733d401c40f8b27cc6bcfed78bc3",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": null,
+            "update_datetime": "2022-07-18T10:34:34.257",
+            "create_datetime": "2022-07-18T10:34:34.257",
+            "menu": "718daec1b94b456c96d773889648173e",
+            "name": "新增",
+            "value": "Create",
+            "api": "/api/terminal/terminal/",
+            "method": 1
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "9221171bb2174bf1b273407c899e5f24",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-04-14T16:07:29.985",
+            "create_datetime": "2023-04-14T16:07:29.985",
+            "menu": "2fe0ea32b3f447899f415c63ca27fdba",
+            "name": "删除",
+            "value": "Delete",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "9410978e41b94c85953f377d6573eee5",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-22T17:52:59.420",
+            "create_datetime": "2023-02-22T17:52:59.420",
+            "menu": "d4b2e512fcc14a24813b38ea03810fb9",
+            "name": "编辑",
+            "value": "Update",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "96022ae5-6425-47b9-8f89-01edc33eb2b7",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.277",
+            "create_datetime": "2022-06-27T13:56:06.277",
+            "menu": "15c9ebc5-d12f-470a-a560-938a7dc57570",
+            "name": "单例",
+            "value": "Retrieve",
+            "api": "/api/system/role/{id}/",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "9c02433b23e54ded987ad5f443bb75dd",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-15T17:32:29.852",
+            "create_datetime": "2023-02-15T17:32:29.852",
+            "menu": "3e9b3f7c8775457a9a8c9807315a3ba5",
+            "name": "编辑",
+            "value": "Update",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "9e6b2376-1ab0-4966-8d5d-4ad4f911d13c",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.258",
+            "create_datetime": "2022-06-27T13:56:06.258",
+            "menu": "2e3438c8-3ddc-43ff-b8d8-cca328e4856e",
+            "name": "新增",
+            "value": "Create",
+            "api": "/api/system/user/",
+            "method": 1
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "9fc8436a-1996-478f-a155-5de7939a54dc",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.260",
+            "create_datetime": "2022-06-27T13:56:06.260",
+            "menu": "244b28685cd14a39a383189981510d4a",
+            "name": "新增",
+            "value": "Create",
+            "api": "/api/users/users/",
+            "method": 1
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "a02b00e7cb4b4950bac7290ac2f9a24c",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-22T17:52:59.420",
+            "create_datetime": "2023-02-22T17:52:59.420",
+            "menu": "d4b2e512fcc14a24813b38ea03810fb9",
+            "name": "查询",
+            "value": "Search",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "a0bdd1b1475448dcbe613d6a5e78659a",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-03-22T10:10:40.193",
+            "create_datetime": "2023-03-22T10:10:40.193",
+            "menu": "cdc20dc44a784c25a9b2a5281ae3ea88",
+            "name": "新增",
+            "value": "Create",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "a2df144069a44af8afbd5863740e2228",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-28T21:23:46.469",
+            "create_datetime": "2022-06-28T21:23:46.469",
+            "menu": "d73f73a399af48cea6a8490ac508d7a0",
+            "name": "新增",
+            "value": "Create",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "a69fb746c0aa4bd0b31b1480c9e4dcc0",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": "superadmin",
+            "dept_belong_id": null,
+            "update_datetime": "2022-07-10T11:36:13.663",
+            "create_datetime": "2022-07-04T21:54:47.257",
+            "menu": "bcbeeee5c91a4e2ea2c2a31237e33616",
+            "name": "查询",
+            "value": "Search",
+            "api": "/api/monitor/getsysteminfo/",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "a8b803934ae345e4816cdf4d55077b48",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-13T14:25:06.391",
+            "create_datetime": "2023-02-13T14:25:06.391",
+            "menu": "a27b0ab29a3947eba29fe6bac63f6445",
+            "name": "编辑",
+            "value": "Update",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "abe5c07f-0cab-4053-ac24-e782792e9d7f",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.262",
+            "create_datetime": "2022-06-27T13:56:06.262",
+            "menu": "56c3f341-4f46-4b04-9cfc-c8a14701707e",
+            "name": "新增",
+            "value": "Create",
+            "api": "/api/system/menu/",
+            "method": 1
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "acfde861-1872-47e2-a1f1-abeda5175b7f",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.299",
+            "create_datetime": "2022-06-27T13:56:06.299",
+            "menu": "4ba07859-8b73-4524-a1a6-bbff36d98337",
+            "name": "删除",
+            "value": "Delete",
+            "api": "/api/system/operation_log/{id}/",
+            "method": 3
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "ad50bbdcebac48419f49455b9404f15c",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-04-10T11:31:33.387",
+            "create_datetime": "2023-04-10T11:31:33.387",
+            "menu": "f658596b969142148cd62905a9902f3f",
+            "name": "新增",
+            "value": "Create",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "add14c5bb1bd4f7db7a86a44d3338595",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-03-22T10:10:40.193",
+            "create_datetime": "2023-03-22T10:10:40.193",
+            "menu": "cdc20dc44a784c25a9b2a5281ae3ea88",
+            "name": "查询",
+            "value": "Search",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "af4fb9fcb28a45ad96e2345df65403c8",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-15T17:32:29.852",
+            "create_datetime": "2023-02-15T17:32:29.852",
+            "menu": "3e9b3f7c8775457a9a8c9807315a3ba5",
+            "name": "删除",
+            "value": "Delete",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "af587108b73244e3b2bf9e81d29ddc78",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-22T17:52:59.420",
+            "create_datetime": "2023-02-22T17:52:59.420",
+            "menu": "d4b2e512fcc14a24813b38ea03810fb9",
+            "name": "删除",
+            "value": "Delete",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "af60d628-73b1-4c5d-b34e-7c70ab9bd87e",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.243",
+            "create_datetime": "2022-06-27T13:56:06.243",
+            "menu": "151035da-77a3-4a62-b474-fce6824571fb",
+            "name": "查询",
+            "value": "Search",
+            "api": "/api/system/button/",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "b10f7d08-2592-4b54-8557-b5ca864a029a",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.301",
+            "create_datetime": "2022-06-27T13:56:06.301",
+            "menu": "4236eb70-1558-43a0-9cf2-037230c547f9",
+            "name": "删除",
+            "value": "Delete",
+            "api": "/api/system/dept/{id}/",
+            "method": 3
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "b4cbe8ed35a04155b14c7809fad6b2ef",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": null,
+            "update_datetime": "2022-07-18T10:35:09.558",
+            "create_datetime": "2022-07-18T10:35:09.558",
+            "menu": "718daec1b94b456c96d773889648173e",
+            "name": "编辑",
+            "value": "Update",
+            "api": "/api/terminal/terminal/{id}/",
+            "method": 2
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "b5f3086590354666acb8127a0fa9ae02",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-19T18:25:20.983",
+            "create_datetime": "2023-02-19T18:25:20.983",
+            "menu": "5037622249b64f0f8d334de9fea36d5a",
+            "name": "新增",
+            "value": "Create",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "bb7de9ee-5fd1-46f5-9849-088c522f49c7",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.303",
+            "create_datetime": "2022-06-27T13:56:06.303",
+            "menu": "244b28685cd14a39a383189981510d4a",
+            "name": "删除",
+            "value": "Delete",
+            "api": "/api/users/users/{id}/",
+            "method": 3
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "bc114580-e62d-4e08-b707-843759817344",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.211",
+            "create_datetime": "2022-06-27T13:56:06.211",
+            "menu": "2e3438c8-3ddc-43ff-b8d8-cca328e4856e",
+            "name": "编辑",
+            "value": "Update",
+            "api": "/api/system/user/{id}/",
+            "method": 2
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "bc6104a0-f487-4dfd-a368-fb587d6d57d8",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.213",
+            "create_datetime": "2022-06-27T13:56:06.213",
+            "menu": "e0f53902-e901-490c-83f3-331e60b97fcf",
+            "name": "编辑",
+            "value": "Update",
+            "api": "/api/system/menu_button/{id}/",
+            "method": 2
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "be860f07c5be4114a6ea0ceefb97a22a",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-28T21:23:46.527",
+            "create_datetime": "2022-06-28T21:23:46.527",
+            "menu": "d73f73a399af48cea6a8490ac508d7a0",
+            "name": "删除",
+            "value": "Delete",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "c2490dfba1644cae8f8ff85e2d6f1d3d",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-07-03T15:21:19.444",
+            "create_datetime": "2022-07-03T15:21:19.444",
+            "menu": "9065cb5445ac42ef93eb9e75e6287792",
+            "name": "查询",
+            "value": "Search",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "c56fde9542334fa6aa2d060ceea9c056",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-22T17:52:18.616",
+            "create_datetime": "2023-02-22T17:52:18.616",
+            "menu": "97877ebe22ef4eb9bf99782afd641e36",
+            "name": "单例",
+            "value": "Retrieve",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "ca51e4aa2405440f88202d3b06ad490d",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-03-22T10:10:40.193",
+            "create_datetime": "2023-03-22T10:10:40.193",
+            "menu": "cdc20dc44a784c25a9b2a5281ae3ea88",
+            "name": "编辑",
+            "value": "Update",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "d22c0176-96e0-48b3-b81e-13443f306af5",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.214",
+            "create_datetime": "2022-06-27T13:56:06.214",
+            "menu": "15c9ebc5-d12f-470a-a560-938a7dc57570",
+            "name": "编辑",
+            "value": "Update",
+            "api": "/api/system/role/{id}/",
+            "method": 2
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "d4c0a2f22ac74fba99151e60de00e40d",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-15T17:32:29.852",
+            "create_datetime": "2023-02-15T17:32:29.852",
+            "menu": "3e9b3f7c8775457a9a8c9807315a3ba5",
+            "name": "单例",
+            "value": "Retrieve",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "dcc58831-08d1-4469-8b01-fca71e0f497f",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.216",
+            "create_datetime": "2022-06-27T13:56:06.216",
+            "menu": "25735adb-d051-4b7b-bbb7-1154526f3e4c",
+            "name": "编辑",
+            "value": "Update",
+            "api": "/api/system/user/user_info/",
+            "method": 2
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "e040c9277a3c492f9f128ce440f2353e",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-22T17:52:18.616",
+            "create_datetime": "2023-02-22T17:52:18.616",
+            "menu": "97877ebe22ef4eb9bf99782afd641e36",
+            "name": "删除",
+            "value": "Delete",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "e1ddf86666364a39be76c963c277b009",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": null,
+            "update_datetime": "2022-07-18T10:34:25.828",
+            "create_datetime": "2022-07-18T10:34:25.828",
+            "menu": "718daec1b94b456c96d773889648173e",
+            "name": "查询",
+            "value": "Search",
+            "api": "/api/terminal/terminal/",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "e621259de309449cbaff5b8426271739",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-02-22T17:52:18.616",
+            "create_datetime": "2023-02-22T17:52:18.616",
+            "menu": "97877ebe22ef4eb9bf99782afd641e36",
+            "name": "查询",
+            "value": "Search",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "e6b93920-2236-46ec-841b-cff6f63ce788",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.218",
+            "create_datetime": "2022-06-27T13:56:06.218",
+            "menu": "4ba07859-8b73-4524-a1a6-bbff36d98337",
+            "name": "编辑",
+            "value": "Update",
+            "api": "/api/system/operation_log/{id}/",
+            "method": 2
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "ea18bb51400b482a8aad5dc18357bcab",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": null,
+            "update_datetime": "2022-07-18T10:34:48.832",
+            "create_datetime": "2022-07-18T10:34:48.832",
+            "menu": "718daec1b94b456c96d773889648173e",
+            "name": "单例",
+            "value": "Retrieve",
+            "api": "/api/terminal/terminal/{id}/",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "ea846604f61d45cfbf91f3bf337b43db",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-04-10T11:31:33.387",
+            "create_datetime": "2023-04-10T11:31:33.387",
+            "menu": "f658596b969142148cd62905a9902f3f",
+            "name": "单例",
+            "value": "Retrieve",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "ed0d2d6949b24aa490f06c1f044605f5",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": null,
+            "update_datetime": "2023-05-17T11:03:48.891",
+            "create_datetime": "2023-02-08T17:05:40.101",
+            "menu": "0a4c1fb43ce84d5290eede4bc1ff5c7b",
+            "name": "更新minion状态",
+            "value": "updateMinionStatus",
+            "api": "/api/saltstack/salt-minion-opt/status-update/",
+            "method": 1
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "ee289cc5793c44b899f357e2dc3124f2",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2023-03-22T10:10:40.193",
+            "create_datetime": "2023-03-22T10:10:40.193",
+            "menu": "cdc20dc44a784c25a9b2a5281ae3ea88",
+            "name": "单例",
+            "value": "Retrieve",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "f0e080c0-275d-4085-b56c-735b49510eff",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.279",
+            "create_datetime": "2022-06-27T13:56:06.279",
+            "menu": "2e3438c8-3ddc-43ff-b8d8-cca328e4856e",
+            "name": "单例",
+            "value": "Retrieve",
+            "api": "/api/system/user/{id}/",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "f19826f7df9842089cee94a795681b2e",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-07-03T15:21:19.526",
+            "create_datetime": "2022-07-03T15:21:19.526",
+            "menu": "9065cb5445ac42ef93eb9e75e6287792",
+            "name": "单例",
+            "value": "Retrieve",
+            "api": "",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "fa8d945124b74379aba32bcf34ea5383",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": null,
+            "update_datetime": "2022-10-26T00:06:00.943",
+            "create_datetime": "2022-10-26T00:06:00.943",
+            "menu": "09a42810d4dd4b2eb939f8eb0b01d9d1",
+            "name": "任务列表",
+            "value": "Tasklist",
+            "api": "/api/crontab/periodictask/tasklist/",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "fc71b446-fde1-439f-ab41-c38f30230caa",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.263",
+            "create_datetime": "2022-06-27T13:56:06.263",
+            "menu": "e0f53902-e901-490c-83f3-331e60b97fcf",
+            "name": "新增",
+            "value": "Create",
+            "api": "/api/system/menu_button/",
+            "method": 1
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "fcbe4cec-cc2d-436d-92ba-023f8c9ad31c",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.280",
+            "create_datetime": "2022-06-27T13:56:06.280",
+            "menu": "56c3f341-4f46-4b04-9cfc-c8a14701707e",
+            "name": "单例",
+            "value": "Retrieve",
+            "api": "/api/system/menu/{id}/",
+            "method": 0
+        }
+    },
+    {
+        "model": "mysystem.menubutton",
+        "pk": "fe96f32c-6124-4b24-b809-4964186f5163",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": null,
+            "dept_belong_id": null,
+            "update_datetime": "2022-06-27T13:56:06.283",
+            "create_datetime": "2022-06-27T13:56:06.283",
+            "menu": "e0f53902-e901-490c-83f3-331e60b97fcf",
+            "name": "单例",
+            "value": "Retrieve",
+            "api": "/api/system/menu_button/{id}/",
+            "method": 0
+        }
+    },
+    {
+        "model": "platformsettings.systemconfig",
+        "pk": "7fda473ac29a453a800a798337bf5676",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": "d2c03bd9-dad0-4262-88ca-c3681d224fc3",
+            "update_datetime": "2022-12-26T14:44:59.127",
+            "create_datetime": "2022-12-26T14:40:00.382",
+            "parent": "d5a88a3f46494d6586f0d90e3919b864",
+            "title": "隐私协议",
+            "key": "privatexy",
+            "value": "<p>隐私协议内容</p>",
+            "sort": 2,
+            "status": true,
+            "data_options": null,
+            "form_item_type": 14,
+            "rule": "[]",
+            "placeholder": "请输入内容",
+            "setting": null
+        }
+    },
+    {
+        "model": "platformsettings.systemconfig",
+        "pk": "cd46ae145c5c422983f11572cfb3e8f6",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": "d2c03bd9-dad0-4262-88ca-c3681d224fc3",
+            "update_datetime": "2022-12-26T14:44:59.124",
+            "create_datetime": "2022-12-26T14:31:03.506",
+            "parent": "d5a88a3f46494d6586f0d90e3919b864",
+            "title": "客服电话",
+            "key": "phone",
+            "value": "1888888888x",
+            "sort": 1,
+            "status": true,
+            "data_options": null,
+            "form_item_type": 0,
+            "rule": "[]",
+            "placeholder": "请输入电话号码",
+            "setting": null
+        }
+    },
+    {
+        "model": "platformsettings.systemconfig",
+        "pk": "d5a88a3f46494d6586f0d90e3919b864",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": "d2c03bd9-dad0-4262-88ca-c3681d224fc3",
+            "update_datetime": "2022-12-26T14:15:18.223",
+            "create_datetime": "2022-12-26T14:15:18.224",
+            "parent": null,
+            "title": "基础配置",
+            "key": "base",
+            "value": null,
+            "sort": 0,
+            "status": true,
+            "data_options": null,
+            "form_item_type": 0,
+            "rule": null,
+            "placeholder": null,
+            "setting": null
+        }
+    },
+    {
+        "model": "platformsettings.systemconfig",
+        "pk": "e67248a9318d424ea027fc0aae3ecb5a",
+        "fields": {
+            "description": null,
+            "creator": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "modifier": "456b688c-8ad5-46de-bc2e-d41d8047bd42",
+            "dept_belong_id": "d2c03bd9-dad0-4262-88ca-c3681d224fc3",
+            "update_datetime": "2022-12-26T14:47:50.727",
+            "create_datetime": "2022-12-26T14:45:54.661",
+            "parent": "d5a88a3f46494d6586f0d90e3919b864",
+            "title": "logo",
+            "key": "logo",
+            "value": "http://127.0.0.1:8000/media/platform/2022-04-07/20220407120605_298.png",
+            "sort": 3,
+            "status": true,
+            "data_options": null,
+            "form_item_type": 7,
+            "rule": "[]",
+            "placeholder": "",
+            "setting": null
+        }
+    },
+    {
+        "model": "lywebsocket.terminalserver",
+        "pk": "99508bdc6e454f50ba414f52089928b6",
+        "fields": {
+            "description": null,
+            "creator": null,
+            "modifier": "superadmin",
+            "dept_belong_id": null,
+            "update_datetime": "2022-07-17T23:53:34.766",
+            "create_datetime": "2022-07-17T17:36:43.286",
+            "host": "124.222.222.225",
+            "port": 22,
+            "remark": "测试服务器账号",
+            "username": "lyadmintest",
+            "password": "lyadmintest0008",
+            "pkey": "",
+            "pkey_passwd": "",
+            "type": 0
+        }
+    }
+]

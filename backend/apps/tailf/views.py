@@ -5,10 +5,10 @@ from tailf.tasks import tailf
 
 
 class TailfView(APIView):
-    # def get(self, request):
-    #     return Response(status=200)
-    
+    """
+    websocket 视图
+    """    
     def post(self, request):
-        file_path = request.data.get('/data/dev/django-vue-lyadmin/backend/logs/server.log')
-        tailf.delay(file_path)
+        # file_path = request.data.get('/data/dev/django-vue-lyadmin/backend/logs/server.log')
+        # tailf.delay(file_path)
         return Response({'message': 'tailf started'})

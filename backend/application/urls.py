@@ -25,16 +25,16 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
-from mysystem.views.login import LoginView, CaptchaView
+from mysystem.views.login import LoginView
 from utils.swagger import CustomOpenAPISchemaGenerator
 
 # 前端接口view from apps.oauth.views import WeChatXCXLoginAPIView,XCXWeChatUserInfoUpdateAPIView,
 # WeChatXCXMobileLoginAPIView,WeChatGZHLoginAPIView,WeChatGZHBindAPIView,GetXCXShareQrcodeView,TTXCXLoginAPIView,
 # WeChatGZHH5LoginAPIView,CheckWeChatGZHH5APIView,GetWeChatGZHH5JSSDKTempSignAPIView from apps.address.views import *
-from apps.logins.views import APPMobilePasswordLoginView, SendSmsCodeView, APPMobileSMSLoginView, ForgetPasswdResetView, \
-    RegisterView
-from apps.lyusers.views import SetUserNicknameView, ChangeAvatarView, uploadImagesView
-from apps.lymessages.views import UserMessagesView, UserMessagesNoticeView, GetUnreadMessageNumView
+# from apps.logins.views import APPMobilePasswordLoginView, SendSmsCodeView, APPMobileSMSLoginView, ForgetPasswdResetView, \
+#     RegisterView
+# from apps.lyusers.views import SetUserNicknameView, ChangeAvatarView, uploadImagesView
+# from apps.lymessages.views import UserMessagesView, UserMessagesNoticeView, GetUnreadMessageNumView
 from apps.platformsettings.views import *
 # from apps.mall.views import *
 
@@ -58,9 +58,10 @@ schema_view = get_schema_view(
         # contact=openapi.Contact(email="contact@snippets.local"),
         # license=openapi.License(name="BSD License"),
     ),
-    # public 表示文档完全公开, 无需针对用户鉴权
+    # public 如果为False，则只包含当前用户可以访问的端点。True返回全部
     public=True,
-    permission_classes=(permissions.AllowAny,),
+    permission_classes=(permissions.AllowAny,),# 可以允许任何人查看该接口
+    # permission_classes=(permissions.IsAuthenticated) # 只允许通过认证的查看该接口
     generator_class=CustomOpenAPISchemaGenerator,
 )
 
@@ -71,7 +72,7 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
     # api文档地址(正式上线需要注释掉)
     re_path(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    re_path(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    re_path(r'^api/lyapi(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='api-schema-json'),
     path('lyapi/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path(r'lyredoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     # 管理后台的标准接口
@@ -80,12 +81,12 @@ urlpatterns = [
     path('api/terminal/', include('lywebsocket.urls')),
     path('api/token/', LoginView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/captcha/', CaptchaView.as_view()),
+    # path('api/captcha/', CaptchaView.as_view()),
 
     # 管理后台其他自定义接口
     path('api/platformsettings/', include('apps.platformsettings.urls')),
     # path('api/address/', include('apps.address.urls')),
-    path('api/messages/', include('apps.lymessages.urls')),
+    # path('api/messages/', include('apps.lymessages.urls')),
     path('api/users/', include('apps.lyusers.urls')),
     # path('api/mall/', include('apps.mall.urls')),
     path('api/crontab/', include('apps.lycrontab.urls')),
