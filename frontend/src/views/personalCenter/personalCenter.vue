@@ -2,7 +2,7 @@
     <el-tabs v-model="activeName" @tab-click="handleClick" tab-position="left">
       <el-tab-pane label="用户设置" name="userInfo" >
           <el-form ref="userInfoForm" :model="userInfo" :disabled="!isShowBtn('personalCenter','个人中心','Update')"  required-asterisk :rules="userInforules" :label-position="position" center label-width="120px" style="margin: 50px auto">
-            <el-form-item prop="name" required label="昵称:">
+            <el-form-item prop="name" required label="姓名:">
               <el-input size="large" v-model="userInfo.name" clearable style="width: 360px" ></el-input>
             </el-form-item>
             <el-form-item label="电话号码:" prop="mobile">
@@ -131,7 +131,7 @@
              */
             getCurrentUserInfo () {
                 systemUserUserInfo().then(res=>{
-                    if(res.code == 2000) {
+                    if(res.code === 2000) {
                         this.userInfo=res.data.data
                     }
 
@@ -147,7 +147,7 @@
                 if (valid) {
                     //console.log(_self.userInfo)
                     systemUserUserInfoEdit(_self.userInfo).then(res=>{
-                            if(res.code ==2000) {
+                            if(res.code === 2000) {
                                 this.$message.success(res.msg)
                                 _self.getCurrentUserInfo()
                             } else {
@@ -167,7 +167,11 @@
               if (name === 'info') {
                 _self.getCurrentUserInfo()
               } else {
-                _self.userPasswordForm = {}
+                _self.userPasswordInfo = {
+                  oldPassword: '',
+                  newPassword: '',
+                  newPassword2: ''
+                }
               }
             },
             // tab切换,默认切换清除原字符

@@ -88,34 +88,34 @@ const routes = [
           index: '/userManageCrud',
         }
       },
-        {
-            path: '/carouselSettingsimg',
-            name: 'carouselSettingsimg',
-            component: () => import('../views/platformSettings/carouselSettingsimg.vue'),
-            meta: {
-                requireAuth: true,
-                index: '/carouselSettingsimg',
-            }
-        },
-        {
-            path: '/platformSettingsother',
-            name: 'platformSettingsother',
-            component: () => import('../views/platformSettings/platformSettingsother.vue'),
-            meta: {
-                requireAuth: true,
-                index: '/platformSettingsother',
-            }
-        },
+        // {
+        //     path: '/carouselSettingsimg',
+        //     name: 'carouselSettingsimg',
+        //     component: () => import('../views/platformSettings/carouselSettingsimg.vue'),
+        //     meta: {
+        //         requireAuth: true,
+        //         index: '/carouselSettingsimg',
+        //     }
+        // },
+        // {
+        //     path: '/platformSettingsother',
+        //     name: 'platformSettingsother',
+        //     component: () => import('../views/platformSettings/platformSettingsother.vue'),
+        //     meta: {
+        //         requireAuth: true,
+        //         index: '/platformSettingsother',
+        //     }
+        // },
 
-      {
-        path: '/userFeekback',
-        name: 'userFeekback',
-        component: () => import('../views/userFeekback/userFeekback.vue'),
-        meta: {
-          requireAuth: true,
-          index: '/userFeekback',
-        }
-      },
+      // {
+      //   path: '/userFeekback',
+      //   name: 'userFeekback',
+      //   component: () => import('../views/userFeekback/userFeekback.vue'),
+      //   meta: {
+      //     requireAuth: true,
+      //     index: '/userFeekback',
+      //   }
+      // },
       // 系统管理
       {
         path: '/departmentManage',
@@ -183,15 +183,15 @@ const routes = [
           index: '/messagTemplate',
         }
       },
-      {
-        path: '/messagNotice',
-        name: 'messagNotice',
-        component: () => import('../views/messageCenter/messagNotice.vue'),
-        meta: {
-          requireAuth: true,
-          index: '/messagNotice',
-        }
-      },
+      // {
+      //   path: '/messagNotice',
+      //   name: 'messagNotice',
+      //   component: () => import('../views/messageCenter/messagNotice.vue'),
+      //   meta: {
+      //     requireAuth: true,
+      //     index: '/messagNotice',
+      //   }
+      // },
       {
         path: '/personalCenter',
         name: 'personalCenter',
@@ -222,12 +222,12 @@ const autoRouters = getAutoRouterList(names)
 function getAutoRouterList(names) {
     const routerList = [];
     names.forEach((name, index) => {
-        if(name.indexOf("/components/")==-1 && name !='./index.vue' &&  name !='./login.vue' &&  name !='./lyterminal.vue'){
+        if(name.indexOf("/components/")===-1 && name !=='./index.vue' &&  name !=='./login.vue' &&  name !=='./lyterminal.vue'){
             let isSame = false
             const componentConfig = requireComponent(name)
             const componentName = name.split('/').pop()?.split('.')[0]//根据路径截取name文件名（去除后缀和前面目录）
             for(var i=0;i<routes.length;i++){
-                if(routes[i].path=="/"||routes[i].path=="/login" ||routes[i].path=="/lyterminal"){
+                if(routes[i].path==="/"||routes[i].path==="/login" ||routes[i].path==="/lyterminal"){
                     continue
                 }
                 if(routes[i].name === componentName){
@@ -259,7 +259,7 @@ function getAutoRouterList(names) {
 
     });
     for(var t=0;t<routes.length;t++){
-        if(routes[t].path == '/index'){
+        if(routes[t].path === '/index'){
             routerList.forEach(drouter=>{
                 routes[t].children.push(drouter)
             })
@@ -281,12 +281,12 @@ const router = createRouter({
 function isRouterNameExist(name){
     let isExist = false
     if(name){
-        if(routes.some(item=> name == item.name)){
+        if(routes.some(item=> name === item.name)){
             return true
         }
-        for(var t=0;t<routes.length;t++){
+        for(let t=0; t<routes.length; t++){
             if(routes[t].children && routes[t].children.length>0){
-                if(routes[t].children.some(item=> name == item.name)){
+                if(routes[t].children.some(item=> name === item.name)){
                     isExist = true
                     break
                 }
@@ -301,12 +301,12 @@ function isRouterNameExist(name){
 function isRouterPathExist(path){
     let isExist = false
     if(path){
-        if(routes.some(item=>path == item.path)){
+        if(routes.some(item=>path === item.path)){
             return true
         }
         for(var t=0;t<routes.length;t++){
             if(routes[t].children && routes[t].children.length>0){
-                if(routes[t].children.some(item=> path == item.path)){
+                if(routes[t].children.some(item=> path === item.path)){
                     isExist = true
                     break
                 }
@@ -332,7 +332,7 @@ router.beforeEach((to, from, next) => {
     if (to.meta.requireAuth) { // 判断该路由是否需要登录权限
         if (userId) { // 通过vuex state获取当前的token是否存在
             let menuList = JSON.parse(getStorage('menuList'))
-            if(menuList && (menuList.filter(item=>item.url == to.name).length > 0 || (whiteList.indexOf(to.name) !== -1))) {
+            if(menuList && (menuList.filter(item=>item.url === to.name).length > 0 || (whiteList.indexOf(to.name) !== -1))) {
                 if(to.path){
                     next()
                 }else if(isRouterPathExist(to.path)){
@@ -354,7 +354,7 @@ router.beforeEach((to, from, next) => {
             })
         }
     } else {
-        if(to.path=="/login" ||to.path=="/"){
+        if(to.path==="/login" ||to.path==="/"){
             if(userId){
                 let tabsValue = getStorage("TabsValue")
                 if(tabsValue){

@@ -139,3 +139,18 @@ def minion_list():
 #                 return response_data
 #             except Exception as e:
 #                 return False
+
+@shared_task(bind=True, name='命令')
+def cmd(self, periodic_name='未命名', tgt='*', tgt_type='glob', execute_cmd=''):
+    # periodic_name参数是为了给signals.py里结果入库之前修改task_name使得生成的结果task_name个性化使用的
+    with requests.Session() as s:
+        saltapi = SaltAPI(session=s)
+        response_data = saltapi.cmd_run_api(tgt=tgt, tgt_type=tgt_type,
+                                            arg=[execute_cmd, "shell='/bin/bash'",
+                                                 "runas='root'"])
+        # 当调用api失败的时候会返回false
+        if response_data['status'] is False:
+            return '任务执行后台出错_error(1)，请联系管理员'
+        else:
+            response_data = response_data['results']['return'][0]
+            return response_data

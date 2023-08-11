@@ -1,5 +1,7 @@
 import requests
 import re
+import logging
+from django.conf import settings
 from django.http import HttpResponse
 from django.views import View
 from django.db import IntegrityError
@@ -8,14 +10,14 @@ from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 from . import serializers
-from .models import ZoneList, ZoneMergeList
+from .models import ZoneList, ZoneMergeList, Version, ZoneMove
 from .filters import ZoneMergeFilter, ZoneListFilter
 from apps.salt_dev.salt_api import SaltAPI
 from apps.salt_dev.models import MinionList
 from utils.pagination import CustomPagination
 from utils import batchCreate, yamls
-from config import DATABASE_HOST
-import logging
+
+
 logger = logging.getLogger("salt")
 logger1 = logging.getLogger("batch_cmd")
 
@@ -60,7 +62,7 @@ class ZoneListViewSet(viewsets.ModelViewSet):
         minionList = MinionList.objects.all()
         ip = minionList.get(minion_id=minion_id).ip
         domain = minionList.get(minion_id=minion_id).do_main
-        request.data.update({"ip": ip, "db": DATABASE_HOST, "domain": domain})
+        request.data.update({"ip": ip, "db": settings.GAME_DATABASE_IP, "domain": domain})
         
         id_list = MinionIdList(minion_id)
         if ids in id_list:
@@ -96,20 +98,6 @@ class ZoneListViewSet(viewsets.ModelViewSet):
         except Exception as e:
             logger.error(e)
             return Response({'results': '删除失败 ' + str(e), 'status': False})
-    
-    def get_queryset(self):
-        m_zone = self.request.GET.get('merge_status')
-        if m_zone != '' and int(m_zone) == 1:
-            queryset = ZoneList.objects.exclude(m_zone=0)
-            print(queryset)
-            return queryset
-        if m_zone != '' and int(m_zone) == 0:
-            queryset = ZoneList.objects.filter(m_zone=0)
-            return queryset
-        
-        queryset = self.queryset.all()
-            
-        return queryset
     
 
 # class ZoneListMinionViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
@@ -229,7 +217,7 @@ class BeployZoneViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
         domain = MinionList.objects.get(minion_id=minion_id).do_main
         try:
             # 写入pillar中的zones
-            data = {'name': name, 'ip': ip, 'host': minion_id, 'db': DATABASE_HOST, 'id': id}
+            data = {'name': name, 'ip': ip, 'host': minion_id, 'db': settings.GAME_DATABASE_IP, 'id': id}
             yamls.update_yaml('create', zone_id, data)
         except Exception as e:
             yamls.update_yaml('delete', zone_id)
@@ -247,7 +235,7 @@ class BeployZoneViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
         else:
             response_data = response_data['return'][0]
         # 安装
-        version = "0.7.98.22112103"
+        version = Version.objects.filter(id=1).get().version
         i_arg = ['game.install', 'pillar={"zone": "%s", "version": "%s", "env": "zones"}' % (zone_id, version)]
         i_data = {'client': "local", 'fun': 'state.apply', 'arg': i_arg, 'tgt': tgt, 'tgt_type': 'glob'}
         response_data2 = salt_sls(i_data)
@@ -267,7 +255,7 @@ class BeployZoneViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
             # 移入pillar中的zones_wait
             yamls.move_yaml(zone_id)
             # 写入
-            data = {'name': name, 'ip': ip, 'host': minion_id, 'db': DATABASE_HOST, 'id': id, 'domain': domain, 'zone_id': zone_id}
+            data = {'name': name, 'ip': ip, 'host': minion_id, 'db': settings.GAME_DATABASE_IP, 'id': id, 'domain': domain, 'zone_id': zone_id}
             yamls.extend_json("create", data)
         except Exception as e:
             logger.error(e)
@@ -290,52 +278,74 @@ class BatchBeployViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
         zoneList = ZoneList.objects.all()
         zones = zoneList.filter(status=0)
         minionList = MinionList.objects.all()
-        if zones:
-            for i in zones:
-                # 添加配置信息
-                name = i.name
-                id = i.id
-                ip = minionList.get(minion_id=i.minion_id).ip
-                domain = minionList.get(minion_id=i.minion_id).do_main
-                try:
-                    # 写入pillar中的zones
-                    data = {'name': name, 'ip': ip, 'host': i.minion_id.minion_id, 'db': "192.168.123.132", 'id': id}
-                    yamls.update_yaml('create', i.zone_id, data)
-                except Exception as e:
-                    yamls.update_yaml('delete', i.zone_id)
-                    logger1.error(e)
-                    return Response({'results': '写入 zones 失败 ' + str(e), 'status': False})
+        version = Version.objects.filter(id=1).get().version
+        from channels.layers import get_channel_layer
+        from asgiref.sync import async_to_sync
+        channel_layer = get_channel_layer()
+        # response_data = {"message": "test"}
+        response_data = {'return': [{'game-1': {'cron_|-start backupdb 3_|-cd /data/zones/pok3/db ; sh backupdb.sh -h 192.168.123.132 -u root -p Dm2018Pwd123 -z 3 -d /data/backup/db/1_|-present': {'changes': {}, 'comment': 'Cron cd /data/zones/pok3/db ; sh backupdb.sh -h 192.168.123.132 -u root -p Dm2018Pwd123 -z 3 -d /data/backup/db/1 already present', 'name': 'cd /data/zones/pok3/db ; sh backupdb.sh -h 192.168.123.132 -u root -p Dm2018Pwd123 -z 3 -d /data/backup/db/1', 'result': True, '__sls__': 'game.start-backupdb', '__run_num__': 0, 'start_time': '22:21:04.467794', 'duration': 78.019, '__id__': 'start backupdb 3'}}}]}
+        async_to_sync(channel_layer.group_send)("log_channel",{
+            "type": "log_message",
+            "text": response_data,
+        })
+
+        # if zones:
+        #     for i in zones:
+        #         # 添加配置信息
+        #         name = i.name
+        #         id = i.id
+        #         ip = minionList.get(minion_id=i.minion_id).ip
+        #         domain = minionList.get(minion_id=i.minion_id).do_main
+        #         try:
+        #             # 写入pillar中的zones
+        #             data = {'name': name, 'ip': ip, 'host': i.minion_id.minion_id, 'db': settings.GAME_DATABASE_IP, 'id': id}
+        #             yamls.update_yaml('create', i.zone_id, data)
+        #         except Exception as e:
+        #             yamls.update_yaml('delete', i.zone_id)
+        #             logger1.error(e)
+        #             return Response({'results': '写入 zones 失败 ' + str(e), 'status': False})
                 
-                tgt = '%s' % i.minion_id.minion_id
-                arg = ['game.create', 'pillar={"zone": "%s"}' % i.zone_id]
-                data = {'client': "local", 'fun': 'state.apply', 'arg': arg, 'tgt': tgt, 'tgt_type': 'glob'}
-                response_data = salt_sls(data)
-                logger1.debug(response_data)
+        #         tgt = '%s' % i.minion_id.minion_id
+        #         arg = ['game.create', 'pillar={"zone": "%s"}' % i.zone_id]
+        #         data = {'client': "local", 'fun': 'state.apply', 'arg': arg, 'tgt': tgt, 'tgt_type': 'glob'}
+        #         response_data = salt_sls(data)
+        #         async_to_sync(channel_layer.group_send)("log_channel",{
+        #             "type": "log_message",
+        #             "text": response_data,
+        #         })
+        #         logger1.debug(response_data)
             
-                version = "0.7.98.22112103"
-                i_arg = ['game.install', 'pillar={"zone": "%s", "version": "%s", "env": "zones"}' % (i.zone_id, version)]
-                i_data = {'client': "local", 'fun': 'state.apply', 'arg': i_arg, 'tgt': tgt, 'tgt_type': 'glob'}  
-                response_data2 = salt_sls(i_data)
-                logger1.debug(response_data2)
+        #         # version = "0.7.98.22112103"
+        #         i_arg = ['game.install', 'pillar={"zone": "%s", "version": "%s", "env": "zones"}' % (i.zone_id, version)]
+        #         i_data = {'client': "local", 'fun': 'state.apply', 'arg': i_arg, 'tgt': tgt, 'tgt_type': 'glob'}
+        #         response_data2 = salt_sls(i_data)
+        #         async_to_sync(channel_layer.group_send)("log_channel",{
+        #             "type": "log_message",
+        #             "text": response_data2,
+        #         })
+        #         logger1.debug(response_data2)
                 
-                zoneList.filter(zone_id=i.zone_id).update(status=1)
+        #         zoneList.filter(zone_id=i.zone_id).update(status=1)
                 
-                b_arg = ['game.start-backupdb', 'pillar={"zone": "%s"}' % i.zone_id]
-                b_data = {'client': "local", 'fun': 'state.apply', 'arg': b_arg, 'tgt': tgt, 'tgt_type': 'glob'}
-                response_data3 = salt_sls(b_data)
+        #         b_arg = ['game.start-backupdb', 'pillar={"zone": "%s"}' % i.zone_id]
+        #         b_data = {'client': "local", 'fun': 'state.apply', 'arg': b_arg, 'tgt': tgt, 'tgt_type': 'glob'}
+        #         response_data3 = salt_sls(b_data)
+        #         async_to_sync(channel_layer.group_send)("log_channel",{
+        #             "type": "log_message",
+        #             "text": response_data3,
+        #         })
+        #         logger1.debug(response_data3)
                 
-                logger1.debug(response_data3)
-                
-                try:
-                    # 移入pillar中的zones_wait
-                    yamls.move_yaml(i.zone_id)
-                    data = {'name': name, 'ip': ip, 'host': i.minion_id.minion_id, 'db': DATABASE_HOST, 'id': id, 'domain': domain, 'zone_id': i.zone_id}
-                    yamls.extend_json("create", data)
-                except Exception as e:
-                    logger1.error(e)
-                    return Response({'results': '插入 zones_wait 失败 ' + str(e), 'status': False})
-        else:
-            return Response({'results': "没有未创建的区服", 'status': False})
+        #         try:
+        #             # 移入pillar中的zones_wait
+        #             yamls.move_yaml(i.zone_id)
+        #             data = {'name': name, 'ip': ip, 'host': i.minion_id.minion_id, 'db': settings.GAME_DATABASE_IP, 'id': id, 'domain': domain, 'zone_id': i.zone_id}
+        #             yamls.extend_json("create", data)
+        #         except Exception as e:
+        #             logger1.error(e)
+        #             return Response({'results': '插入 zones_wait 失败 ' + str(e), 'status': False})
+        # else:
+        #     return Response({'results': "没有未创建的区服", 'status': False})
         return Response({'results': "批量创建成功", 'status': True})
 
 
@@ -409,7 +419,6 @@ def checkInfo(mzone, cozone):
     
     zones = ZoneList.objects.filter(m_zone=0).filter(status=1).values('zone_id')
     zone_ids = [item['zone_id'] for item in zones]
-    print(mzone)
     if mzone not in zone_ids:
         return ({'results': "合服信息错误，主区 %s 不存在或已被合并" % mzone, 'status': False})
     
@@ -475,13 +484,11 @@ class ZoneMergeExeViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
             logs.append(merge_response)
             key_name = list(merge_response['return'][0][tgt].keys())
             if merge_response['return'][0][tgt][key_name[0]]['changes']['retcode'] != 0:
-                print("合服失败")
                 return Response({'results': {"backupdb": backupdb_response, "merge": logs}, 'status': 'failure'})
             
             # 修改历史被合区服
             old_cozone = zoneList.filter(m_zone=i).values('zone_id')
             if old_cozone != None:
-                print("old_cozone")
                 old_cozone_ids = [item['zone_id'] for item in old_cozone]
                 yamls.update_json(mzone, old_cozone_ids)
             
@@ -527,4 +534,96 @@ class BatchZoneMergeViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
             print(f'Error occurred during bulk create: {str(e)}')
             return Response({'results': "创建失败, %s" % e, 'status': False})
         
+        
+class VersionViewSet(mixins.UpdateModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+    """
+    版本号
+    """
+    queryset = Version.objects.all()
+    serializer_class = serializers.VersionSerializer
+    
+    def update(self, request, *args, **kwargs):
+        partial = kwargs.pop('partial', False)
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=partial)
+
+        if serializer.is_valid():
+            self.perform_update(serializer)
+            if getattr(instance, '_prefetched_objects_cache', None):
+                # If 'prefetch_related' has been applied to a queryset, we need to
+                # forcibly invalidate the prefetch cache on the instance.
+                instance._prefetched_objects_cache = {}
+            return Response({'results': "更新成功", 'status': True})
+        else:
+            return Response({'results': serializer.errors, 'status': False})
+    
+    
+class ZoneMoveListViewSet(viewsets.ModelViewSet):
+    queryset = ZoneMove.objects.all()
+    serializer_class = serializers.ZoneMoveSerializer
+    
+    def create(self, request, *args, **kwargs):
+        zone_id = request.data.get("zone_id")
+        minion_id = request.data.get("tg_minion")
+        id = request.data.get("port_id")
+        # 判断是否被合并
+        if ZoneList.objects.filter(zone_id=zone_id).get().m_zone == 1:
+            return Response({'results': "已被合并", 'status': False})
+        id_list = MinionIdList(minion_id)
+        # 判断是否重复
+        if id in id_list:
+            return Response({'results': "ID重复", 'status': False})
+        
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            self.perform_create(serializer)
+            return Response({'results': "添加成功", 'status': True})
+        else:
+            return Response({'results': serializer.errors, 'status': False})
+    
+    def update(self, request, *args, **kwargs):
+        partial = kwargs.pop('partial', False)
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=partial)
+
+        if serializer.is_valid():
+            self.perform_update(serializer)
+            if getattr(instance, '_prefetched_objects_cache', None):
+                # If 'prefetch_related' has been applied to a queryset, we need to
+                # forcibly invalidate the prefetch cache on the instance.
+                instance._prefetched_objects_cache = {}
+            return Response({'results': "更新成功", 'status': True})
+        else:
+            return Response({'results': serializer.errors, 'status': False})
+        
+        
+# class TestViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
+#     """
+#     """
+#     queryset = ZoneMergeList.objects.all()
+#     serializer_class = serializers.ZoneMergeSerializer
+    
+#     def create(self, request, *args, **kwargs):
+#         from apps.salt_dev.tasks import cmd
+#         r = cmd.delay(execute_cmd="sleep 30")
+        
+#         return Response({'results': "ok", 'status': True})
+        
+
+# class Test2ViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
+#     queryset = ZoneMergeList.objects.all()
+#     serializer_class = serializers.ZoneMergeSerializer
+    
+#     def create(self, request, *args, **kwargs):
+#         import signal
+#         from celery.result import AsyncResult
+#         # from django.db import close_old_connections
+#         # close_old_connections()
+        
+#         print("close_old_connections")
+#         result = AsyncResult(request.data.get('task_id'))
+#         result.revoke(terminate=True, signal=signal.SIGKILL)
+#         from django.db import connection
+#         connection.close()
+#         return Response({'results': "ok", 'status': True})
         

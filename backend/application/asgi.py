@@ -17,7 +17,7 @@ from channels.auth import AuthMiddlewareStack
 from utils.middleware import JwtAuthMiddleware
 from channels.routing import ProtocolTypeRouter, URLRouter
 from apps.lywebsocket.routing import websocket_urlpatterns
-from apps.tailf import routing
+from apps.zones import routing
 
 # application = get_asgi_application()
 

@@ -26,6 +26,7 @@
 
 <script>
     import {systemButtonAdd,systemButtonEdit} from '@/api/api'
+    import {deepClone} from "@/utils/util"
     export default {
         emits: ['refreshData'],
         name: "addButton",
@@ -51,19 +52,23 @@
             }
         },
         methods:{
-            getName(e) {
-                this.formData.value=e
-                this.formData.name=this.buttonList.filter(item=>item.value==e)[0].name
-            },
-            handleClose() {
-                this.dialogVisible=false
-            },
+          getName(e) {
+              this.formData.value=e
+              this.formData.name=this.buttonList.filter(item=>item.value===e)[0].name
+          },
+          handleClose() {
+            this.formData={
+              name: '',
+              value:'',
+            }
+            this.dialogVisible=false
+            this.$emit('refreshData')
+          },
             addButtonFn(item,flag,menu) {
                 this.dialogVisible=true
                 this.dialogTitle=flag
-                this.formData=item ? item : {
-                    name: '',
-                    value:'',
+                if(item){
+                  this.formData= deepClone(item)
                 }
             },
             submitData() {
@@ -74,13 +79,12 @@
                 this.$refs['rulesForm'].validate(obj=>{
                     if(obj) {
                         this.loadingSave=true
-                        if(this.dialogTitle=="新增"){
+                        if(this.dialogTitle==="新增"){
                             systemButtonAdd(param).then(res=>{
                                 this.loadingSave=false
-                                if(res.code ==2000) {
-                                    this.$message.success(res.msg)
-                                    this.dialogVisible=false
-                                    this.$emit('refreshData')
+                                if(res.code ===2000) {
+                                  this.$message.success(res.msg)
+                                  this.handleClose()
                                 } else {
                                     this.$message.warning(res.msg)
                                 }
@@ -88,10 +92,9 @@
                         }else{
                             systemButtonEdit(param).then(res=>{
                                 this.loadingSave=false
-                                if(res.code ==2000) {
-                                    this.$message.success(res.msg)
-                                    this.dialogVisible=false
-                                    this.$emit('refreshData')
+                                if(res.code ===2000) {
+                                  this.$message.success(res.msg)
+                                  this.handleClose()
                                 } else {
                                     this.$message.warning(res.msg)
                                 }

@@ -1,3 +1,4 @@
+import {getStorage} from "@/utils/util"
 //自定义指令插件：用法前面加上v-
 export default {
   install:(app,options)=>{
@@ -53,6 +54,30 @@ export default {
 			}
 		}
 	})
+      //组件按钮等的权限控制，直接去除元素(类似v-if效果)
+      //单个权限验证（v-hasPermission="userManageCrud.Create"）
+      app.directive('hasPermission', {
+          mounted(el, binding) {
+              let btnArr = getStorage('menuList')?JSON.parse(getStorage('menuList')):[];
+              const btnP = binding.value
+              if(btnArr.length && btnP){
+                  let btnPArr =  btnP.split(".")
+                  if(btnPArr.length === 2){
+                      let isShow = false
+                      for (let i = 0; i < btnArr.length; i++) {
+                          if (btnArr[i].url === btnPArr[0] && btnArr[i].menuPermission.includes(btnPArr[1])) {
+                              isShow = true
+                              break
+                          }
+                      }
+                      if(!isShow){
+                          el.parentNode && el.parentNode.removeChild(el);
+                      }
+                  }
+              }
+
+          },
+      })
     // v-dialogDrag: 弹窗拖拽和双击放大属性 （重点！！！ 给模态框添加这个属性模态框就能拖拽了）
     // :destroy-on-close="true" 会导致关闭打开后拖拽事件失效
 	app.directive('dialogDrag', {

@@ -98,7 +98,7 @@
 </template>
 <script>
     import addMenu from "./components/addMenu";
-    import {dateFormats,getTableHeight} from "@/utils/util";
+    import {dateFormats, getTableHeight, setStorage} from "@/utils/util";
     import {apiSystemMenu,apiSystemMenuDelete,apiSystemWebRouter} from '@/api/api'
     import XEUtils from "xe-utils";
     export default {
@@ -150,22 +150,22 @@
                 this.$refs.addMenuFlag.addMenuFn(null,'新增')
             },
             handleEdit(row,flag) {
-                if(flag=='edit') {
+                if(flag ==='edit') {
                     this.$refs.addMenuFlag.addMenuFn(row,'编辑')
                 }
-                else if(flag == 'detail') {
+                else if(flag === 'detail') {
                     this.$refs.addMenuFlag.addMenuFn(row,'详情')
                 }
-                else if(flag == 'buttonConfig') {
+                else if(flag === 'buttonConfig') {
                     this.$router.push({name:'buttonConfig',params:{id:row.id,name:row.name}})
                 }
-                else if(flag=='delete') {
+                else if(flag ==='delete') {
                     let vm = this
                     vm.$confirm('您确定要删除选中的菜单？',{
                         closeOnClickModal:false
                     }).then(()=>{
                         apiSystemMenuDelete({id:row.id}).then(res=>{
-                            if(res.code == 2000) {
+                            if(res.code === 2000) {
                                 vm.$message.success(res.msg)
                                 vm.refreshData()
                             } else {
@@ -177,7 +177,7 @@
 
                     })
                 }
-                else if(flag=="reset"){
+                else if(flag === "reset"){
                     this.formInline = {
                         page:1,
                         limit: 9999
@@ -195,7 +195,7 @@
                 this.loadingPage = true
                 apiSystemMenu(this.formInline).then(res => {
                      this.loadingPage = false
-                     if(res.code ==2000) {
+                     if(res.code === 2000) {
                          // let childrenList = res.data.data.filter(item=> item.parent)
                          // let parentList = res.data.data.filter(item=> !item.parent)
                          // if(parentList.length >0) {
@@ -222,24 +222,25 @@
             },
             // 重新获取左侧菜单信息
             getMenu() {
+              console.log("test")
                 apiSystemWebRouter().then(res=>{
-                    if(res.code == 2000) {
+                    if(res.code === 2000) {
                         let menuTree = []
                         if(res.data.data.length > 0) {
-                            let childrenList = res.data.data.filter(item=> item.parent && item.visible == 1)
-                            let parentList = res.data.data.filter(item=> !item.parent && item.visible == 1)
+                            let childrenList = res.data.data.filter(item=> item.parent && item.visible === 1)
+                            let parentList = res.data.data.filter(item=> !item.parent && item.visible === 1)
                             if(parentList.length >0) {
                                 parentList.forEach(item=>{
                                     let menuTreeChildren=[]
-                                    let children = childrenList.filter(itema=>itema.parent == item.id)
+                                    let children = childrenList.filter(itema=>itema.parent === item.id)
                                     let children2 = childrenList.filter((item)=>{
                                         return children.every((item1)=>{
-                                            return item.path != item1.path;
+                                            return item.path !== item1.path;
                                         })
                                     })
                                     children.forEach(itemb=>{
                                         let cmenuTreeChildren=[]
-                                        let cchildren = children2.filter(itemc=>itemc.parent == itemb.id)
+                                        let cchildren = children2.filter(itemc=>itemc.parent === itemb.id)
                                         cchildren.forEach(itemd=>{
                                             cmenuTreeChildren.push(({
                                                 text:itemd.name,
@@ -309,7 +310,7 @@
 				})
 			},
             getTheTableHeight(){
-                this.tableHeight =  getTableHeight(this.$refs.tableSelect.offsetHeight-70)
+              this.tableHeight =  getTableHeight(this.$refs.tableSelect.offsetHeight-50)
 
             }
         },

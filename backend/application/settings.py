@@ -12,9 +12,13 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 import sys
 from pathlib import Path
+import configparser
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+conf = configparser.ConfigParser()
+conf.read(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'admin_conf.ini'))
 
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 sys.path.insert(1, os.path.join(BASE_DIR, 'extra_apps'))
@@ -23,7 +27,7 @@ sys.path.insert(1, os.path.join(BASE_DIR, 'extra_apps'))
 # ******************** 动态配置 ******************** #
 # ================================================= #
 
-from config import *
+# from config import *
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -36,8 +40,44 @@ DEBUG = locals().get("DEBUG", True)
 
 ALLOWED_HOSTS = ["*"]
 
-# Application definition
+# 全局配置
+# salt-api地址
+SITE_SALT_API_URL = conf.get('global', 'SITE_SALT_API_URL')
+# salt-api用户
+SITE_SALT_API_NAME = conf.get('global', 'SITE_SALT_API_NAME')
+# salt-api密码
+SITE_SALT_API_PWD = conf.get('global', 'SITE_SALT_API_PWD')
+# salt-api的token，不需要填写
+SITE_SALT_API_TOKEN = ''
+# salt服务端安装的minion的id，服务端也要安装一下minion，有很多用到的时候
+SITE_SALT_MASTER = conf.get('global', 'SITE_SALT_MASTER')
+# salt服务端IP，salt-ssh等调用
+SITE_SALT_MASTER_IP = conf.get('global', 'SITE_SALT_MASTER_IP')
+# salt的pillar路径
+PILLAR_PATH = conf.get('global', 'PILLAR_PATH')
+PILLAR = conf.get('global', 'PILLAR')
+# server_list 路径
+SERVER_LIST_PATH = conf.get('global', 'SERVER_LIST_PATH')
+SERVER_LIST_NAME = conf.get('global', 'SERVER_LIST_NAME')
+# 游戏
+GAME_NAME = conf.get('global', 'GAME_NAME')
+# 游戏进程数
+GAME_PROCESS = conf.getint('global', 'GAME_PROCESS')
+# redis的url
+REDIS_URL = f'redis://:%s@%s:%s' % (conf.get('redis', 'REDIS_PASSWORD'),
+                                    conf.get('redis', 'REDIS_HOST_NAME'),
+                                    conf.get('redis', 'REDIS_PORT'))
+# 游戏服数据库地址
+GAME_DATABASE_IP = conf.get('global', 'GAME_DATABASE_IP')
+# 单点登陆
+IS_SINGLE_TOKEN = conf.get('global', 'IS_SINGLE_TOKEN')
+DOMAIN_HOST = "http://127.0.0.1:8000"
+FRONTEND_API_LIST = ['/api/app/','/api/xcx/','/api/h5/']
+EXEC_LOG_PATH = os.path.join(BASE_DIR, 'logs', 'lybbnexec.log')
+TEMP_EXEC_PATH = os.path.join(BASE_DIR, 'logs')
+ALLOW_FRONTEND = True
 
+# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -121,19 +161,34 @@ WSGI_APPLICATION = 'application.wsgi.application'
 # mysql
 DATABASES = {
     'default': {
-        'ENGINE': DATABASE_ENGINE,
-        'NAME': DATABASE_NAME,
-        'USER': DATABASE_USER,
-        'PASSWORD': DATABASE_PASSWORD,
-        'HOST': DATABASE_HOST,
-        'PORT': DATABASE_PORT,
-        'CONN_MAX_AGE': DATABASE_CONN_MAX_AGE,
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': conf.get('mysql', 'MYSQL_DB_NAME'),
+        'USER': conf.get('mysql', 'MYSQL_USER'),
+        'PASSWORD': conf.get('mysql', 'MYSQL_PASSWORD'),
+        'HOST': conf.get('mysql', 'MYSQL_HOST_NAME'),
+        'PORT': conf.get('mysql', 'MYSQL_PORT'),
+        'CONN_MAX_AGE': conf.getint('mysql', 'DATABASE_CONN_MAX_AGE'),
         'OPTIONS': {
-            'charset': DATABASE_CHARSET,
+            'charset': conf.get('mysql', 'DATABASE_CHARSET'),
             'init_command': 'SET default_storage_engine=INNODB',  # innodb才支持事务
         }
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': DATABASE_ENGINE,
+#         'NAME': DATABASE_NAME,
+#         'USER': DATABASE_USER,
+#         'PASSWORD': DATABASE_PASSWORD,
+#         'HOST': DATABASE_HOST,
+#         'PORT': DATABASE_PORT,
+#         'CONN_MAX_AGE': DATABASE_CONN_MAX_AGE,
+#         'OPTIONS': {
+#             'charset': DATABASE_CHARSET,
+#             'init_command': 'SET default_storage_engine=INNODB',  # innodb才支持事务
+#         }
+#     }
+# }
 AUTH_USER_MODEL = 'mysystem.Users'
 USERNAME_FIELD = 'username'
 ALL_MODELS_OBJECTS = []  # 所有app models 对象
@@ -441,9 +496,9 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.IsAuthenticated',
         # 不限制访问用下面这个,默认不设置就是这个了
-        # 'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.AllowAny',
     ),
     # 限速设置
     # 'DEFAULT_THROTTLE_CLASSES': (
@@ -540,7 +595,7 @@ CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'  # 加减乘除验证
 # ================================================= #
 CELERY_TIMEZONE = 'Asia/Shanghai'  # celery 时区问题
 # CELERY_BROKER_URL = 'redis://127.0.0.1:6379/10'  # Broker配置，使用Redis作为消息中间件(无密码)
-CELERY_BROKER_URL = 'redis://:{}@localhost:6379/10'.format('123456')  #lybbn 代表 账号（没有可省略）  {} 存放密码  127.0.0.1连接的 ip  6379端口  10 redis库
+CELERY_BROKER_URL = f'{REDIS_URL}/10'  #lybbn 代表 账号（没有可省略）  {} 存放密码  127.0.0.1连接的 ip  6379端口  10 redis库
 # CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/11' # 把任务结果存在了Redis
 CELERY_RESULT_BACKEND = 'django-db'  # celery结果存储到数据库中django-db
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'  # Backend数据库
@@ -559,6 +614,7 @@ CELERYD_MAX_TASKS_PER_CHILD = 100  # worker执行100个任务自动销毁，防�
 CELERYD_TASK_SOFT_TIME_LIMIT = 6000  # 单个任务的运行时间不超过此值(秒)，否则会抛出(SoftTimeLimitExceeded)异常停止任务
 CELERY_DISABLE_RATE_LIMITS = True  # 即使任务设置了明确的速率限制，也禁用所有速率限制。
 CELERYD_WORKER_LOST_WAIT_TIME = 30
+CELERY_TASK_RESULT_EXPIRES = 0
 # ================================================= #
 # ******************** 其他配置 ******************** #
 # ================================================= #

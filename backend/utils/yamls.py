@@ -1,6 +1,7 @@
 import json
 import yaml
 import time
+from django.conf import settings
 
 
 def sql_to_yaml(data):
@@ -22,7 +23,7 @@ def get_data(filename):
 
 
 def check_yaml(zones_list):
-    data = get_data("/data/salt/pillar/game.sls")
+    data = get_data(settings.PILLAR_PATH+settings.PILLAR)
     for i in zones_list:
         if i in data['game']['zones'].keys():
             return "", True
@@ -34,9 +35,9 @@ def check_yaml(zones_list):
             return "区服不存在", False
 
 def update_yaml(t, zone_id, v):
-    data = get_data("/data/salt/pillar/game.sls")
+    data = get_data(settings.PILLAR_PATH+settings.PILLAR)
     new_data = {int(zone_id): v}
-    backup_file("yaml", "game.sls")
+    backup_file("yaml", settings.PILLAR)
     if 'zones' not in data['game'].keys():
         data['game'].update({'zones': new_data})
     else:
@@ -44,23 +45,23 @@ def update_yaml(t, zone_id, v):
             data['game']['zones'].update(new_data)
         else:
             data['game']['zones'].pop(int(zone_id))
-    with open("/data/salt/pillar/game.sls", "w", encoding='utf-8') as f:
+    with open(settings.PILLAR_PATH+settings.PILLAR, "w", encoding='utf-8') as f:
         yaml.dump(data, f, allow_unicode=True, sort_keys=False)
 
 
 def delete_yaml(zones):
-    data = get_data("/data/salt/pillar/game.sls")
-    backup_file("yaml", "game.sls")
+    data = get_data(settings.PILLAR_PATH+settings.PILLAR)
+    backup_file("yaml", settings.PILLAR)
     
     for i in zones:
         data['game']['zones'].pop(int(i))
-    with open("/data/salt/pillar/game.sls", "w", encoding='utf-8') as f:
+    with open(settings.PILLAR_PATH+settings.PILLAR, "w", encoding='utf-8') as f:
         yaml.dump(data, f, allow_unicode=True, sort_keys=False)
 
 
 def move_yaml(zone_id):
-    data = get_data("/data/salt/pillar/game.sls")
-    backup_file("yaml", "game.sls")
+    data = get_data(settings.PILLAR_PATH+settings.PILLAR)
+    backup_file("yaml", settings.PILLAR)
     new_data = {zone_id: data['game']['zones'].pop(int(zone_id))}
     if 'zones_wait' not in data['game'].keys():
         data['game'].update({"zones_wait": new_data})
@@ -68,26 +69,26 @@ def move_yaml(zone_id):
     #     data['game']['zones_wait'].update(new_data)
     else:
         data['game']['zones_wait'].update(new_data)
-    with open("/data/salt/pillar/game.sls", "w", encoding='utf-8') as f:
+    with open(settings.PILLAR_PATH+settings.PILLAR, "w", encoding='utf-8') as f:
         yaml.dump(data, f, allow_unicode=True, sort_keys=False)
     
 
 def batch_create_yaml(t, new_data):
-    data = get_data("/data/salt/pillar/game.sls")
-    backup_file("yaml", "game.sls")
+    data = get_data(settings.PILLAR_PATH+settings.PILLAR)
+    backup_file("yaml", settings.PILLAR)
     if t == 'initial_create':
         data['game'].update({'zones': new_data})
     else:
         data['game']['zones'].update(new_data)
-    with open("/data/salt/pillar/game.sls", "w", encoding='utf-8') as f:
+    with open(settings.PILLAR_PATH+settings.PILLAR, "w", encoding='utf-8') as f:
         yaml.dump(data, f, allow_unicode=True, sort_keys=False)
 
 
 def backup_file(t, filename):
     if t == "yaml":
-        url = "/data/salt/pillar/"
+        url = settings.PILLAR_PATH
     else:
-        url = "/data/ProjectDM/group/"
+        url = settings.SERVER_LIST_PATH
     new_file = url + filename + "." + time.strftime("%Y%m%d%H%M")
 
     with open(url+filename, "r") as old_data:
@@ -96,13 +97,12 @@ def backup_file(t, filename):
 
 
 def extend_json(t, new_data):
-    proj = 'dm'
-    login_num = 4
-    data = get_data("/data/ProjectDM/group/server_list.json")
-    backup_file("json", "server_list.json")
+    proj = settings.GAME_NAME
+    login_num = settings.GAME_PROCESS
+    data = get_data(settings.SERVER_LIST_PATH+settings.SERVER_LIST_NAME)
+    backup_file("json", settings.SERVER_LIST_NAME)
 
     urls_game_list = []
-    print(new_data)
     urls_login_port = 10000 + int(new_data.get('id')) * 10
     urls_game_port = 9000 + int(new_data.get('id')) * 10
     json_data = []
@@ -110,7 +110,7 @@ def extend_json(t, new_data):
     for i in range(0, login_num):
         urls_game_list.append(str(new_data.get('domain')) + ":" + str(urls_game_port))
         urls_game_port += 1
-
+    
     if proj == 'dm':
         json_data.append({"id": int(new_data.get('zone_id')), "name": "Server-" + str(new_data.get('zone_id')), "state": 5,
                           "urls_login": [str(new_data.get('domain')) + ":" + str(urls_login_port)],
@@ -126,27 +126,27 @@ def extend_json(t, new_data):
             data['games'][int(new_data.get('zone_id'))-1] = json_data
         else:
             data['games'].extend(json_data)
-    with open("/data/ProjectDM/group/server_list.json", 'w+') as f:
+    with open(settings.SERVER_LIST_PATH+settings.SERVER_LIST_NAME, 'w+') as f:
         json.dump(data, f, indent=4, separators=(',', ': '), ensure_ascii=False)
 
 
 def batch_extend_json(new_data):
-    proj = 'dm'
-    data = get_data("/data/ProjectDM/group/server_list.json")
-    backup_file("json", "server_list.json")
+    proj = settings.GAME_NAME
+    data = get_data(settings.SERVER_LIST_PATH+settings.SERVER_LIST_NAME)
+    backup_file("json", settings.SERVER_LIST_NAME)
     if proj == "dm":
         data['servers'].extend(new_data)
     elif proj == "pm":
         data['games'].extend(new_data)
         
-    with open("/data/ProjectDM/group/server_list.json", 'w+') as f:
+    with open(settings.SERVER_LIST_PATH+settings.SERVER_LIST_NAME, 'w+') as f:
         json.dump(data, f, indent=4, separators=(',', ': '), ensure_ascii=False)
 
 
 def delete_json(zone_id):
-    proj = 'dm'
-    data = get_data("/data/ProjectDM/group/server_list.json")
-    backup_file("json", "server_list.json")
+    proj = settings.GAME_NAME
+    data = get_data(settings.SERVER_LIST_PATH+settings.SERVER_LIST_NAME)
+    backup_file("json", settings.SERVER_LIST_NAME)
     if proj == 'dm':
         for i in data['servers']:
             if i['id'] == int(zone_id):
@@ -155,13 +155,13 @@ def delete_json(zone_id):
         for i in data['games']:
             if i['id'] == int(zone_id):
                 data['games'].remove(i)
-    with open("/data/ProjectDM/group/server_list.json", 'w+') as f:
+    with open(settings.SERVER_LIST_PATH+settings.SERVER_LIST_NAME, 'w+') as f:
         json.dump(data, f, indent=4, separators=(',', ': '), ensure_ascii=False)
         
 
 def update_json(mzone, cozone_list):
-    data = get_data("/data/ProjectDM/group/server_list.json")
-    backup_file("json", "server_list.json")
+    data = get_data(settings.SERVER_LIST_PATH+settings.SERVER_LIST_NAME)
+    backup_file("json", settings.SERVER_LIST_NAME)
     
     m_server = next((s for s in data['servers'] if s['id'] == mzone), None)
     if m_server:
@@ -169,6 +169,6 @@ def update_json(mzone, cozone_list):
             if s['id'] in cozone_list:
                 s['urls_game'] = m_server['urls_game']
 
-    with open("/data/ProjectDM/group/server_list.json", 'w+') as f:
+    with open(settings.SERVER_LIST_PATH+settings.SERVER_LIST_NAME, 'w+') as f:
         json.dump(data, f, indent=4, separators=(',', ': '), ensure_ascii=False)
 

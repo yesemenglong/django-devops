@@ -30,3 +30,17 @@ class ZoneMergeList(models.Model):
     status = models.IntegerField(default=0, verbose_name='状态')
     create_date = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
     
+
+class Version(models.Model):
+    version = models.CharField(max_length=120, verbose_name='版本号')
+    
+
+class ZoneMove(models.Model):
+    id = models.AutoField(primary_key=True)
+    zone_id = models.IntegerField(verbose_name='ZoneID')
+    # name = models.CharField(max_length=120, verbose_name='Name')
+    tg_minion = models.CharField(max_length=120, blank=True, verbose_name='目标主机')
+    port = models.CharField(max_length=120, verbose_name='ID')
+    status = models.IntegerField(default=0, verbose_name='状态')
+    create_date = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
+    update_time = models.DateTimeField(auto_now=True, verbose_name='最近一次更新时间')

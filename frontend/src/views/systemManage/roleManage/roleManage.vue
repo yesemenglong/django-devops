@@ -16,9 +16,9 @@
                     </el-select>
                 </el-form-item>
                 <el-form-item label="">
-                    <el-form-item label=""><el-button  @click="search" type="primary" icon="Search" v-show="isShowBtn('roleManage','角色管理','Search')">查询</el-button></el-form-item>
-                    <el-form-item label=""><el-button  @click="handleEdit('','reset')" icon="Refresh">重置</el-button></el-form-item>
-                    <el-button size="default" type="primary" @click="addRole(null,'新增')" icon="Plus" v-show="isShowBtn('roleManage','角色管理','Create')">新增</el-button>
+                  <el-button  @click="search" type="primary" icon="Search" v-show="isShowBtn('roleManage','角色管理','Search')">查询</el-button>
+                  <el-button  @click="handleEdit('','reset')" icon="Refresh">重置</el-button>
+                  <el-button size="default" type="primary" @click="addRole(null,'新增')" icon="Plus" v-show="isShowBtn('roleManage','角色管理','Create')">新增</el-button>
                 </el-form-item>
             </el-form>
         </div>
@@ -118,22 +118,24 @@
                 this.$refs.addRoleFlag.addRoleFn(null,'新增')
             },
             handleEdit(row,flag) {
-                if(flag=='edit') {
+                if(flag==='edit') {
                     this.$refs.addRoleFlag.addRoleFn(row,'编辑')
                 }
-                else if(flag == 'detail') {
+                else if(flag === 'detail') {
                     this.$refs.addRoleFlag.addRoleFn(row,'详情')
                 }
-                else if(flag == 'authority') {
-                    this.$router.push({name:'authorityManage',params:{id:row.id}})
+                else if(flag === 'authority') {
+                  // this.$router.push({name:'authorityManage',params:{id:row.id}})//已失效
+                  this.$router.push({name:'authorityManage',state:{id:row.id}})
+                  // this.$router.push({name:'authorityManage',query:{id:row.id}})
                 }
-                else if(flag=='delete') {
+                else if(flag==='delete') {
                     let vm = this
                     vm.$confirm('您确定要删除选中的角色？',{
                         closeOnClickModal:false
                     }).then(()=>{
                         apiSystemRoleDelete({id:row.id}).then(res=>{
-                            if(res.code == 2000) {
+                            if(res.code === 2000) {
                                 vm.$message.success(res.msg)
                                 vm.search()
                             } else {
@@ -144,7 +146,7 @@
 
                     })
                 }
-                else if(flag=="reset"){
+                else if(flag==="reset"){
                     this.formInline = {
                         page:1,
                         limit: 10
@@ -173,7 +175,7 @@
                  this.loadingPage = true
                  apiSystemRole(this.formInline).then(res => {
                      this.loadingPage = false
-                     if(res.code ==2000) {
+                     if(res.code === 2000) {
                          this.tableData = res.data.data;
                          this.pageparm.page = res.data.page;
                          this.pageparm.limit = res.data.limit;

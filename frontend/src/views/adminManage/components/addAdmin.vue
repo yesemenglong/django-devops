@@ -26,7 +26,10 @@
                     </el-checkbox-group>
                 </el-form-item>
                 <el-form-item label="部门：" prop="dept">
-                    <el-cascader :show-all-levels="false" style="width: 100%" v-model="formData.dept" :props="{checkStrictly: true ,label:'name',value:'id'}" :options="options" clearable></el-cascader>
+                  <el-tree-select v-model="formData.dept" node-key="id" :data="options"
+                                  check-strictly filterable clearable :render-after-expand="false"
+                                  :props="{label:'name',value: 'id'}"
+                                  style="width: 100%" placeholder="请选择" />
                 </el-form-item>
                 <el-form-item label="状态：" prop="is_active">
                     <el-switch
@@ -46,7 +49,9 @@
 
 <script>
     import {apiSystemUserAdd,apiSystemUserEdit,apiSystemRole,apiSystemDept} from "@/api/api";
-    import LyDialog from "../../../components/dialog/dialog";
+    import LyDialog from "@/components/dialog/dialog";
+    import XEUtils from "xe-utils";
+    import {deepClone} from "@/utils/util";
     export default {
         components: {LyDialog},
         emits: ['refreshData'],
@@ -92,24 +97,19 @@
                 this.$emit('refreshData')
             },
             addAdminFn(item,flag) {
-                this.getapiSystemRole()
-                this.getapiSystemDept()
-                this.loadingTitle=flag
-                this.dialogVisible=true
-                // console.log(item,'item----')
-                // if(item && item.dept) {
-                //     item.dept = item.dept.split(" ")
-                // }
-                this.formData=item ? item : {
-                    name:'',
-                    username:'',
-                    password:'123456',
-                    dept:'',
-                    role:[],
-                    is_active:true
-                }
-
-                this.formData.role = item?item.role:[]
+              this.getapiSystemRole()
+              this.getapiSystemDept()
+              this.loadingTitle=flag
+              this.dialogVisible=true
+              // console.log(item,'item----')
+              // if(item && item.dept) {
+              //     item.dept = item.dept.split(" ")
+              // }
+              if(item){
+                Object.assign(this.formData,item)
+                this.formData = deepClone(item)
+              }
+              this.formData.role = item?item.role:[]
             },
             submitData() {
                 this.$refs['rulesForm'].validate(obj=>{
@@ -135,13 +135,13 @@
                             param.dept = ''
                         }
 
-                        if(this.formData.nickname=="" || this.formData.nickname== undefined || this.formData.nickname.length<=0 || this.formData.nickname=='""'){
+                        if(this.formData.nickname==="" || this.formData.nickname === undefined || this.formData.nickname.length<=0 || this.formData.nickname==='""'){
                             param.nickname = this.formData.name
                         }
                         if(this.formData.id){
                             apiSystemUserEdit(param).then(res=>{
                                 this.loadingSave=false
-                                if(res.code ==2000) {
+                                if(res.code === 2000) {
                                     this.$message.success(res.msg)
                                     this.handleClose()
                                     this.$emit('refreshData')
@@ -152,7 +152,7 @@
                         }else{
                             apiSystemUserAdd(param).then(res=>{
                                 this.loadingSave=false
-                                if(res.code ==2000) {
+                                if(res.code ===2000) {
                                     this.$message.success(res.msg)
                                     this.handleClose()
                                     this.$emit('refreshData')
@@ -167,7 +167,7 @@
             },
             getapiSystemRole(){
                 apiSystemRole({page:1,limit:999}).then(res=>{
-                    if(res.code ==2000) {
+                    if(res.code === 2000) {
                         this.rolelist = res.data.data
                     } else {
                         this.$message.warning(res.msg)
@@ -176,16 +176,8 @@
             },
             getapiSystemDept(){
                 apiSystemDept({page:1,limit:999}).then(res=>{
-                    if(res.code ==2000) {
-                        let childrenList = res.data.data.filter(item=> item.parent)
-                        let parentList = res.data.data.filter(item=> !item.parent)
-                        if(parentList.length >0) {
-                            parentList.forEach(item=>{
-                                let children = childrenList.filter(itema=>itema.parent == item.id)
-                                item.children=[...children]
-                            })
-                        }
-                        this.options = parentList
+                    if(res.code === 2000) {
+                      this.options = XEUtils.toArrayTree(res.data.data, { parentKey: 'parent' })
                     } else {
                         this.$message.warning(res.msg)
                     }

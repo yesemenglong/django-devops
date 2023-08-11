@@ -235,7 +235,7 @@ function hasPermission(url,btnName) {
   let isshow = false;
   for (var i = 0; i < btnArr.length; i++) {
     let item = btnArr[i];
-    if (item.url == url  && item.menuPermission && item.menuPermission.includes(btnName) ) {
+    if (item.url === url  && item.menuPermission && item.menuPermission.includes(btnName) ) {
       isshow = true;
       break;
     }
@@ -243,10 +243,10 @@ function hasPermission(url,btnName) {
   return isshow
 }
 
-function getTableHeight(tableSelectHeight){
-    var pagination_height = 182
+function getTableHeight(tableSelectHeight,allowPage=true){
+    const pagination_height = allowPage ? 178 : 0;
     let height = (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight) - tableSelectHeight
-    var ua = navigator.userAgent;
+    const ua = navigator.userAgent;
     //获取当前设备类型（安卓或苹果）
     if (ua && /Android/.test(ua)) {
         return 700

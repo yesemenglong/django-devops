@@ -34,15 +34,15 @@
                     effect="dark"
                     content="暗黑模式"
                     placement="bottom">
-                    <el-icon style="font-size: 16px;color: white;" v-if="siteThemeStore.siteTheme == 'light'"><Sunny /></el-icon>
-                    <el-icon style="font-size: 16px;color: white;" v-if="siteThemeStore.siteTheme == 'dark'"><Moon /></el-icon>
+                    <el-icon style="font-size: 16px;color: white;" v-if="siteThemeStore.siteTheme === 'light'"><Sunny /></el-icon>
+                    <el-icon style="font-size: 16px;color: white;" v-if="siteThemeStore.siteTheme === 'dark'"><Moon /></el-icon>
                 </el-tooltip>
             </span>
             <span style="margin-right: 20px;">
                 <el-color-picker v-model="colorPrimary" :predefine="colorList" size="small" @change="setColorPrimary"></el-color-picker>
             </span>
           <span>
-              <el-dropdown trigger="hover" class="right-dropdown-center">
+              <el-dropdown trigger="click" class="right-dropdown-center">
                 <span class="el-dropdown-link">
                   你好,{{userName}}
                   <el-icon class="el-icon--right">

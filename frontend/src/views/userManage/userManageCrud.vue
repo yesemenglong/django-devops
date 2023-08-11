@@ -56,7 +56,7 @@
                     },
                     //crud按钮配置
                     rowHandle:{
-                        width: 180,//操作列宽度
+                        width: 180,//操作列宽度,0表示不显示表格操作列
                         fixed:"right",//固定操作列在右侧
                         permission:{//增删改查按钮权限控制（是否显示）
                             add:this.hasPermission(this.$options.name,'Create'),//bool型 this.$options.name获取当前组件的name本例为userManageCrud
@@ -134,10 +134,11 @@
                          },
                          {label:'手机号',prop:'mobile',type:'input',minWidth:'100',sortable: false,hidden:false,
                             form:{
-                                //表单属性
-                                span:12,
-                                rules: [{ required: true, message: '手机号必填项' }],
-                                placeholder: '请输入手机号',
+                              //表单属性
+                              span:12,
+                              rules: [{ required: true, message: '手机号必填项' }],
+                              placeholder: '请输入手机号',
+                              editDisabled:false,//编辑时是否禁用
                             }
                          },
                          {label:'状态',prop:'is_active',type:'radio',minWidth:'100',sortable: false,hidden:false,

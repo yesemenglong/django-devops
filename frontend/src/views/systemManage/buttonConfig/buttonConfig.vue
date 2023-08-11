@@ -60,7 +60,7 @@
                     {id:3,name:'DELETE'},
                     {id:4,name:'OPTIONS'},
                     {id:5,name:'WS'},
-                ]
+                ],
             }
         },
         created() {
@@ -83,19 +83,19 @@
         },
         methods: {
             handleEdit(row, flag, menu) {
-                if (flag == '编辑' || flag=='新增') {
+                if (flag === '编辑' || flag==='新增') {
                     this.$refs.addButtonFlag.addButtonFn(row, flag, menu)
                 }
-                if (flag == 'buttonConfig') {
+                if (flag === 'buttonConfig') {
                     this.$router.push({name: 'buttonConfig', params: {id: row.id, name: row.name}})
                 }
-                if (flag == 'delete') {
+                if (flag === 'delete') {
                     let vm = this
                     vm.$confirm('您确定要删除选中的按钮？', {
                         closeOnClickModal: false
                     }).then(() => {
                         systemMenuButtonDelete({id: row.id}).then(res => {
-                            if (res.code == 2000) {
+                            if (res.code === 2000) {
                                 vm.$message.success(res.msg)
                                 vm.getData()
                             } else {

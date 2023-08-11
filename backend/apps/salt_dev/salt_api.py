@@ -3,17 +3,19 @@ from django.conf import settings
 
 
 class SaltAPI(object):
-    def __init__(self, session):
-        self.url = 'https://192.168.123.130:8080'
+    def __init__(self, session, apiurl=settings.SITE_SALT_API_URL, username=settings.SITE_SALT_API_NAME,
+                 password=settings.SITE_SALT_API_PWD, eauth='pam'):
+        self.url = apiurl
         self.session = session
-        self.username = 'saltapi'
-        self.password = '123456'
-        self.eauth = "pam"
+        self.username = username
+        self.password = password
+        self.eauth = eauth
         self.results = {'results': '', 'status': False}
 
     def get_token(self):
         count = 2
         connect_test = 1
+        print(self.username,self.password)
         while count:
             try:
                 token = self.session.post(self.url + '/login',
@@ -79,7 +81,7 @@ class SaltAPI(object):
         else:
             return {'results': '检测失败，请确认minion是否存在', 'status': False}
 
-    def cmd_run_api(self, client='local', tgt='*', tgt_type='glo', fun='cmd.run', arg=None):
+    def cmd_run_api(self, client='local', tgt='*', tgt_type='glob', fun='cmd.run', arg=None):
         arg = [] if arg is None else arg
         data = {
             'client': client,

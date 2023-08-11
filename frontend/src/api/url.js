@@ -1,8 +1,8 @@
 import config from "@/config"
 // let _url;
 // let _domain
-// if (process.env.NODE_ENV == "development") {
-//     _domain = "127.0.0.1:8000"
+// if (process.env.NODE_ENV === "development") {
+//     _domain = "192.168.123.130:8091"
 //     //本地开发
 //     _url = "http://"+_domain+"/api/"; //测试地址/
 // } else {

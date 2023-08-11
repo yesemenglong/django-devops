@@ -5,23 +5,24 @@ import { url } from './url';
 import router from "../router";
 import {setStorage,getStorage} from '@/utils/util'
 
-var request = axios.create({
-    timeout: 10000,
+const request = axios.create({
+    timeout: 960000,
 });
+
 function ajax(opt,method){
   var token= getStorage('logintoken')
   // var timestamp=new Date().getTime();
   var params;
 
-  if(opt.params){
+  if (opt.params) {
     //对传入的参数进行深拷贝，防止传入的参数对象被页面上其他逻辑改变，导致签名错误
-    if (Object.prototype.toString.call(opt.params) != '[object FormData]') {
+    if (Object.prototype.toString.call(opt.params) !== '[object FormData]') {
       // 不是formdata类型
       params = JSON.parse(JSON.stringify(opt.params));
     }else{//formdata类型
       params= opt.params
     }
-    if(method=='GET') {
+    if(method==='GET') {
       params={
         ...params,
         // 't':timestamp
@@ -31,14 +32,14 @@ function ajax(opt,method){
     params={}
   }
 
-  if(method == 'PUT' || method == 'DELETE') {
-      var config={
-          url: url + opt.url + params.id+'/',
+  if(method === 'PUT' || method === 'DELETE') {
+      let config = {
+          url: url + opt.url + params.id + '/',
           method: method,
-          headers:{
+          headers: {
               Authorization: 'JWT ' + token,
           }
-      }
+      };
       if(!params.id){
           config={
           url: url + opt.url,
@@ -59,7 +60,7 @@ function ajax(opt,method){
                 },
                 data: params
               }).then(res=>{
-              if(res.data.code==4001){
+              if(res.data.code===4001){
                   ElMessageBox.alert('登录信息失效,请重新登录！','登录失效',{
                       confirmButtonText:'确定',
                       type: 'warning',
@@ -78,14 +79,63 @@ function ajax(opt,method){
               reject(res)
           })
       })
-  }else if(method == 'GET2'){
-      var config2={
-          url: url + opt.url + params.id+'/',
-          method: 'GET',
-          headers:{
+  }
+  else if(method === 'PUT2') {
+      let config3 = {
+          url: url + opt.url + params.zone_id + '/',
+          method: "PUT",
+          headers: {
               Authorization: 'JWT ' + token,
           }
+      };
+      if(!params.id){
+          config3={
+              url: url + opt.url,
+              method: "PUT",
+              headers:{
+                  Authorization: 'JWT ' + token,
+              }
+          }
       }
+
+      method === "PUT2"&&(config3.params=params);
+      return new Promise((resolve,reject)=>{
+          request({
+              url: config3.url,
+              method: "PUT",
+              headers:{
+                  Authorization: 'JWT ' + token,
+              },
+              data: params
+          }).then(res=>{
+              if(res.data.code===4001){
+                  ElMessageBox.alert('登录信息失效,请重新登录！','登录失效',{
+                      confirmButtonText:'确定',
+                      type: 'warning',
+                      callback: action => {
+                          //跳转登录页   callback点击确定按钮后的回调函数
+                          localStorage.clear();
+                          sessionStorage.clear();
+                          window.location.href="/"
+                      }
+                  })
+              }else{
+                  resolve(res.data)
+              }
+          }).catch(res=>{
+              ElMessage.error("请求失败");
+              reject(res)
+          })
+      })
+  }
+  else if(method === 'GET2'){
+      let config2 = {
+          url: url + opt.url + params.id + '/',
+          method: 'GET',
+          headers: {
+              Authorization: 'JWT ' + token,
+          }
+      };
       if(!params.id){
           config2={
               url: url + opt.url,
@@ -105,7 +155,7 @@ function ajax(opt,method){
               },
               data: params
           }).then(res=>{
-              if(res.data.code==4001){
+              if(res.data.code===4001){
                   ElMessageBox.alert('登录信息失效,请重新登录！','登录失效',{
                       confirmButtonText:'确定',
                       type: 'warning',
@@ -138,7 +188,7 @@ function ajax(opt,method){
       method==="PATCH"&&(config1.data=params);
       return new Promise((resolve,reject)=>{
           request(config1).then(res=>{
-              if(res.data.code==4001){
+              if(res.data.code===4001){
                   ElMessageBox.alert('登录信息失效,请重新登录！','登录失效',{
                       confirmButtonText:'确定',
                       type: 'warning',
@@ -160,7 +210,61 @@ function ajax(opt,method){
   }
 }
 
+const request2 = axios.create({});
 
+function ajaxNoTime(opt, method) {
+    let token= getStorage('logintoken')
+    // var timestamp=new Date().getTime();
+    let params;
+
+    if(opt.params){
+        //对传入的参数进行深拷贝，防止传入的参数对象被页面上其他逻辑改变，导致签名错误
+        if (Object.prototype.toString.call(opt.params) !== '[object FormData]') {
+            // 不是formdata类型
+            params = JSON.parse(JSON.stringify(opt.params));
+        }else{//formdata类型
+            params= opt.params
+        }
+        if(method==='GET') {
+            params={
+                ...params,
+                // 't':timestamp
+            }
+        }
+    }else{
+        params={}
+    }
+
+    let config1={
+        url: url + opt.url,
+        method: method,
+        headers:{
+            Authorization: 'JWT ' + token,
+        }
+    }
+    method==="POST"&&(config1.data=params);
+    return new Promise((resolve,reject)=>{
+        request2(config1).then(res=>{
+            if(res.data.code===4001){
+                ElMessageBox.alert('登录信息失效,请重新登录！','登录失效',{
+                    confirmButtonText:'确定',
+                    type: 'warning',
+                    callback: action => {
+                        //跳转登录页   callback点击确定按钮后的回调函数
+                        localStorage.clear();
+                        sessionStorage.clear();
+                        window.location.href="/"
+                    }
+                })
+            }else{
+                resolve(res.data)
+            }
+        }).catch(res=>{
+            ElMessage.error("请求失败");
+            reject(res)
+        })
+    })
+}
 
 export function ajaxGet (opt) {
     return ajax(opt,"GET")
@@ -181,6 +285,12 @@ export function ajaxPatch (opt) {
 export function ajaxGetDetailByID (opt) {
     return ajax(opt,"GET2")
 }
+export function ajaxPostNoTime(opt) {
+    return ajaxNoTime(opt, "POST")
+}
+export function ajaxPutByZoneID(opt) {
+    return ajax(opt,"PUT2")
+}
 
 //websocket获取jwt请求token
 export function getJWTAuthorization() {
@@ -193,7 +303,7 @@ export function reqExpost (method, url, params) {
   // const timestamp = new Date().getTime().toString();
   let token = getStorage('logintoken')
   for (let key in params){
-    if(params[key]==null || params[key] == 'undefined' ||  params[key]==''){
+    if(params[key]==null || params[key] === 'undefined' ||  params[key]===''){
       delete params[key]
     }
   }

@@ -4,11 +4,10 @@ from celery import shared_task
 import time
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
-from django.conf import settings
 from django.db import close_old_connections
 
 
-@shared_task
+@shared_task(ignore_result=True)
 def tailf(channel_name):
     channel_layer = get_channel_layer()
     filename = '/data/dev/django-vue-lyadmin/backend/logs/batch.log'

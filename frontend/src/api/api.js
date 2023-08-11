@@ -1,7 +1,17 @@
-import axios from 'axios';
-import {reqExpost,ajaxGet,ajaxPost,ajaxDelete,ajaxPut,ajaxPatch,uploadImg,ajaxGetDetailByID} from './request';
+import {
+    ajaxGet,
+    ajaxPost,
+    ajaxDelete,
+    ajaxPut,
+    ajaxPatch,
+    uploadImg,
+    ajaxGetDetailByID,
+    ajaxPostNoTime,
+    ajaxPutByZoneID
+} from './request';
 import {url} from './url';
-
+// 获取系统所有api列表
+export const getSystemLyapiList = params => ajaxGet({url: `lyapi.json`,params})
 // 获取登录页的信息
 export const login = params => ajaxPost({url: `token/`,params})
 // 获取验证码
@@ -101,7 +111,6 @@ export const systemMenuButtonEdit = params => ajaxPut({url:`system/menu_button/`
 export const systemMenuButtonDelete = params => ajaxDelete({url:`system/menu_button/`,params})
 
 
-
 // 角色管理列表
 export const apiSystemRole = params => ajaxGet({url: `system/role/`,params})
 // 角色管理列表-修改
@@ -171,128 +180,6 @@ export const messagesMessagenoticeEdit = params => ajaxPut({url: `messages/messa
 //消息公告-删除
 export const messagesMessagenoticeDelete = params => ajaxDelete({url: `messages/messagenotice/`,params})
 
-
-
-/**
- *省市区选择
- * */
-// 省市区选择  获取省
-export const getProvince= params => ajaxGet({url: `areas/`,params})
-// 省市区选择  获取市/区
-export const getCityDistrictByID= params => ajaxGetDetailByID({url: `areas/`,params})
-
-// 省市区选择  根据详细地址获取经纬度
-export const getAddressaccuracy= params => ajaxGet({url: `getaddressaccuracy/`,params})
-
-
-/**
- *意见反馈
- * */
-
-// 意见反馈 列表
-export const PlatformsettingsUserfeeckback= params => ajaxGet({url: `platformsettings/userfeeckback/`,params})
-// 意见反馈 新增
-export const PlatformsettingsUserfeeckbackAdd= params => ajaxPost({url: `platformsettings/userfeeckback/`,params})
-// 意见反馈 编辑
-export const PlatformsettingsUserfeeckbackEdit= params => ajaxPut({url: `platformsettings/userfeeckback/`,params})
-// 意见反馈 删除
-export const PlatformsettingsUserfeeckbackDelete= params => ajaxDelete({url: `platformsettings/userfeeckback/`,params})
-
-/**
- *地区管理
- * */
-
-// 地区管理列表
-export const addressArea = params => ajaxGet({url: `address/area/`,params})
-// 地区管理列表 获取根地区
-export const addressAreaRoot = params => ajaxGet({url: `address/area/area_root/`,params})
-// 地区管理列表 -- 新增
-export const addressAreaAdd = params => ajaxPost({url: `address/area/`,params})
-// 地区管理列表 -- 编辑
-export const addressAreaEdit = params => ajaxPut({url: `address/area/`,params})
-// 地区管理列表 -- 删除
-export const addressAreaDelete = params => ajaxDelete({url: `address/area/`,params})
-
-/**
- *商城管理
- * */
-
-// 商品分类 列表
-export const mallGoodstype= params => ajaxGet({url: `mall/goodstype/`,params})
-// 商品分类 新增
-export const mallGoodstypeAdd= params => ajaxPost({url: `mall/goodstype/`,params})
-// 商品分类 编辑
-export const mallGoodstypeEdit= params => ajaxPut({url: `mall/goodstype/`,params})
-// 商品分类 删除
-export const mallGoodstypeDelete= params => ajaxDelete({url: `mall/goodstype/`,params})
-
-// 商品管理 列表
-export const mallGoodsspu= params => ajaxGet({url: `mall/goodsspu/`,params})
-// 商品管理 新增
-export const mallGoodsspuAdd= params => ajaxPost({url: `mall/goodsspu/`,params})
-// 商品管理 编辑
-export const mallGoodsspuEdit= params => ajaxPut({url: `mall/goodsspu/`,params})
-// 商品管理 删除
-export const mallGoodsspuDelete= params => ajaxDelete({url: `mall/goodsspu/`,params})
-
-// 商品管理 上下架
-export const mallGoodsspuIslaunched= params => ajaxPut({url: `mall/goodsspu/islaunched/`,params})
-
-// 商品管理 修改商品SKU价格
-export const mallGoodsspueEditskups= params => ajaxPut({url: `mall/goodsspu/editskups/`,params})
-
-// 商城订单 列表
-export const mallGoodsOrder= params => ajaxGet({url: `mall/goodsorder/`,params})
-// 商城订单 新增
-export const mallGoodsOrderAdd= params => ajaxPost({url: `mall/goodsorder/`,params})
-// 商城订单 编辑
-export const mallGoodsOrderEdit= params => ajaxPut({url: `mall/goodsorder/`,params})
-// 商城订单 删除
-export const mallGoodsOrderDelete= params => ajaxDelete({url: `mall/goodsorder/`,params})
-
-// 商城订单 发货
-export const mallGoodsSendoutgoods= params => ajaxPost({url: `mall/goodsorder/sendoutgoods/`,params})
-
-// 商城订单 订单价格 订单量统计
-export const mallGoodsOrderstatistics= params => ajaxGet({url: `mall/goodsorder/orderstatistics/`,params})
-
-//营销管理
-
-// 优惠券管理 列表
-export const mallGoodscoupon= params => ajaxGet({url: `mall/goodscoupon/`,params})
-// 优惠券管理 新增
-export const mallGoodscouponAdd= params => ajaxPost({url: `mall/goodscoupon/`,params})
-// 优惠券管理 编辑
-export const mallGoodscouponEdit= params => ajaxPut({url: `mall/goodscoupon/`,params})
-// 优惠券管理 删除
-export const mallGoodscouponDelete= params => ajaxDelete({url: `mall/goodscoupon/`,params})
-
-// 优惠券记录 列表
-export const mallCouponrecord= params => ajaxGet({url: `mall/couponrecord/`,params})
-// 优惠券记录 新增
-export const mallCouponrecordAdd= params => ajaxPost({url: `mall/couponrecord/`,params})
-// 优惠券记录 编辑
-export const mallCouponrecordEdit= params => ajaxPut({url: `mall/couponrecord/`,params})
-// 优惠券记录 删除
-export const mallCouponrecordDelete= params => ajaxDelete({url: `mall/couponrecord/`,params})
-
-/**
- * 财务统计
- * **/
-
-//商品订单统计
-export const mallGoodsforderinfo= params => ajaxGet({url: `mall/goodsforderinfo/`,params})
-// 商品订单统计 新增
-export const mallGoodsforderinfoAdd= params => ajaxPost({url: `mall/goodsforderinfo/`,params})
-// 商品订单统计 编辑
-export const mallGoodsforderinfoEdit= params => ajaxPut({url: `mall/goodsforderinfo/`,params})
-// 商品订单统计 删除
-export const mallGoodsforderinfoDelete= params => ajaxDelete({url: `mall/goodsforderinfo/`,params})
-// 商品订单统计 总金额统计
-export const mallGoodsforderinfoOrderstatistics= params => ajaxGet({url: `mall/goodsforderinfo/orderstatistics/`,params})
-
-
-
 /**
  *用户管理
  * */
@@ -310,32 +197,56 @@ export const UsersUsersdisableEdit= params => ajaxPut({url: `users/users/disable
 // 用户管理 导出
 export const UsersUsersExportexecl= params => ajaxGet({url: `users/users/exportexecl/`,params})
 
-/**
-*平台设置
-*/
-//轮播图列表
-export const platformsettingsLunboimg= params => ajaxGet({url: `platformsettings/lunboimg/`,params})
-// 轮播图列表 新增
-export const platformsettingsLunboimgAdd= params => ajaxPost({url: `platformsettings/lunboimg/`,params})
-// 轮播图列表 编辑
-export const platformsettingsLunboimgEdit= params => ajaxPut({url: `platformsettings/lunboimg/`,params})
-// 轮播图列表 删除
-export const platformsettingsLunboimgDelete= params => ajaxDelete({url: `platformsettings/lunboimg/`,params})
-
-
-//其他设置
-export const platformsettingsOther= params => ajaxGet({url: `platformsettings/other/`,params})
-// 其他设置 新增
-export const platformsettingsOtherAdd= params => ajaxPost({url: `platformsettings/other/`,params})
-// 其他设置 编辑
-export const platformsettingsOtherEdit= params => ajaxPut({url: `platformsettings/other/`,params})
-// 其他设置 删除
-export const platformsettingsOtherDelete= params => ajaxDelete({url: `platformsettings/other/`,params})
-
 // 平台设置 图片上传
 export const platformsettingsUploadPlatformImg= params => uploadImg({url: `platformsettings/uploadplatformimg/`,params})
 
-//前端访问操作 获取
-export const superOerateGet= params => ajaxGet({url: `super/operate/`,params})
-//前端访问操作 设置
-export const superOerateSet= params => ajaxPost({url: `super/operate/`,params})
+export const dashboard = params =>  ajaxPost({url: `dashboard/`, params})
+export const getMinionIdList = params => ajaxGet({url: `saltstack/salt-minion/1/`, params})
+
+// salt-key api
+export const getSaltKeyList = params => ajaxGet({url: `saltstack/salt-key/`, params})
+export const flushSaltKeyList = params => ajaxPost({url: `saltstack/salt-key/`, params})
+export const acceptSaltKey = params => ajaxPost({url: `saltstack/salt-key-opt/accept/`, params})
+export const deleteSaltKey = params => ajaxPost({url: `saltstack/salt-key-opt/delete/`, params})
+export const deleteDeniedSaltKey = params => ajaxPost({url: `saltstack/salt-key-opt/del-denied/`, params})
+export const rejectSaltKey = params => ajaxPost({url: `saltstack/salt-key-opt/reject/`, params})
+export const testSaltKey = params => ajaxGet({url: `saltstack/salt-key/`+params+'/'})
+// SaltStack minion api
+export const getSaltMinionList = params => ajaxGet({url: `saltstack/salt-minion/`, params})
+export const updateMinionList = params => ajaxPost({url: `saltstack/salt-minion/`, params})
+export const updateMinionStatus = params => ajaxPost({url: `saltstack/salt-minion-opt/status-update/`, params})
+export const updateMinion = params => ajaxPost({url: `saltstack/salt-minion-opt/update/`, params})
+// SaltStack 命令集
+export const getSaltCmdList = params => ajaxGet({url: `saltstack/salt-cmd/`, params})
+export const updateSaltCmdList = params => ajaxPost({url: `saltstack/salt-cmd/`, params})
+export const deleteSaltCmd = params => ajaxPost({url: `saltstack/salt-cmd-opt/delete/`, params})
+export const getSaltCmdModuleList = params => ajaxGet({url: `saltstack/salt-cmd-opt/get-module/`, params})
+export const getSaltCmdCmdList = params => ajaxGet({url: `saltstack/salt-cmd-opt/get-cmd/`, params})
+export const saltExe = params => ajaxPostNoTime({url: `saltstack/salt-exe/`, params})
+
+// 区服相关
+export const getZoneList = params => ajaxGet({url: `zonelist/`, params})
+export const getZone = params => ajaxGet({url: `zonelist/` + params + `/`})
+export const createZoneInfo = params => ajaxPost({url: `zonelist/`, params})
+export const updateZoneInfo = params => ajaxPutByZoneID({url: `zonelist/`, params})
+export const deleteZoneInfo = params => ajaxDelete({url: `zonelist/` + params + `/`})
+export const batchCrateZones = params => ajaxPost({url: `zonelist_batchCreate/`, params})
+export const minionIDList = params => ajaxGet({url: `minion_id_list/`, params})
+export const getZoneStatusList = params => ajaxGet({url: `zone_list_status/`, params})
+export const deployZone = params => ajaxPost({url: `deploy_zone/`, params})
+export const batchDeployZones = params => ajaxPost({url: `batch_deploy_zones/`, params})
+export const updateVersion = params => ajaxPut({url: `version/`, params})
+export const getVersion = params => ajaxGet({url: `version/`+ params + `/`})
+// 合服相关
+export const getMergeList = params => ajaxGet({url: `zone_merge/`, params})
+export const addMergeInfo = params => ajaxPost({url: `zone_merge/`, params})
+export const updateMergeInfo = params => ajaxPut({url: `zone_merge/`, params})
+export const getMergeInfo = params => ajaxGet({url: `zone_merge/` + params + `/`})
+export const deleteMergeInfo = params => ajaxDelete({url: `zone_merge/` + params + `/`})
+export const exeMerge = params => ajaxPost({url: `zone_merge_exe/`, params})
+export const addBatchMergeInfo = params => ajaxPost({url: `batch_zone_merge/`, params})
+// 区服迁移
+export const getMoveList = params => ajaxGet({url: `zone_move/`, params})
+export const addMoveInfo = params => ajaxPost({url: `zone_move/`, params})
+export const updateMoveInfo = params => ajaxPut({url: `zone_move/`, params})
+export const getMoveInfo = params => ajaxGet({url: `zone_move/` + params + `/`})

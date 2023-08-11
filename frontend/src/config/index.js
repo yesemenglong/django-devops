@@ -1,5 +1,5 @@
 //API DOMAIN
-const API_DOMAIN = process.env.NODE_ENV === 'development' ? "127.0.0.1:8000" : "django-vue3-lyadmin.lybbn.cn"
+const API_DOMAIN = process.env.NODE_ENV === 'development' ? "192.168.123.130:8090" : "django-vue3-lyadmin.lybbn.cn"
 //lyadmin系统配置
 module.exports = {
 

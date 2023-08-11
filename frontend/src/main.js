@@ -45,7 +45,7 @@ Object.keys(custom).forEach(key => {
 })
 
 //引入font-awesome字体图标
-import 'font-awesome/scss/font-awesome.scss'
+// import 'font-awesome/scss/font-awesome.scss'
 // 注册全局elementplus icon组件
 Object.keys(Icons).forEach((key) => {
   app.component(key, Icons[key]);

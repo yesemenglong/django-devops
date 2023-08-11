@@ -37,16 +37,16 @@
                 </template>
             </el-input>
           </el-form-item>
-          <el-form-item prop="captcha">
-            <el-input type="text"  size="large" style="font-size: 16px" v-model.trim="ruleForm.captcha" auto-complete="off" @keyup.enter="submitForm('ruleForm')" :placeholder="$t('login.code')">
-                 <template #prepend>
-                    <el-icon :size="20"><circle-check /></el-icon>
-                  </template>
-                  <template #append>
-                    <img class="login-code" :src="image_base" @click="getCaptcha"/>
-                  </template>
-            </el-input>
-          </el-form-item>
+<!--          <el-form-item prop="captcha">-->
+<!--            <el-input type="text"  size="large" style="font-size: 16px" v-model.trim="ruleForm.captcha" auto-complete="off" @keyup.enter="submitForm('ruleForm')" :placeholder="$t('login.code')">-->
+<!--                 <template #prepend>-->
+<!--                    <el-icon :size="20"><circle-check /></el-icon>-->
+<!--                  </template>-->
+<!--                  <template #append>-->
+<!--                    <img class="login-code" :src="image_base" @click="getCaptcha"/>-->
+<!--                  </template>-->
+<!--            </el-input>-->
+<!--          </el-form-item>-->
           <el-checkbox class="remember" v-model="rememberpassword">{{$t('login.rememberMe')}}</el-checkbox>
           <el-form-item style="width:100%">
             <el-button type="primary" size="large" :loading="loadingLg" style="width:100%;font-size: 18px" @click="submitForm('ruleForm')">{{$t('login.login')}}</el-button>
@@ -83,16 +83,16 @@
         logining: false,
         rememberpassword: false,
         ruleForm: {
-            username: '',
-            password: '',
-            captcha:'',
-            captchaKey: null,
+            username: 'superadmin',
+            password: '123456',
+            // captcha:'',
+            // captchaKey: null,
         },
         loginFlag:false,
         rules: {
             username: [{required: true, message: this.t('login.AccountError'), trigger: 'blur'}],
             password: [{required: true, message: this.t('login.PWError'), trigger: 'blur'}],
-            captcha: [{required: true, message: this.t('login.codeError'), trigger: 'blur'}],
+            // captcha: [{required: true, message: this.t('login.codeError'), trigger: 'blur'}],
         },
         image_base: null,
         allmenu:[],
@@ -141,7 +141,7 @@
 				else if (cir.y < 0) cir.y = that.HEIGHT;
 			}
 			that.draw();
-		}, 15);
+		}, 25);
         window.addEventListener('resize', this.listenResize);
       },
       unmounted() {
@@ -155,7 +155,7 @@
         }
         //请求数据
         this.getuserpassword()
-        this.getCaptcha()
+        // this.getCaptcha()
       },
       beforeRouteLeave(to, form, next){
           //离开页面去除动态添加该页面meta viewport 手机适配
@@ -246,22 +246,22 @@
         },
         //初始化生成原点
         init () {
-             //定义画布宽高和生成点的个数
-            this.WIDTH = window.innerWidth
-            this.HEIGHT = window.innerHeight
-            this.POINT = 35;
-            this.canvas = document.getElementById('lyadmincanvas');
-            this.canvas.width = this.WIDTH-2,
-            this.canvas.height = this.HEIGHT-2;
-            this.context = this.canvas.getContext('2d');
-            this.context.strokeStyle = 'rgba(0,0,0,0.02)',
-            this.context.strokeWidth = 1,
-            this.context.fillStyle = 'rgba(0,0,0,0.05)';
-            this.circleArr = [];
-            for (var i = 0; i < this.POINT; i++) {
-                this.circleArr.push(this.drawCricle(this.context, this.num(this.WIDTH), this.num(this.HEIGHT), this.num(15, 2), this.num(10, -10)/40, this.num(10, -10)/40));
-            }
-            this.draw();
+           //定义画布宽高和生成点的个数
+          this.WIDTH = window.innerWidth
+          this.HEIGHT = window.innerHeight
+          this.POINT = 18;
+          this.canvas = document.getElementById('lyadmincanvas');
+          this.canvas.width = this.WIDTH-2;
+          this.canvas.height = this.HEIGHT-2;
+          this.context = this.canvas.getContext('2d');
+          this.context.strokeStyle = 'rgba(0,0,0,0.06)';
+          this.context.strokeWidth = 1;
+          this.context.fillStyle = 'rgba(0,0,0,0.05)';
+          this.circleArr = [];
+          for (var i = 0; i < this.POINT; i++) {
+            this.circleArr.push(this.drawCricle(this.context, this.num(this.WIDTH), this.num(this.HEIGHT), this.num(18, 5), this.num(20, -20)/40, this.num(20, -20)/40));
+          }
+          this.draw();
         },
 
 	    //每帧绘制
@@ -434,11 +434,11 @@
        * 获取验证码
        */
       getCaptcha () {
-        getCaptcha().then((ret) => {
-          this.ruleForm.captcha = null
-          this.ruleForm.captchaKey = ret.data.data.key
-          this.image_base = ret.data.data.image_base
-        })
+        // getCaptcha().then((ret) => {
+        //   this.ruleForm.captcha = null
+        //   this.ruleForm.captchaKey = ret.data.data.key
+        //   this.image_base = ret.data.data.image_base
+        // })
       },
 
       //获取info列表
@@ -465,7 +465,7 @@
                 this.mutitabsstore.setRefresh(res.data.refresh)
                 this.getMenu()
               } else {
-                this.getCaptcha()
+                // this.getCaptcha()
                 this.$message.error(res.msg)
                 return false
               }

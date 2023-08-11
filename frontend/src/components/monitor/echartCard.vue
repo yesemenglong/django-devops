@@ -7,20 +7,20 @@
                         <template #default>
                             <el-tab-pane label="流量趋势" name="tab1">
                                 <div class="lymonitor-info">
-                                    <div class="lymonitor-info-item"><p><span class="ico-up"></span>上行</p><a id="upSpeed">{{network.up+'KB'}}</a></div>
-                                    <div class="lymonitor-info-item"><p><span class="ico-down"></span>下行</p><a id="downSpeed">{{network.down+'KB'}}</a></div>
-                                    <div class="lymonitor-info-item"><p>总发送</p><a id="upAll">{{formatUnitSize(network.upTotal)}}</a></div>
-                                    <div class="lymonitor-info-item"><p>总接收</p><a id="downAll">{{formatUnitSize(network.downTotal)}}</a></div>
-                                    <el-select v-model="networkValue"  placeholder="Select" size="large" @change="networkSelectChange">
-                                        <el-option
-                                          v-for="item in networkOptions"
-                                          :key="item.value"
-                                          :label="item.label"
-                                          :value="item.value"
-                                        />
-                                    </el-select>
+                                  <div class="lymonitor-info-item"><p><span class="lyico-up"></span>上行</p><a>{{network.up+'KB'}}</a></div>
+                                  <div class="lymonitor-info-item"><p><span class="lyico-down"></span>下行</p><a>{{network.down+'KB'}}</a></div>
+                                  <div class="lymonitor-info-item"><p>总发送</p><a>{{formatUnitSize(network.upTotal)}}</a></div>
+                                  <div class="lymonitor-info-item"><p>总接收</p><a>{{formatUnitSize(network.downTotal)}}</a></div>
+                                  <el-select v-model="networkValue"  placeholder="Select" size="large" @change="networkSelectChange">
+                                      <el-option
+                                        v-for="item in networkOptions"
+                                        :key="item.value"
+                                        :label="item.label"
+                                        :value="item.value"
+                                      />
+                                  </el-select>
                                 </div>
-                                <LyLineEchart ref="lyecharts1" v-show="activeName == 'tab1'" v-model="network"></LyLineEchart>
+                                <LyLineEchart ref="lyecharts1" v-show="activeName === 'tab1'" v-model="network"></LyLineEchart>
                             </el-tab-pane>
                         </template>
                     </el-skeleton>
@@ -80,7 +80,7 @@
         props:{
             loading: {
                 type: Boolean,
-                default: true
+                default: false
             },
             count:{
                 type:Number,
@@ -167,7 +167,7 @@
         font-size: 13px;
         line-height: 20px;
     }
-    .lymonitor-info .ico-up {
+    .lymonitor-info .lyico-up {
         width: 12px;
         height: 12px;
         border-radius: 100%;
@@ -176,7 +176,7 @@
         margin-right: 3px;
 
     }
-    .lymonitor-info .ico-down {
+    .lymonitor-info .lyico-down {
         width: 12px;
         height: 12px;
         border-radius: 100%;

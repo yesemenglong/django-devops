@@ -34,7 +34,8 @@
 
 <script>
     import {apiSystemRoleEdit,apiSystemRoleAdd} from '@/api/api'
-    import LyDialog from "../../../../components/dialog/dialog";
+    import LyDialog from "@/components/dialog/dialog";
+    import {deepClone} from "@/utils/util";
     export default {
         components: {LyDialog},
         emits: ['refreshData'],
@@ -88,17 +89,17 @@
                 this.dialogVisible=true
                 this.dialogTitle=flag
                 if(item){
-                    this.formData=item
+                  this.formData=deepClone(item)
                 }
             },
             submitData() {
                 this.$refs['rulesForm'].validate(obj=>{
                     if(obj) {
                         this.loadingSave=true
-                        if(this.dialogTitle=="新增"){
+                        if(this.dialogTitle==="新增"){
                             apiSystemRoleAdd(this.formData).then(res=>{
                                 this.loadingSave=false
-                                if(res.code ==2000) {
+                                if(res.code === 2000) {
                                     this.$message.success(res.msg)
                                     this.handleClose()
                                     this.$emit('refreshData')
@@ -109,7 +110,7 @@
                         }else{
                             apiSystemRoleEdit(this.formData).then(res=>{
                                 this.loadingSave=false
-                                if(res.code ==2000) {
+                                if(res.code === 2000) {
                                     this.$message.success(res.msg)
                                     this.handleClose()
                                     this.$emit('refreshData')

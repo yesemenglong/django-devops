@@ -15,7 +15,8 @@ router.register(r'batch_deploy_zones', BatchBeployViewSet, basename='batch_deplo
 router.register(r'zone_merge', ZoneMergeViewSet, basename='zone_merge')
 router.register(r'zone_merge_exe', ZoneMergeExeViewSet, basename='zone_merge_exe')
 router.register(r'batch_zone_merge', BatchZoneMergeViewSet, basename='batch_zone_merge')
-
+router.register(r'version', VersionViewSet, basename='version')
+router.register(r'zone_move', ZoneMoveListViewSet, basename='zone_move')
 
 
 urlpatterns = [

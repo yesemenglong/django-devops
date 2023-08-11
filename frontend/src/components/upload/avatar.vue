@@ -2,6 +2,7 @@
     <el-upload
         class="avatar-uploader"
         action=""
+        :disabled="disabled"
         :show-file-list="false"
         ref="uploadDefaultImage"
         :http-request="imgUploadRequest"
@@ -22,18 +23,22 @@
             }
         },
         props: {
-            modelValue: {
-              type: String,
-              default: ""
-            },
-            width: {
-              type: String,
-              default: '140px'
-            },
-            height: {
-              type: String,
-              default: '140px'
-            },
+          modelValue: {
+            type: String,
+            default: ""
+          },
+          width: {
+            type: String,
+            default: '140px'
+          },
+          height: {
+            type: String,
+            default: '140px'
+          },
+          disabled:{
+            type: Boolean,
+            default: false
+          }
         },
         created() {
             this.imageurl = this.modelValue

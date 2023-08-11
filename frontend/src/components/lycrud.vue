@@ -25,11 +25,10 @@
                             end-placeholder="结束日期">
                     </el-date-picker>
                 </el-form-item>
-                <slot name="searchBar"></slot>
+                <slot name="searchBar-l"></slot>
                 <el-form-item label=""><el-button  @click="handleSearchClick('search')" type="primary" icon="Search" v-show="rowHandle.permission.search">查询</el-button></el-form-item>
                 <el-form-item label=""><el-button  @click="handleSearchClick('reset')" icon="Refresh">重置</el-button></el-form-item>
-<!--                <el-form-item label=""><el-button  @click="addAdmin" type="primary" v-show="isShowBtn('userManage','用户管理','Create')">新增</el-button></el-form-item>-->
-<!--                <el-form-item label=""><el-button  @click="exportDataBackend" type="primary">导出</el-button></el-form-item>-->
+                <slot name="searchBar-r"></slot>
             </el-form>
         </div>
 
@@ -107,7 +106,7 @@
                     :sortable="column.sortable"
                     :min-width="column.minWidth"
                     :show-overflow-tooltip="true"
-                    v-if="(column.hidden !== undefined && column.slot==undefined)?!column.hidden:true"
+                    v-if="(column.hidden !== undefined && column.slot===undefined)?!column.hidden:true"
                     >
                         <template #default="{row,$index}">
                             <template v-if="!column.render">
@@ -120,7 +119,7 @@
                     </el-table-column>
                 </template>
                 <!-- 操作列 -->
-                <el-table-column label="操作" :fixed="rowHandle.fixed" :width="rowHandle.width">
+                <el-table-column label="操作" :fixed="rowHandle.fixed" :width="rowHandle.width" v-if="rowHandle.width>0">
                     <template #header>
                         <div style="display: flex;justify-content: space-between;align-items: center;">
                             <div>操作</div>
@@ -153,12 +152,14 @@
                 <el-row :gutter="formOptions.gutter?formOptions.gutter:20">
                     <el-col :span="fitem.form.span?fitem.form.span:24" v-for="(fitem,findex) in formColumns">
                         <el-form-item :label="fitem.label+'：'" :prop="fitem.prop" v-if="(fitem.form.hidden!==undefined && dialogTitle!=='详情')?!fitem.form.hidden:true">
-                            <el-input v-if="fitem.type=='input'" :show-password="fitem.form.showPassword?fitem.form.showPassword:false"  v-model="formData[fitem.prop]" clearable :placeholder="fitem.form.placeholder?fitem.form.placeholder:''" @change="fitem.form.valueChange"></el-input>
-                            <el-input v-else-if="fitem.type=='textarea'"  type="textarea" v-model="formData[fitem.prop]" :placeholder="fitem.form.placeholder?fitem.form.placeholder:''" @change="fitem.form.valueChange"></el-input>
-                            <el-input-number v-else-if="fitem.type=='number'"  v-model="formData[fitem.prop]"  :min="0" :max="999999" @change="fitem.form.valueChange"></el-input-number>
-                            <el-input-number v-else-if="fitem.type=='price'"  v-model="formData[fitem.prop]" :precision="2" :step="0.1"    @change="fitem.form.valueChange"></el-input-number>
-                            <el-switch v-else-if="fitem.type=='switch'" v-model="formData[fitem.prop]" active-color="#13ce66" inactive-color="#ff4949" @change="fitem.form.valueChange"></el-switch>
-                            <el-select v-else-if="fitem.type === 'select'" v-model="formData[fitem.prop]" :placeholder="fitem.placeholder" clearable filterable  @change="fitem.form.valueChange" style="width: 100%;">
+                          <el-input v-if="fitem.type==='input'" :disabled="isFormItemEditDisabled(fitem.form.editDisabled)" :show-password="fitem.form.showPassword?fitem.form.showPassword:false"  v-model="formData[fitem.prop]" clearable :placeholder="fitem.form.placeholder?fitem.form.placeholder:''" @change="fitem.form.valueChange"></el-input>
+                          <el-input v-else-if="fitem.type==='textarea'" :disabled="isFormItemEditDisabled(fitem.form.editDisabled)" type="textarea" v-model="formData[fitem.prop]" :placeholder="fitem.form.placeholder?fitem.form.placeholder:''" @change="fitem.form.valueChange"></el-input>
+                          <el-input-number v-else-if="fitem.type==='number'" :disabled="isFormItemEditDisabled(fitem.form.editDisabled)"  v-model="formData[fitem.prop]"  :min="0" :max="999999" @change="fitem.form.valueChange"></el-input-number>
+                          <el-input-number v-else-if="fitem.type==='price'" :disabled="isFormItemEditDisabled(fitem.form.editDisabled)" v-model="formData[fitem.prop]" :precision="2" :step="0.1"    @change="fitem.form.valueChange"></el-input-number>
+                          <el-switch v-else-if="fitem.type==='switch'" :disabled="isFormItemEditDisabled(fitem.form.editDisabled)" v-model="formData[fitem.prop]" active-color="#13ce66" inactive-color="#ff4949" @change="fitem.form.valueChange"></el-switch>
+                          <el-date-picker v-else-if="fitem.type==='date'" :disabled="isFormItemEditDisabled(fitem.form.editDisabled)" v-model="formData[fitem.prop]" type="date" :placeholder="!!fitem.placeholder?fitem.placeholder:'选择日期'" format="YYYY-MM-DD" value-format="YYYY-MM-DD"/>
+                          <el-date-picker v-else-if="fitem.type==='datetime'" :disabled="isFormItemEditDisabled(fitem.form.editDisabled)" v-model="formData[fitem.prop]" type="datetime" :placeholder="!!fitem.placeholder?fitem.placeholder:'选择日期时间'" format="YYYY-MM-DD h:m:s" value-format="YYYY-MM-DD h:m:s"/>
+                          <el-select v-else-if="fitem.type === 'select'" :disabled="isFormItemEditDisabled(fitem.form.editDisabled)" v-model="formData[fitem.prop]" :placeholder="fitem.placeholder" clearable filterable  @change="fitem.form.valueChange" style="width: 100%;">
                                 <el-option
                                         v-if="fitem.form.options"
                                         v-for="option in fitem.form.options"
@@ -168,15 +169,15 @@
                                         >
                                 </el-option>
                             </el-select>
-                            <el-radio-group v-else-if="fitem.type=='radio'" v-model="formData[fitem.prop]" @change="fitem.form.valueChange">
+                          <el-radio-group v-else-if="fitem.type==='radio'" :disabled="isFormItemEditDisabled(fitem.form.editDisabled)" v-model="formData[fitem.prop]" @change="fitem.form.valueChange">
                                 <el-radio :label="rditem.value" v-for="(rditem,rdindex) in fitem.form.options">{{rditem.label}}</el-radio>
-                            </el-radio-group>
-                            <el-checkbox-group v-else-if="fitem.type=='checkbox'" v-model="formData[fitem.prop]" @change="fitem.form.valueChange">
+                          </el-radio-group>
+                          <el-checkbox-group v-else-if="fitem.type==='checkbox'" :disabled="isFormItemEditDisabled(fitem.form.editDisabled)" v-model="formData[fitem.prop]" @change="fitem.form.valueChange">
                                 <el-checkbox v-if="fitem.options"  v-for="option in fitem.options" :label="option.label" />
                             </el-checkbox-group>
-                            <ly-upload-avatar v-else-if="fitem.type=='image-avatar'" v-model="formData[fitem.prop]" :width="fitem.form.width?fitem.form.width+'px':'80px'" :height="fitem.form.width?fitem.form.width+'px':'80px'"></ly-upload-avatar>
-                            <ly-upload-goods v-else-if="fitem.type=='image-goods'" v-model="formData[fitem.prop]"></ly-upload-goods>
-                            <t-editor v-else-if="fitem.type=='tinymce'" v-model="formData[fitem.prop]"></t-editor>
+                          <ly-upload-avatar v-else-if="fitem.type==='image-avatar'" :disabled="isFormItemEditDisabled(fitem.form.editDisabled)" v-model="formData[fitem.prop]" :width="fitem.form.width?fitem.form.width+'px':'80px'" :height="fitem.form.width?fitem.form.width+'px':'80px'"></ly-upload-avatar>
+                          <ly-upload-goods v-else-if="fitem.type==='image-goods'" :disabled="isFormItemEditDisabled(fitem.form.editDisabled)" v-model="formData[fitem.prop]"></ly-upload-goods>
+                          <t-editor v-else-if="fitem.type==='tinymce'" :disabled="isFormItemEditDisabled(fitem.form.editDisabled)" v-model="formData[fitem.prop]"></t-editor>
                         </el-form-item>
                     </el-col>
                 </el-row>
@@ -406,11 +407,16 @@
                 this.isFull=!this.isFull
                 window.dispatchEvent(new Event('resize'))
             },
-            //多选项框被选中数据
+          //判断单个组件编辑时是否禁用disabled参数为bool值
+          isFormItemEditDisabled(disabled){
+            return (disabled!==undefined && this.dialogTitle==='编辑')?disabled:false
+          },
+          //多选项框被选中数据
             handleSelectionChange(selection) {
                 this.ids = selection.map(item => item.id);
                 this.single = selection.length !== 1;
                 this.multiple = !selection.length;
+                this.$emit("handleSelectionChange",this.ids)
             },
             /** 批量删除按钮操作 */
             handleMutiDelete() {
@@ -422,7 +428,7 @@
                     type: "warning"
                 }).then(function() {
                     return vm.crudRequest.del({id:ids}).then(res=>{
-                        if(res.code == 2000) {
+                        if(res.code === 2000) {
                             vm.ids=[]
                             vm.single=true
                             vm.multiple=false
@@ -463,10 +469,10 @@
             },
             //searchBar点击事件
             handleSearchClick(flag){
-                if(flag=="search"){
+                if(flag==="search"){
                     this.search()
                 }
-                else if(flag=="reset"){
+                else if(flag==="reset"){
                     this.formInline = {
                         page:1,
                         limit: this.pageparm.limit
@@ -480,12 +486,12 @@
             },
             handleEdit(row,flag) {
                 let vm = this
-                if(flag=='del') {
+                if(flag==='del') {
                     vm.$confirm('您确定要删除该条数据吗？',{
                         closeOnClickModal:false
                     }).then(res=>{
                         vm.crudRequest.del({id:row.id}).then(res=>{
-                            if(res.code == 2000) {
+                            if(res.code === 2000) {
                                 vm.$message.success(res.msg)
                                 vm.handleRefresh()
                             } else {
@@ -496,7 +502,7 @@
 
                     })
                 }
-                else if (flag=='detail'){
+                else if (flag==='detail'){
                     this.dialogTitle = "详情"
                     this.formDisabled = true
                     this.tableColumns.forEach(item=>{
@@ -504,7 +510,7 @@
                     })
                     this.isDialogShow = true
                 }
-                else if(flag=='add'){
+                else if(flag==='add'){
                     this.dialogTitle = "添加"
                     //默认值处理
                     this.formColumns.forEach(item=>{
@@ -517,7 +523,7 @@
                      })
                     this.isDialogShow = true
                 }
-                else if(flag=='edit'){
+                else if(flag ==='edit'){
                     this.dialogTitle = "编辑"
                     this.formColumns.forEach(item=>{
                         this.formData[item.prop] = row[item.prop]
@@ -541,10 +547,10 @@
                         let param = {
                             ...this.formData
                         }
-                        if(this.dialogTitle=="编辑"){
+                        if(this.dialogTitle==="编辑"){
                             this.crudRequest.edit(param).then(res=>{
                                 this.loadingSave=false
-                                if(res.code ==2000) {
+                                if(res.code ===2000) {
                                     this.$message.success(res.msg)
                                     this.handleDialogClose()
                                     this.handleRefresh()
@@ -555,7 +561,7 @@
                         }else{
                             this.crudRequest.add(param).then(res=>{
                                 this.loadingSave=false
-                                if(res.code ==2000) {
+                                if(res.code ===2000) {
                                     this.$message.success(res.msg)
                                     this.handleDialogClose()
                                     this.search()
@@ -608,7 +614,7 @@
                 this.loadingPage = true
                 this.crudRequest.search(this.formInline).then(res => {
                      this.loadingPage = false
-                     if(res.code ==2000) {
+                     if(res.code === 2000) {
                          this.tableData = res.data.data
                          this.pageparm.page = res.data.page;
                          this.pageparm.limit = res.data.limit;
@@ -634,8 +640,8 @@
 				})
 			},
             getTheTableHeight(){
-                let searchBarHeight = (this.$refs.tableSelect!=undefined && this.$refs.tableSelect.offsetHeight)?this.$refs.tableSelect.offsetHeight:0
-                const tableToolbarHeight = (this.$refs.tableToolBar!=undefined && this.$refs.tableToolBar.offsetHeight)?this.$refs.tableToolBar.offsetHeight:0
+                let searchBarHeight = (this.$refs.tableSelect!==undefined && this.$refs.tableSelect.offsetHeight)?this.$refs.tableSelect.offsetHeight:0
+                const tableToolbarHeight = (this.$refs.tableToolBar!==undefined && this.$refs.tableToolBar.offsetHeight)?this.$refs.tableToolBar.offsetHeight:0
                 searchBarHeight = this.isFull?searchBarHeight - 110:searchBarHeight
                 this.tableHeight =  getTableHeight(searchBarHeight+tableToolbarHeight)
             }
@@ -666,14 +672,15 @@
     }
 </script>
 <style lang="scss" scoped>
-    .tableToolBar{
-        margin-left: 1px;
-        margin-right: 1px;
-        display: flex;
-        justify-content: space-between;
-        font-size: 14px;
-        background: var(--el-bg-color);
-        padding: 10px;
-        box-shadow: 0 0 4px #cccccc;
-    }
+.tableToolBar{
+  margin-left: 1px;
+  margin-right: 1px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  background: var(--el-bg-color);
+  padding: 8px;
+  /*box-shadow: 0 0 4px #cccccc;*/
+  box-shadow: 0 0 2px rgba(0, 0, 0, .12);
+}
 </style>

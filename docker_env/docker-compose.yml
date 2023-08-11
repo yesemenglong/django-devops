@@ -1,0 +1,68 @@
+version: "3.5"
+services:
+  web:
+    image: admin:latest
+    container_name: admin_test
+    stop_signal: SIGINT
+    restart: always
+    ports:
+      # admin前端端口
+      - "8088:8088"
+      # 后端端口
+      - "8090:8090"
+    volumes:
+      - "./django/files/dist:/data/www/dist"
+      - "./files/backend:/data/www/backend"
+      - "/data/salt/pillar:/data/salt/pillar"
+      - "/data/ProjectDM/group:/data/ProjectDM/group"
+      # 时区以宿主机为准
+      - "/etc/localtime:/etc/localtime:ro"
+    env_file: .env
+    depends_on:
+      - redis
+      - mysql
+    networks:
+      admin_net:
+        ipv4_address: 172.19.19.10
+  redis:
+    image: redis:7
+    container_name: admin_redis
+    stop_signal: SIGINT
+    restart: always
+    volumes:
+      # 挂载外部目录，用于迁移使用
+      - "./files/redis:/data"
+      - "/etc/localtime:/etc/localtime:ro"
+    env_file: .env
+    ports:
+       - "6379:6379"
+    command: redis-server --appendonly yes --requirepass '123456'
+    networks:
+      admin_net:
+        ipv4_address: 172.19.19.20
+  mysql:
+    image: mariadb:latest
+    container_name: admin_mysql
+    stop_signal: SIGINT
+    restart: always
+    volumes:
+      # 挂载外部目录，用于迁移使用
+      - "./files/mysql/conf/my.cnf:/etc/my.cnf"
+      - "./files/mysql/data:/var/lib/mysql"
+      - "./files/mysql/init_data:/docker-entrypoint-initdb.d"
+      - "/etc/localtime:/etc/localtime:ro"
+    env_file: .env
+    environment:
+      - "MYSQL_DATABASE=test"
+      - "MYSQL_ROOT_PASSWORD=123456"
+    ports:
+        - "3306:3306"
+    networks:
+      admin_net:
+        ipv4_address: 172.19.19.30
+networks:
+  admin_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.19.19.0/24"
