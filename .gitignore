@@ -1,0 +1,11 @@
+*.log
+docker_env/files/mysql/data
+docker_env/files/mysql/logs
+docker_env/files/redis/data
+*.pot
+.vscode
+node_modules
+.idea
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
