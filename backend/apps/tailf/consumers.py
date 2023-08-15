@@ -12,8 +12,12 @@ class TailfConsumer(WebsocketConsumer):
 
     def disconnect(self, close_code):
         # 中止执行中的Task
-        self.result.revoke(terminate=True)
+        # self.result.revoke(terminate=True)
+        from celery.result import AsyncResult
+        result = AsyncResult(self.result.id)
+        result.revoke(terminate=True)
         print('disconnect:', self.channel_name)
 
     def send_message(self, event):
+        print(event["message"])
         self.send(text_data=json.dumps({"message": event["message"]}, ensure_ascii=False))

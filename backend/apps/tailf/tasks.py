@@ -11,16 +11,13 @@ from django.db import close_old_connections
 def tailf(channel_name):
     channel_layer = get_channel_layer()
     filename = '/data/dev/django-vue-lyadmin/backend/logs/batch.log'
-
     try:
         with open(filename, 'r', encoding='utf-8') as f:
             f.seek(0, 2)
             while True:
                 line = f.readline()
                 if line:
-                    async_to_sync(channel_layer.send)(
-                        channel_name, {"type": "send.message", "message": line}
-                    )
+                    async_to_sync(channel_layer.send)(channel_name, {"type": "send.message", "message": line})
                 else:
                     time.sleep(0.5)
     except Exception as e:

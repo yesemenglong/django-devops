@@ -54,9 +54,9 @@ class LogConsumer(WebsocketConsumer):
     #         response = self.p.get_message(timeout=10)
     #     self.send(text_data='pong')
         
-        log_data = event['text']
-        print(log_data)
-        self.send(text_data=json.dumps(log_data))
+        # log_data = event['text']
+        # print(log_data)
+        self.send(text_data=json.dumps({"message": event["text"]}))
 
 
 def str_decode(data):

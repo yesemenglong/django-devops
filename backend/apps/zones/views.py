@@ -279,73 +279,52 @@ class BatchBeployViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
         zones = zoneList.filter(status=0)
         minionList = MinionList.objects.all()
         version = Version.objects.filter(id=1).get().version
-        from channels.layers import get_channel_layer
-        from asgiref.sync import async_to_sync
-        channel_layer = get_channel_layer()
-        # response_data = {"message": "test"}
-        response_data = {'return': [{'game-1': {'cron_|-start backupdb 3_|-cd /data/zones/pok3/db ; sh backupdb.sh -h 192.168.123.132 -u root -p Dm2018Pwd123 -z 3 -d /data/backup/db/1_|-present': {'changes': {}, 'comment': 'Cron cd /data/zones/pok3/db ; sh backupdb.sh -h 192.168.123.132 -u root -p Dm2018Pwd123 -z 3 -d /data/backup/db/1 already present', 'name': 'cd /data/zones/pok3/db ; sh backupdb.sh -h 192.168.123.132 -u root -p Dm2018Pwd123 -z 3 -d /data/backup/db/1', 'result': True, '__sls__': 'game.start-backupdb', '__run_num__': 0, 'start_time': '22:21:04.467794', 'duration': 78.019, '__id__': 'start backupdb 3'}}}]}
-        async_to_sync(channel_layer.group_send)("log_channel",{
-            "type": "log_message",
-            "text": response_data,
-        })
 
-        # if zones:
-        #     for i in zones:
-        #         # 添加配置信息
-        #         name = i.name
-        #         id = i.id
-        #         ip = minionList.get(minion_id=i.minion_id).ip
-        #         domain = minionList.get(minion_id=i.minion_id).do_main
-        #         try:
-        #             # 写入pillar中的zones
-        #             data = {'name': name, 'ip': ip, 'host': i.minion_id.minion_id, 'db': settings.GAME_DATABASE_IP, 'id': id}
-        #             yamls.update_yaml('create', i.zone_id, data)
-        #         except Exception as e:
-        #             yamls.update_yaml('delete', i.zone_id)
-        #             logger1.error(e)
-        #             return Response({'results': '写入 zones 失败 ' + str(e), 'status': False})
+        if zones:
+            for i in zones:
+                # 添加配置信息
+                name = i.name
+                id = i.id
+                ip = minionList.get(minion_id=i.minion_id).ip
+                domain = minionList.get(minion_id=i.minion_id).do_main
+                try:
+                    # 写入pillar中的zones
+                    data = {'name': name, 'ip': ip, 'host': i.minion_id.minion_id, 'db': settings.GAME_DATABASE_IP, 'id': id}
+                    yamls.update_yaml('create', i.zone_id, data)
+                except Exception as e:
+                    yamls.update_yaml('delete', i.zone_id)
+                    logger1.error(e)
+                    return Response({'results': '写入 zones 失败 ' + str(e), 'status': False})
                 
-        #         tgt = '%s' % i.minion_id.minion_id
-        #         arg = ['game.create', 'pillar={"zone": "%s"}' % i.zone_id]
-        #         data = {'client': "local", 'fun': 'state.apply', 'arg': arg, 'tgt': tgt, 'tgt_type': 'glob'}
-        #         response_data = salt_sls(data)
-        #         async_to_sync(channel_layer.group_send)("log_channel",{
-        #             "type": "log_message",
-        #             "text": response_data,
-        #         })
-        #         logger1.debug(response_data)
+                tgt = '%s' % i.minion_id.minion_id
+                arg = ['game.create', 'pillar={"zone": "%s"}' % i.zone_id]
+                data = {'client': "local", 'fun': 'state.apply', 'arg': arg, 'tgt': tgt, 'tgt_type': 'glob'}
+                response_data = salt_sls(data)
+                logger1.debug(response_data)
             
-        #         # version = "0.7.98.22112103"
-        #         i_arg = ['game.install', 'pillar={"zone": "%s", "version": "%s", "env": "zones"}' % (i.zone_id, version)]
-        #         i_data = {'client': "local", 'fun': 'state.apply', 'arg': i_arg, 'tgt': tgt, 'tgt_type': 'glob'}
-        #         response_data2 = salt_sls(i_data)
-        #         async_to_sync(channel_layer.group_send)("log_channel",{
-        #             "type": "log_message",
-        #             "text": response_data2,
-        #         })
-        #         logger1.debug(response_data2)
+                # version = "0.7.98.22112103"
+                i_arg = ['game.install', 'pillar={"zone": "%s", "version": "%s", "env": "zones"}' % (i.zone_id, version)]
+                i_data = {'client': "local", 'fun': 'state.apply', 'arg': i_arg, 'tgt': tgt, 'tgt_type': 'glob'}
+                response_data2 = salt_sls(i_data)
+                logger1.debug(response_data2)
                 
-        #         zoneList.filter(zone_id=i.zone_id).update(status=1)
+                zoneList.filter(zone_id=i.zone_id).update(status=1)
                 
-        #         b_arg = ['game.start-backupdb', 'pillar={"zone": "%s"}' % i.zone_id]
-        #         b_data = {'client': "local", 'fun': 'state.apply', 'arg': b_arg, 'tgt': tgt, 'tgt_type': 'glob'}
-        #         response_data3 = salt_sls(b_data)
-        #         async_to_sync(channel_layer.group_send)("log_channel",{
-        #             "type": "log_message",
-        #             "text": response_data3,
-        #         })
-        #         logger1.debug(response_data3)
+                b_arg = ['game.start-backupdb', 'pillar={"zone": "%s"}' % i.zone_id]
+                b_data = {'client': "local", 'fun': 'state.apply', 'arg': b_arg, 'tgt': tgt, 'tgt_type': 'glob'}
+                response_data3 = salt_sls(b_data)
+                logger1.debug(response_data3)
                 
-        #         try:
-        #             # 移入pillar中的zones_wait
-        #             yamls.move_yaml(i.zone_id)
-        #             data = {'name': name, 'ip': ip, 'host': i.minion_id.minion_id, 'db': settings.GAME_DATABASE_IP, 'id': id, 'domain': domain, 'zone_id': i.zone_id}
-        #             yamls.extend_json("create", data)
-        #         except Exception as e:
-        #             logger1.error(e)
-        #             return Response({'results': '插入 zones_wait 失败 ' + str(e), 'status': False})
-        # else:
-        #     return Response({'results': "没有未创建的区服", 'status': False})
+                try:
+                    # 移入pillar中的zones_wait
+                    yamls.move_yaml(i.zone_id)
+                    data = {'name': name, 'ip': ip, 'host': i.minion_id.minion_id, 'db': settings.GAME_DATABASE_IP, 'id': id, 'domain': domain, 'zone_id': i.zone_id}
+                    yamls.extend_json("create", data)
+                except Exception as e:
+                    logger1.error(e)
+                    return Response({'results': '插入 zones_wait 失败 ' + str(e), 'status': False})
+        else:
+            return Response({'results': "没有未创建的区服", 'status': False})
         return Response({'results': "批量创建成功", 'status': True})
 
 
