@@ -1,6 +1,7 @@
 /backend/logs/
 *.log
-/docker_env/files/mysql/data/
+
+/docker_env/files/mysql/data
 /docker_env/files/redis/
 *.pot
 .vscode
