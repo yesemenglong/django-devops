@@ -1,8 +1,7 @@
 /backend/logs/
 *.log
-docker_env/files/mysql/data
-/docker_env/files/mysql/logs
-/docker_env/files/redis/data
+docker_env/files/mysql/data/
+docker_env/files/redis/
 *.pot
 .vscode
 node_modules
