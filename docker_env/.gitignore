@@ -1,7 +1,7 @@
 .idea
 logs
-/mysql/data
+/mysql/files/data
 /mysql/logs
 /nginx/logs
 /django/logs
-/redis/data
+/redis/files/data
