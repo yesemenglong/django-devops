@@ -3,4 +3,4 @@ logs
 files/mysql/*
 /mysql/logs
 /django/logs
-/files/redis/data
+files/redis/*
