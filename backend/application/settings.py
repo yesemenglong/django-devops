@@ -79,6 +79,7 @@ ALLOW_FRONTEND = True
 
 # Application definition
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -86,7 +87,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # other app
-    'channels',#websocket
+    # 'channels',#websocket
     'django_comment_migrate',
     'rest_framework',
     'django_filters',
@@ -393,8 +394,7 @@ LOGGING = {
         'json': {
             '()': 'pythonjsonlogger.jsonlogger.JsonFormatter',
             'format': CONSOLE_LOG_FORMAT,
-            "json_indent": 4,
-            # "encoding": "utf-8"
+            "json_indent": 2,
             "json_ensure_ascii": False
         }
     },

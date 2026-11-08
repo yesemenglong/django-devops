@@ -1,8 +1,6 @@
 import json
 from channels.generic.websocket import WebsocketConsumer
 from tailf.tasks import tailf
-from asgiref.sync import async_to_sync
-
 
 class TailfConsumer(WebsocketConsumer):
     def connect(self):
@@ -19,5 +17,4 @@ class TailfConsumer(WebsocketConsumer):
         print('disconnect:', self.channel_name)
 
     def send_message(self, event):
-        print(event["message"])
         self.send(text_data=json.dumps({"message": event["message"]}, ensure_ascii=False))

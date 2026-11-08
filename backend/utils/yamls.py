@@ -162,13 +162,19 @@ def delete_json(zone_id):
 def update_json(mzone, cozone_list):
     data = get_data(settings.SERVER_LIST_PATH+settings.SERVER_LIST_NAME)
     backup_file("json", settings.SERVER_LIST_NAME)
-    
-    m_server = next((s for s in data['servers'] if s['id'] == mzone), None)
-    if m_server:
-        for s in data['servers']:
-            if s['id'] in cozone_list:
-                s['urls_game'] = m_server['urls_game']
-
+    proj = settings.GAME_NAME
+    if proj == 'dm':
+        m_server = next((s for s in data['servers'] if s['id'] == mzone), None)
+        if m_server:
+            for s in data['servers']:
+                if s['id'] in cozone_list:
+                    s['urls_game'] = m_server['urls_game']
+    else:
+        m_server = next((s for s in data['games'] if s['id'] == mzone), None)
+        if m_server:
+            for s in data['games']:
+                if s['id'] in cozone_list:
+                    s['urls'] = m_server['urls']
     with open(settings.SERVER_LIST_PATH+settings.SERVER_LIST_NAME, 'w+') as f:
         json.dump(data, f, indent=4, separators=(',', ': '), ensure_ascii=False)
 

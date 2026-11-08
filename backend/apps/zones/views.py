@@ -100,21 +100,6 @@ class ZoneListViewSet(viewsets.ModelViewSet):
             return Response({'results': '删除失败 ' + str(e), 'status': False})
     
 
-# class ZoneListMinionViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
-#     queryset = ZoneList.objects.all()
-#     serializer_class = serializers.ZoneListSerializer
-
-#     pagination_class = CustomPagination
-
-#     # 可选的排序规则
-#     ordering_fields = ('minion_id', 'zone_id')
-
-#     def get_queryset(self):
-#         minion_id = self.request.GET.get('minion_id')
-#         queryset = ZoneList.objects.filter(minion_id=minion_id)
-#         return queryset
-
-
 class ZoneListBatchCreateViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
     """
     create:
@@ -254,8 +239,8 @@ class BeployZoneViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
         try:
             # 移入pillar中的zones_wait
             yamls.move_yaml(zone_id)
-            # 写入
-            data = {'name': name, 'ip': ip, 'host': minion_id, 'db': settings.GAME_DATABASE_IP, 'id': id, 'domain': domain, 'zone_id': zone_id}
+            # 写入server_list.json
+            data = {'name': name, 'ip': ip, 'host': minion_id, 'id': id, 'domain': domain, 'zone_id': zone_id}
             yamls.extend_json("create", data)
         except Exception as e:
             logger.error(e)
@@ -279,7 +264,7 @@ class BatchBeployViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
         zones = zoneList.filter(status=0)
         minionList = MinionList.objects.all()
         version = Version.objects.filter(id=1).get().version
-
+        
         if zones:
             for i in zones:
                 # 添加配置信息
@@ -294,20 +279,23 @@ class BatchBeployViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
                 except Exception as e:
                     yamls.update_yaml('delete', i.zone_id)
                     logger1.error(e)
-                    return Response({'results': '写入 zones 失败 ' + str(e), 'status': False})
+                    return Response({'results': '写入 zones 失败 ' + str(e) + ', 请检查game.sls。', 'status': False})
                 
                 tgt = '%s' % i.minion_id.minion_id
                 arg = ['game.create', 'pillar={"zone": "%s"}' % i.zone_id]
                 data = {'client': "local", 'fun': 'state.apply', 'arg': arg, 'tgt': tgt, 'tgt_type': 'glob'}
                 response_data = salt_sls(data)
                 logger1.debug(response_data)
-            
-                # version = "0.7.98.22112103"
+                if response_data is False:
+                    return Response({'results': '\nsalt命令执行后台出错_error(create)，请联系管理员', 'status': False})
+                
                 i_arg = ['game.install', 'pillar={"zone": "%s", "version": "%s", "env": "zones"}' % (i.zone_id, version)]
                 i_data = {'client': "local", 'fun': 'state.apply', 'arg': i_arg, 'tgt': tgt, 'tgt_type': 'glob'}
                 response_data2 = salt_sls(i_data)
                 logger1.debug(response_data2)
-                
+                if response_data2 is False:
+                    return Response({'results': '\nsalt命令执行后台出错_error(create)，请联系管理员', 'status': False})
+                           
                 zoneList.filter(zone_id=i.zone_id).update(status=1)
                 
                 b_arg = ['game.start-backupdb', 'pillar={"zone": "%s"}' % i.zone_id]
@@ -318,14 +306,15 @@ class BatchBeployViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
                 try:
                     # 移入pillar中的zones_wait
                     yamls.move_yaml(i.zone_id)
-                    data = {'name': name, 'ip': ip, 'host': i.minion_id.minion_id, 'db': settings.GAME_DATABASE_IP, 'id': id, 'domain': domain, 'zone_id': i.zone_id}
+                    # 写入server_list.json
+                    data = {'name': name, 'ip': ip, 'host': i.minion_id.minion_id, 'id': id, 'domain': domain, 'zone_id': i.zone_id}
                     yamls.extend_json("create", data)
                 except Exception as e:
                     logger1.error(e)
-                    return Response({'results': '插入 zones_wait 失败 ' + str(e), 'status': False})
+                    return Response({'results': '插入 zones_wait 失败 ' + str(e) + ',请检查server_list.json。', 'status': False})
         else:
             return Response({'results': "没有未创建的区服", 'status': False})
-        return Response({'results': "批量创建成功", 'status': True})
+        return Response({'results': "批量创建完成", 'status': True})
 
 
 class ZoneMergeViewSet(viewsets.ModelViewSet):
@@ -446,6 +435,8 @@ class ZoneMergeExeViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
         b_data = {'client': "local", 'fun': 'state.apply', 'arg': b_arg, 'tgt': tgt, 'tgt_type': 'glob'}
         backupdb_response = salt_sls(b_data)
         logger1.debug(backupdb_response)
+        # if backupdb_response is False:
+        #     return Response({'results': '\nsalt命令执行后台出错_error(create)，请联系管理员', 'status': False})
         
         logs = []
         
@@ -456,20 +447,26 @@ class ZoneMergeExeViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
             # logger1.debug(stop_response)
             # zoneList.filter(m_zone=i)
             # merge_arg = ['game.merge', 'pillar={"szone": "%s", "sip": "%s", "zone": "%s", "cozones": "%s"}']
-            merge_arg = ['game.merge', 'pillar={"szone": "%s", "tzone": "%s"}' % (i, mzone)]
+            old_cozone = zoneList.filter(m_zone=i).values('zone_id')
+            if old_cozone.exists():
+                old_cozone_list = [item['zone_id'] for item in old_cozone]
+                old_cozone_new = map(lambda x:str(x), old_cozone_list)
+                old_cozone_ids = ",".join(old_cozone_new)
+            else:
+                old_cozone_ids = i
+                
+            merge_arg = ['game.merge', 'pillar={"szone": "%s", "tzone": "%s", "cozones": "%s"}' % (i, mzone, old_cozone_ids)]
             merge_data = {'client': "local", 'fun': 'state.apply', 'arg': merge_arg, 'tgt': tgt, 'tgt_type': 'glob'}
             merge_response = salt_sls(merge_data)
             logger1.debug(merge_response)
-            logs.append(merge_response)
-            key_name = list(merge_response['return'][0][tgt].keys())
-            if merge_response['return'][0][tgt][key_name[0]]['changes']['retcode'] != 0:
-                return Response({'results': {"backupdb": backupdb_response, "merge": logs}, 'status': 'failure'})
             
+            status = check_merge(merge_response, tgt)
+            if status is False:
+                return Response({'results': '\n合服失败', 'status': False})
+
             # 修改历史被合区服
-            old_cozone = zoneList.filter(m_zone=i).values('zone_id')
-            if old_cozone != None:
-                old_cozone_ids = [item['zone_id'] for item in old_cozone]
-                yamls.update_json(mzone, old_cozone_ids)
+            if old_cozone.exists():
+                yamls.update_json(mzone, old_cozone_list)
             
             ZoneMergeList.objects.filter(id=request.data.get('id')).update(status=1)
             zoneList.filter(zone_id=i).update(m_zone=mzone)
@@ -479,7 +476,19 @@ class ZoneMergeExeViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
         yamls.delete_yaml(cozone_list) 
         # 修改区服入口
         yamls.update_json(mzone, cozone_list)
-        return Response({'results': {"backupdb": backupdb_response, "merge": logs}, 'status': True})
+        return Response({'results': "合服成功", 'status': True})
+
+def check_merge(merge_response, tgt):
+    if merge_response is False:
+        return False
+    if type(merge_response['return'][0][tgt]) != dict:
+        return False, "请查看日志"
+    # key_name = list(merge_response['return'][0][tgt].keys())
+    for item in merge_response['return'][0][tgt].values():
+        if "changes" not in item.keys():
+            return False
+        if item['changes']['retcode'] != 0:
+            return False
 
 
 class BatchZoneMergeViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):

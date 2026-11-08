@@ -20,7 +20,7 @@ from apps.lywebsocket.routing import websocket_urlpatterns
 from apps.tailf import routing
 
 # application = get_asgi_application()
-
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'application.settings')
 application = ProtocolTypeRouter({
   "http": get_asgi_application(),# 也可以不需要此项，普通的HTTP请求不需要我们手动在这里添加，框架会自动加载
   "websocket": AuthMiddlewareStack(
